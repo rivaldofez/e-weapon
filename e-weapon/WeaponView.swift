@@ -14,10 +14,13 @@ struct WeaponView: View {
     var body: some View {
         NavigationView {
             VStack {
-                
+                ScrollView {
+                    ForEach(0..<100){ num in
+                        Text("Number - \(num)")
+                    }
+                }
             }
             .searchable(text: self.$searchQuery)
-//            .navigationTitle("Weapon")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Text("Weapon")
