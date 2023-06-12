@@ -19,28 +19,32 @@ struct WeaponView: View {
                         .font(.system(.largeTitle).bold())
                 }
                 
-                
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
+                    HStack(alignment: .center, spacing: 0) {
+                        Button {
+                            
+                        } label: {
+                            HStack(spacing: 0) {
+                                Image(systemName: "square.and.arrow.up.circle.fill")
+                                Text("Tambah")
+                                
+                            }
+                        }
                         
-                    } label: {
-                        HStack {
-                            Text("Export")
-                                .font(.system(.callout).bold())
-                            Image()
+                        Button {
+                            
+                        } label: {
+                            HStack(spacing: 0) {
+                                Image(systemName: "square.and.arrow.up.circle.fill")
+                                Text("Export")
+                                
+
+                            }
                         }
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        
-                    } label: {
-                        HStack {
-                            Text("Export")
-                        }
-                    }
-                }
+                
             }
         }
         
