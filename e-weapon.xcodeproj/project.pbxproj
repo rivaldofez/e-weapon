@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46A5632A372D4C008BBE48 /* AddWeaponView.swift */; };
 		7E46A5672A373D18008BBE48 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46A5662A373D18008BBE48 /* ImagePicker.swift */; };
+		7E46A56D2A377405008BBE48 /* WeaponEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46A56C2A377405008BBE48 /* WeaponEntity.swift */; };
 		7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */; };
 		7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C602A27C87B00C5495D /* Assets.xcassets */; };
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		7E46A5632A372D4C008BBE48 /* AddWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeaponView.swift; sourceTree = "<group>"; };
 		7E46A5662A373D18008BBE48 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		7E46A56C2A377405008BBE48 /* WeaponEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponEntity.swift; sourceTree = "<group>"; };
 		7EF07C592A27C87700C5495D /* e-weapon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-weapon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_weaponApp.swift; sourceTree = "<group>"; };
 		7EF07C602A27C87B00C5495D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,6 +56,22 @@
 			path = "Custom View";
 			sourceTree = "<group>";
 		};
+		7E46A56A2A3773DB008BBE48 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				7E46A56B2A3773E5008BBE48 /* Entity */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		7E46A56B2A3773E5008BBE48 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				7E46A56C2A377405008BBE48 /* WeaponEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		7EF07C502A27C87600C5495D = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +91,7 @@
 		7EF07C5B2A27C87700C5495D /* e-weapon */ = {
 			isa = PBXGroup;
 			children = (
+				7E46A56A2A3773DB008BBE48 /* Local */,
 				7E46A5652A373D09008BBE48 /* Custom View */,
 				7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */,
 				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
@@ -175,6 +194,7 @@
 				7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */,
 				7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */,
 				7E46A5672A373D18008BBE48 /* ImagePicker.swift in Sources */,
+				7E46A56D2A377405008BBE48 /* WeaponEntity.swift in Sources */,
 				7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */,
 				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
