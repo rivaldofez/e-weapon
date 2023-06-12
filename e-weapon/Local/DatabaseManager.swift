@@ -19,7 +19,7 @@ enum DatabaseError: Error {
 class DatabaseManager {
     static let shared = DatabaseManager()
     
-    func addGame(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, completion: @escaping (Result<Void, Error>) -> Void){
+    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, completion: @escaping (Result<Void, Error>) -> Void){
         
         do {
             let realm = try Realm()
@@ -44,5 +44,14 @@ class DatabaseManager {
             completion(.failure(DatabaseError.cannotCreateDatabase))
         }
         
+    }
+    
+    func fetchWeapon() -> [WeaponEntity]{
+        let realm = try! Realm()
+        
+        let dataWeapon = realm.objects(WeaponEntity.self)
+            .sorted(byKeyPath: "addedAt", ascending: false)
+        
+        return dataWeapon.map { $0 }
     }
 }
