@@ -8,17 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */; };
-		7EF07C5F2A27C87700C5495D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C5E2A27C87700C5495D /* ContentView.swift */; };
 		7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C602A27C87B00C5495D /* Assets.xcassets */; };
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
+		7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6A2A36FC7500C5495D /* MainView.swift */; };
+		7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6C2A36FD5100C5495D /* WeaponView.swift */; };
+		7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */; };
+		7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C702A36FDE600C5495D /* SettingsView.swift */; };
+		7EF07C742A36FE7400C5495D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C732A36FE7400C5495D /* Realm */; };
+		7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C752A36FE7400C5495D /* RealmSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7EF07C592A27C87700C5495D /* e-weapon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-weapon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_weaponApp.swift; sourceTree = "<group>"; };
-		7EF07C5E2A27C87700C5495D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7EF07C602A27C87B00C5495D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		7EF07C6A2A36FC7500C5495D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7EF07C6C2A36FD5100C5495D /* WeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponView.swift; sourceTree = "<group>"; };
+		7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesView.swift; sourceTree = "<group>"; };
+		7EF07C702A36FDE600C5495D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +34,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */,
+				7EF07C742A36FE7400C5495D /* Realm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,9 +62,12 @@
 			isa = PBXGroup;
 			children = (
 				7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */,
-				7EF07C5E2A27C87700C5495D /* ContentView.swift */,
+				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
 				7EF07C602A27C87B00C5495D /* Assets.xcassets */,
 				7EF07C622A27C87B00C5495D /* Preview Content */,
+				7EF07C6C2A36FD5100C5495D /* WeaponView.swift */,
+				7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */,
+				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
 			);
 			path = "e-weapon";
 			sourceTree = "<group>";
@@ -83,6 +96,10 @@
 			dependencies = (
 			);
 			name = "e-weapon";
+			packageProductDependencies = (
+				7EF07C732A36FE7400C5495D /* Realm */,
+				7EF07C752A36FE7400C5495D /* RealmSwift */,
+			);
 			productName = "e-weapon";
 			productReference = 7EF07C592A27C87700C5495D /* e-weapon.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +128,9 @@
 				Base,
 			);
 			mainGroup = 7EF07C502A27C87600C5495D;
+			packageReferences = (
+				7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 7EF07C5A2A27C87700C5495D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +157,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7EF07C5F2A27C87700C5495D /* ContentView.swift in Sources */,
+				7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */,
+				7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */,
+				7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */,
+				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -339,6 +362,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7EF07C732A36FE7400C5495D /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = Realm;
+		};
+		7EF07C752A36FE7400C5495D /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7EF07C512A27C87600C5495D /* Project object */;
 }
