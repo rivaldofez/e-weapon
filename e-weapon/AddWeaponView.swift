@@ -17,10 +17,6 @@ struct AddWeaponView: View {
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePickerSheet: Bool = false
-
-    
-    
-    
     
     var body: some View {
         VStack {
@@ -44,7 +40,18 @@ struct AddWeaponView: View {
                     } else {
                         Image(systemName: "person")
                             .resizable()
-
+                    }
+                }
+            }
+            
+            Button("Save"){
+                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: "") { result in
+                    switch(result){
+                    case .success:
+                        print("success save")
+                        print(DatabaseManager.shared.fetchWeapon())
+                    case .failure(let error):
+                        print(error.localizedDescription)
                     }
                 }
             }
