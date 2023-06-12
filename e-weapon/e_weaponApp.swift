@@ -11,7 +11,7 @@ import SwiftUI
 struct e_weaponApp: App {
     var body: some Scene {
         WindowGroup {
-            MainView()
+            AddWeaponView()
         }
     }
 }

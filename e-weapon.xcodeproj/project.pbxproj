@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E46A5632A372D4C008BBE48 /* AddWeaponView.swift */; };
 		7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */; };
 		7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C602A27C87B00C5495D /* Assets.xcassets */; };
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E46A5632A372D4C008BBE48 /* AddWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeaponView.swift; sourceTree = "<group>"; };
 		7EF07C592A27C87700C5495D /* e-weapon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-weapon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_weaponApp.swift; sourceTree = "<group>"; };
 		7EF07C602A27C87B00C5495D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				7EF07C6C2A36FD5100C5495D /* WeaponView.swift */,
 				7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */,
 				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
+				7E46A5632A372D4C008BBE48 /* AddWeaponView.swift */,
 			);
 			path = "e-weapon";
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */,
+				7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */,
 				7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */,
 				7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */,
 				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
