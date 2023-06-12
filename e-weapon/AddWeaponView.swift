@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct AddWeaponView: View {
     @State private var id: String = ""
@@ -15,6 +16,7 @@ struct AddWeaponView: View {
     
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var showImagePickerSheet: Bool = false
 
     
     
@@ -51,15 +53,17 @@ struct AddWeaponView: View {
         .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
             
             Button("Galeri"){
-                
+                self.showImagePickerSheet = true
+                self.sourceType = .photoLibrary
             }
             
             Button("Kamera") {
-                
+                self.showImagePickerSheet = true
+                self.sourceType = .camera
             }
             
             Button("Hapus Foto", role: .destructive) {
-                
+                self.currentImage = nil
             }
             
             Button("Batal", role: .cancel){
@@ -68,6 +72,9 @@ struct AddWeaponView: View {
             
         } message: {
             Text("Choose Action To Do")
+        }
+        .sheet(isPresented: self.$showImagePickerSheet){
+            ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)
         }
         
     }
