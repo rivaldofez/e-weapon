@@ -9,7 +9,41 @@ import SwiftUI
 
 struct WeaponView: View {
     var body: some View {
-        /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Hello, world!@*/Text("Hello, world!")/*@END_MENU_TOKEN@*/
+        NavigationView {
+            VStack {
+                
+            }
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Text("Weapon")
+                        .font(.system(.largeTitle).bold())
+                }
+                
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("Export")
+                                .font(.system(.callout).bold())
+                            Image()
+                        }
+                    }
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        
+                    } label: {
+                        HStack {
+                            Text("Export")
+                        }
+                    }
+                }
+            }
+        }
+        
     }
 }
 
