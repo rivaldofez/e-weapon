@@ -37,15 +37,65 @@ struct AddWeaponView: View {
                 } else {
                     if let currentImage = self.currentImage {
                         Image(uiImage: currentImage)
+                            .resizable()
+                            .frame(width: 50, height: 50)
                     } else {
                         Image(systemName: "person")
                             .resizable()
                     }
                 }
             }
+            Button("Load Image"){
+                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+                let imageUrl = imagesFolderUrl.appendingPathComponent("0831C0DA-4ECB-45EA-8FA8-41D71E1025C8")
+                
+                do {
+                    print(imageUrl.absoluteString)
+                    
+                    let imageData = try Data(contentsOf: imageUrl)
+                    self.currentImage = UIImage(data: imageData)
+                    
+                } catch {
+                    print("Not able to load image")
+                }
+                
+                
+                //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+                //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
+                //                        do {
+                //                            let imageData = try Data(contentsOf: fileURL)
+                //                            self.currentImage = UIImage(data: imageData)
+                //
+                //                        } catch {
+                //                            print("Not able to load image")
+                //                        }
+                //                    }
+                
+            }
             
             Button("Save"){
-                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: "") { result in
+                let id = UUID().uuidString
+                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+                
+                let imageData = currentImage?.pngData()
+                let imageName = id
+                
+                let imageUrl = imagesFolderUrl.appendingPathComponent(imageName)
+                
+                if let imageData = imageData {
+                    do {
+                        try imageData.write(to: imageUrl)
+                        print(imageUrl.absoluteString)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
+                
+                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName) { result in
                     switch(result){
                     case .success:
                         print("success save")
@@ -55,7 +105,7 @@ struct AddWeaponView: View {
                     }
                 }
             }
-
+            
         }
         .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
             
