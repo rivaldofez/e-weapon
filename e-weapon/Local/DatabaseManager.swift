@@ -19,7 +19,7 @@ enum DatabaseError: Error {
 class DatabaseManager {
     static let shared = DatabaseManager()
     
-    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, completion: @escaping (Result<Void, Error>) -> Void){
+    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: Bool, completion: @escaping (Result<Void, Error>) -> Void){
         
         do {
             let realm = try Realm()
@@ -31,6 +31,8 @@ class DatabaseManager {
             weapon.price = price
             weapon.stock = stock
             weapon.imageUrl = imageUrl
+            weapon.status = status
+            weapon.location = location
             
             do {
                 try realm.write {
