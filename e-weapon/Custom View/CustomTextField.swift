@@ -10,13 +10,14 @@ import SwiftUI
 struct CustomTextField: View {
     var title: String
     @Binding var text: String
+    var keyboardType: UIKeyboardType = .default
     
     var strokeColor: Color = .gray
     var textColor: Color = .primary
     
     
     var body: some View {
-        TextField("Nama", text: self.$text)
+        TextField(title, text: self.$text)
             .font(.system(.body))
             .padding(.all, 16)
             .foregroundColor(textColor)
@@ -25,6 +26,7 @@ struct CustomTextField: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(strokeColor)
             }
+            .keyboardType(keyboardType)
     }
 }
 
