@@ -14,12 +14,13 @@ enum DatabaseError: Error {
     case failedToFetchData
     case cannotCreateDatabase
     case failedToAddWeapon
+    case failedToAddAccessory
 }
 
 class DatabaseManager {
     static let shared = DatabaseManager()
     
-    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: Bool, completion: @escaping (Result<Void, Error>) -> Void){
+    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: String, completion: @escaping (Result<Void, Error>) -> Void){
         
         do {
             let realm = try Realm()
@@ -45,7 +46,34 @@ class DatabaseManager {
         } catch {
             completion(.failure(DatabaseError.cannotCreateDatabase))
         }
+    }
+    
+    func addAccessories(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: String, completion: @escaping (Result<Void, Error>) -> Void){
         
+        do {
+            let realm = try Realm()
+            
+            let accessory = AccessoryEntity()
+            accessory.id = id
+            accessory.name = name
+            accessory.addedAt = addedAt
+            accessory.price = price
+            accessory.stock = stock
+            accessory.imageUrl = imageUrl
+            accessory.status = status
+            accessory.location = location
+            
+            do {
+                try realm.write {
+                    realm.add(accessory)
+                }
+                completion(.success(()))
+            } catch {
+                completion(.failure(DatabaseError.failedToAddAccessory))
+            }
+        } catch {
+            completion(.failure(DatabaseError.cannotCreateDatabase))
+        }
     }
     
     func fetchWeapon() -> [WeaponEntity]{

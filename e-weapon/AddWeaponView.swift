@@ -95,7 +95,7 @@ struct AddWeaponView: View {
                 }
                 
                 
-                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName) { result in
+                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName,location: "", status: "") { result in
                     switch(result){
                     case .success:
                         print("success save")

@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class AccessoriesEntity: Object {
+class AccessoryEntity: Object {
     @Persisted var id: String
     @Persisted var name: String
     @Persisted var addedAt: Date
