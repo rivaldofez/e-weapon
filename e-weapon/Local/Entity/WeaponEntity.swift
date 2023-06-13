@@ -15,4 +15,7 @@ class WeaponEntity: Object {
     @Persisted var price : Double
     @Persisted var stock: Int
     @Persisted var imageUrl: String
+    @Persisted var location: String
+    @Persisted var status: String
+    
 }
