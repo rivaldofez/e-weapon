@@ -76,6 +76,15 @@ class DatabaseManager {
         }
     }
     
+    func fetchAccessory() -> [AccessoryEntity] {
+        let realm = try! Realm()
+        
+        let dataAccessory = realm.objects(AccessoryEntity.self)
+            .sorted(byKeyPath: "addedAt", ascending: false)
+        
+        return dataAccessory.map { $0 }
+    }
+    
     func fetchWeapon() -> [WeaponEntity]{
         let realm = try! Realm()
         
