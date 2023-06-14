@@ -14,11 +14,6 @@ struct AddWeaponView: View {
     @State private var stock: String = ""
     @State private var currentImage: UIImage? = nil
     
-    
-    
-    
-    
-    
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePickerSheet: Bool = false

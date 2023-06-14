@@ -21,19 +21,19 @@ struct CustomMenuPicker: View {
                 }
             } label: {
                 Text(self.title)
-                    .font(.title3)
+                    .font(.body)
                     .foregroundColor(menuItemSelection.isEmpty ? .gray : .black)
             }
             
         } label: {
             HStack {
                 Text(menuItemSelection.isEmpty ? "Select Category" : menuItemSelection)
-                    .font(.title3)
+                    .font(.body)
                 
                 Spacer()
                 
                 Image(systemName: "chevron.forward")
-                    .font(.system(.title3))
+                    .font(.system(.body))
             }
         }
         .foregroundColor(menuItemSelection.isEmpty ? .gray : .black)
