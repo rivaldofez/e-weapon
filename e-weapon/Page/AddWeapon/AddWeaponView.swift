@@ -19,150 +19,161 @@ struct AddWeaponView: View {
     @State private var showImagePickerSheet: Bool = false
     
     var statusOptions = ["Save", "Used"]
-    @State private var status: String = "Save"
+    @State private var statusSelected: String = "Save"
     
-    
-    @State private var locationSelection: String = ""
+    @State private var locationSelected: String = ""
     var locationOptions = ["Rumah", "Gudang", "Bengkel"]
     
+    @StateObject var viewModel: AddWeaponViewModel = AddWeaponViewModel()
+    
     var body: some View {
-        VStack(spacing: 10) {
-            Group {
-                TitleSubForm(title: "Weapon Information")
-                    .hLeading()
+        ScrollView(.vertical, showsIndicators: true) {
+            VStack(spacing: 10) {
+                Group {
+                    TitleSubForm(title: "Weapon Information")
+                        .hLeading()
+                    
+                    CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                    
+                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                    
+                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
+                }
                 
-                CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                Group {
+                    TitleSubForm(title: "Status")
+                        .hLeading()
+                        .padding(.top, 16)
+                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions, selectedBackgroundColor: .primaryAccent ,selectedTextColor: .primaryButtonLabel)
+                    
+                }
                 
-                CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                Group {
+                    TitleSubForm(title: "Location")
+                        .hLeading()
+                        .padding(.top, 16)
+                    
+                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "")
+                }
                 
-                CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
-            }
-            
-            Group {
-                TitleSubForm(title: "Status")
-                    .hLeading()
-                    .padding(.top, 16)
-                CustomSegmentedControl(selectedItem: self.$status, items: statusOptions, selectedBackgroundColor: .primaryAccent ,selectedTextColor: .primaryButtonLabel)
-                
-            }
-            
-            Group {
-                TitleSubForm(title: "Location")
-                    .hLeading()
-                    .padding(.top, 16)
-                
-                CustomMenuPicker(menuItemSelection: self.$locationSelection, menus: locationOptions, title: "")
-            }
-            
-            Group {
-                TitleSubForm(title: "Image")
-                    .hLeading()
-                    .padding(.top, 16)
+                Group {
+                    TitleSubForm(title: "Image")
+                        .hLeading()
+                        .padding(.top, 16)
 
+                    Button {
+                        self.showImageActionDialog = true
+                    } label: {
+                        if currentImage == nil {
+                            AddImageSubForm()
+                        } else {
+                            Image(uiImage: self.currentImage!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: .infinity, minHeight: 120)
+                                .clipped()
+                                .cornerRadius(8)
+                        }
+                    }
+
+                }
+                
+                
+    
                 Button {
                     self.showImageActionDialog = true
                 } label: {
                     if currentImage == nil {
-                        AddImageSubForm()
+                        Image(systemName: "person")
                     } else {
-                        Image(uiImage: self.currentImage!)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(maxWidth: .infinity, minHeight: 120)
-                            .clipped()
-                            .cornerRadius(8)
+                        if let currentImage = self.currentImage {
+                            Image(uiImage: currentImage)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                        } else {
+                            Image(systemName: "person")
+                                .resizable()
+                        }
                     }
-                }.padding(.top, 16)
-
-            }
-            
-            
+                }
+//                Button("Load Image"){
+//                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+//                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+//                    let imageUrl = imagesFolderUrl.appendingPathComponent("C3A24C67-272B-44D5-BF42-E9D245482FD8")
 //
-//            Button {
-//                self.showImageActionDialog = true
-//            } label: {
-//                if currentImage == nil {
-//                    Image(systemName: "person")
-//                } else {
-//                    if let currentImage = self.currentImage {
-//                        Image(uiImage: currentImage)
-//                            .resizable()
-//                            .frame(width: 50, height: 50)
-//                    } else {
-//                        Image(systemName: "person")
-//                            .resizable()
-//                    }
-//                }
-//            }
-//            Button("Load Image"){
-//                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-//                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-//                let imageUrl = imagesFolderUrl.appendingPathComponent("0831C0DA-4ECB-45EA-8FA8-41D71E1025C8")
-//
-//                do {
-//                    print(imageUrl.absoluteString)
-//
-//                    let imageData = try Data(contentsOf: imageUrl)
-//                    self.currentImage = UIImage(data: imageData)
-//
-//                } catch {
-//                    print("Not able to load image")
-//                }
-//
-//
-//                //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-//                //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
-//                //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
-//                //                        do {
-//                //                            let imageData = try Data(contentsOf: fileURL)
-//                //                            self.currentImage = UIImage(data: imageData)
-//                //
-//                //                        } catch {
-//                //                            print("Not able to load image")
-//                //                        }
-//                //                    }
-//
-//            }
-            
-            Spacer()
-            
-//            Button("Save"){
-//                let id = UUID().uuidString
-//                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-//                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-//
-//                let imageData = currentImage?.pngData()
-//                let imageName = id
-//
-//                let imageUrl = imagesFolderUrl.appendingPathComponent(imageName)
-//
-//                if let imageData = imageData {
 //                    do {
-//                        try imageData.write(to: imageUrl)
 //                        print(imageUrl.absoluteString)
+//
+//                        let imageData = try Data(contentsOf: imageUrl)
+//                        self.currentImage = UIImage(data: imageData)
+//
 //                    } catch {
-//                        print(error.localizedDescription)
+//                        print("Not able to load image")
 //                    }
-//                }
 //
 //
-//                DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName,location: "", status: "") { result in
-//                    switch(result){
-//                    case .success:
-//                        print("success save")
-//                        print(DatabaseManager.shared.fetchWeapon())
-//                    case .failure(let error):
-//                        print(error.localizedDescription)
-//                    }
+//                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+//                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+//                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
+//                    //                        do {
+//                    //                            let imageData = try Data(contentsOf: fileURL)
+//                    //                            self.currentImage = UIImage(data: imageData)
+//                    //
+//                    //                        } catch {
+//                    //                            print("Not able to load image")
+//                    //                        }
+//                    //                    }
+//
 //                }
-//            }
-            
-                        
+                
+                Spacer()
+            }
+            .padding(.vertical, 8)
+            .padding(.horizontal, 16)
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Add Weapon")
+        
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button {
+                    
+                    let id = UUID().uuidString
+                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+    
+                    let imageData = currentImage?.pngData()
+                    let imageName = id
+    
+                    let imageUrl = imagesFolderUrl.appendingPathComponent(imageName)
+    
+                    if let imageData = imageData {
+                        do {
+                            try imageData.write(to: imageUrl)
+                            print(imageUrl.absoluteString)
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
+    
+    
+                    DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName,location: "", status: "") { result in
+                        switch(result){
+                        case .success:
+                            print("success save")
+                            print(DatabaseManager.shared.fetchWeapon())
+                        case .failure(let error):
+                            print(error.localizedDescription)
+                        }
+                    }
+                    
+                } label: {
+                    Text("Save")
+                }
+                .disabled(!isFormValid())
+            }
         }
         
-        
-        
-        .padding(.horizontal, 16)
         .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
             
             Button("Galeri"){
@@ -190,6 +201,27 @@ struct AddWeaponView: View {
             ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)
         }
     }
+    
+    func isFormValid() -> Bool {
+        if name.isEmpty {
+            return false
+        }
+        
+        if locationSelected.isEmpty {
+            return false
+        }
+        
+        if statusSelected.isEmpty {
+            return false
+        }
+        
+        if let _ = Double(self.price), let _ = Int(self.stock), let _ = self.currentImage {
+            return true
+        } else {
+            return false
+        }
+    }
+    
 }
 
 struct TitleSubForm: View {
@@ -197,7 +229,7 @@ struct TitleSubForm: View {
     
     var body: some View {
         Text(title)
-            .font(.system(.title3).bold())
+            .font(.system(.body).bold())
     }
 }
 
@@ -212,7 +244,7 @@ struct AddImageSubForm: View {
                 .foregroundColor(.primary)
             
             Text("Tambah Foto")
-                .font(.system(.title3).bold())
+                .font(.system(.body).bold())
                 .padding(.top, 8)
                 .foregroundColor(.primary)
             Spacer()
