@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */; };
 		7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271DB2A397943005D3B39 /* Color+Extension.swift */; };
 		7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */; };
 		7E3271E42A39A1C4005D3B39 /* WeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271E32A39A1C4005D3B39 /* WeaponViewModel.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponItemView.swift; sourceTree = "<group>"; };
 		7E3271DB2A397943005D3B39 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeaponViewModel.swift; sourceTree = "<group>"; };
 		7E3271E32A39A1C4005D3B39 /* WeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponViewModel.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				7EF07C6C2A36FD5100C5495D /* WeaponView.swift */,
 				7E3271E32A39A1C4005D3B39 /* WeaponViewModel.swift */,
+				7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */,
 			);
 			path = WeaponList;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */,
+				7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */,
 				7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */,
 				7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */,
 				7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */,
