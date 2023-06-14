@@ -73,6 +73,11 @@ struct AddWeaponView: View {
                                 .frame(maxWidth: .infinity, minHeight: 120)
                                 .clipped()
                                 .cornerRadius(8)
+                                .padding(4)
+                                .overlay {
+                                    RoundedRectangle(cornerRadius: 8)
+                                        .stroke(.black, style: StrokeStyle(lineWidth: 2, dash: [10]))
+                                }
                         }
                     }
 
@@ -80,22 +85,22 @@ struct AddWeaponView: View {
                 
                 
     
-                Button {
-                    self.showImageActionDialog = true
-                } label: {
-                    if currentImage == nil {
-                        Image(systemName: "person")
-                    } else {
-                        if let currentImage = self.currentImage {
-                            Image(uiImage: currentImage)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                        } else {
-                            Image(systemName: "person")
-                                .resizable()
-                        }
-                    }
-                }
+//                Button {
+//                    self.showImageActionDialog = true
+//                } label: {
+//                    if currentImage == nil {
+//                        Image(systemName: "person")
+//                    } else {
+//                        if let currentImage = self.currentImage {
+//                            Image(uiImage: currentImage)
+//                                .resizable()
+//                                .frame(width: 50, height: 50)
+//                        } else {
+//                            Image(systemName: "person")
+//                                .resizable()
+//                        }
+//                    }
+//                }
 //                Button("Load Image"){
 //                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
 //                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
@@ -138,34 +143,25 @@ struct AddWeaponView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     
-                    let id = UUID().uuidString
-                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-    
-                    let imageData = currentImage?.pngData()
-                    let imageName = id
-    
-                    let imageUrl = imagesFolderUrl.appendingPathComponent(imageName)
-    
-                    if let imageData = imageData {
-                        do {
-                            try imageData.write(to: imageUrl)
-                            print(imageUrl.absoluteString)
-                        } catch {
-                            print(error.localizedDescription)
+                    if let price = Double(self.price), let stock = Int(self.stock),  let image = self.currentImage {
+                        
+                        viewModel.addWeapon(id: UUID().uuidString, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, image: image) { result in
+                            
+                            switch(result) {
+                            case .success:
+                                print("success save")
+                                print(DatabaseManager.shared.fetchWeapon())
+                            case .failure(let error):
+                                print(error.localizedDescription)
+                            }
                         }
+                        
                     }
-    
-    
-                    DatabaseManager.shared.addWeapon(id: UUID().uuidString, name: name, addedAt: Date(), price: 0, stock: 0, imageUrl: imageName,location: "", status: "") { result in
-                        switch(result){
-                        case .success:
-                            print("success save")
-                            print(DatabaseManager.shared.fetchWeapon())
-                        case .failure(let error):
-                            print(error.localizedDescription)
-                        }
-                    }
+                    
+                    
+                    
+                    
+                    
                     
                 } label: {
                     Text("Save")

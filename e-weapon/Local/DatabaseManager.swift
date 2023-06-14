@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import UIKit
 
 
 enum DatabaseError: Error {
@@ -15,36 +16,53 @@ enum DatabaseError: Error {
     case cannotCreateDatabase
     case failedToAddWeapon
     case failedToAddAccessory
+    case failedToSaveImage
+    case imageDataNotValid
 }
 
 class DatabaseManager {
     static let shared = DatabaseManager()
     
-    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: String, completion: @escaping (Result<Void, Error>) -> Void){
+    func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
         
-        do {
-            let realm = try Realm()
-            
-            let weapon = WeaponEntity()
-            weapon.id = id
-            weapon.name = name
-            weapon.addedAt = addedAt
-            weapon.price = price
-            weapon.stock = stock
-            weapon.imageUrl = imageUrl
-            weapon.status = status
-            weapon.location = location
-            
+        let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
+
+        let imageData = image.pngData()
+        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(id)
+
+        if let imageData = imageData {
             do {
-                try realm.write {
-                    realm.add(weapon)
+                try imageData.write(to: imageLocalUrl)
+                do {
+                    let realm = try Realm()
+                    
+                    let weapon = WeaponEntity()
+                    weapon.id = id
+                    weapon.name = name
+                    weapon.addedAt = addedAt
+                    weapon.price = price
+                    weapon.stock = stock
+                    weapon.imageUrl = id
+                    weapon.status = status
+                    weapon.location = location
+                    
+                    do {
+                        try realm.write {
+                            realm.add(weapon)
+                        }
+                        completion(.success(()))
+                    } catch {
+                        completion(.failure(DatabaseError.failedToAddWeapon))
+                    }
+                } catch {
+                    completion(.failure(DatabaseError.cannotCreateDatabase))
                 }
-                completion(.success(()))
             } catch {
-                completion(.failure(DatabaseError.failedToAddWeapon))
+                completion(.failure(DatabaseError.failedToSaveImage))
             }
-        } catch {
-            completion(.failure(DatabaseError.cannotCreateDatabase))
+        } else {
+            completion(.failure(DatabaseError.imageDataNotValid))
         }
     }
     
