@@ -29,8 +29,8 @@ struct WeaponView: View {
 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(alignment: .center, spacing: 0) {
-                        Button {
-
+                        NavigationLink {
+                            AddWeaponView()
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle.fill")
