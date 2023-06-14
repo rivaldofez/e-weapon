@@ -38,15 +38,6 @@ struct AddWeaponView: View {
                 CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
             }
             
-            
-//            var selectedBackgroundColor = Color.gray
-//            var selectedTextColor = Color.white
-//
-//            var textColor = Color.black
-//            var backgroundColor = Color.clear
-//
-//            var borderColor = Color.gray.opacity(0.5)
-            
             Group {
                 TitleSubForm(title: "Status")
                     .hLeading()
@@ -68,9 +59,27 @@ struct AddWeaponView: View {
                     .hLeading()
                     .padding(.top, 16)
                 
-                RoundedRectangle(cornerRadius: 8)
-                    .frame(maxWidth: .infinity, minHeight: 120)
-                    .foregroundColor(.gray)
+                
+                Button {
+                    
+                } label: {
+//                    AddImageSubForm()
+                    
+                    Image(systemName: "plus.app")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(maxWidth: .infinity, minHeight: 120)
+                        .clipped()
+                        .cornerRadius(8)
+                        
+                }
+
+
+                
+//
+//                RoundedRectangle(cornerRadius: 8)
+//                    .frame(maxWidth: .infinity, minHeight: 120)
+//                    .foregroundColor(.gray)
             }
             
             
@@ -195,6 +204,31 @@ struct TitleSubForm: View {
     var body: some View {
         Text(title)
             .font(.system(.title3).bold())
+    }
+}
+
+struct AddImageSubForm: View {
+    var body: some View {
+        VStack(spacing: 0) {
+            Spacer()
+            Image(systemName: "plus.app")
+                .resizable()
+                .frame(maxWidth: 90, maxHeight: 90)
+                .aspectRatio(contentMode: .fit)
+                .foregroundColor(.primary)
+            
+            Text("Tambah Foto")
+                .font(.system(.title3).bold())
+                .padding(.top, 8)
+                .foregroundColor(.primary)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, minHeight: 120)
+        .padding(24)
+        .overlay {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(.black, style: StrokeStyle(lineWidth: 2, dash: [10]))
+        }
     }
 }
 
