@@ -13,53 +13,29 @@ struct WeaponView: View {
     
     func deleteItems(at offsets: IndexSet){
     }
-        
+    
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                ScrollView {
-                    VStack(spacing: 0) {
-                        ForEach(0..<30, id: \.self){ weapon in
-    //                        Image(uiImage: getImage(imageUrl: weapon.imageUrl))
-                            HStack(alignment: .center) {
-                                Image(systemName: "person")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.horizontal, 16)
-                                    .padding(.vertical, 24)
-                                
-                                VStack(alignment: .leading, spacing: 8) {
-                                    Text("Palu Gada")
-                                        .font(.system(.title3).bold())
-                                    
-                                    HStack {
-                                        Text("Rp.160.000,-")
-                                            .font(.system(.body))
-                                        
-                                        Spacer()
-                                        
-                                        HStack {
-                                            Image(systemName: "shippingbox.fill")
-                                            Text("4")
-                                            Spacer()
-                                        }
-                                        .padding(.trailing, 8)
-                                        .frame(width: 90)
-                                    }
-                                    
-                                    
-                                }
-                            }
+                List {
+                    ForEach(viewModel.weapon, id: \.id){ weapon in
+                        //                        Image(uiImage: getImage(imageUrl: weapon.imageUrl))
+                        WeaponItemView(name: weapon.name, price: "Rp5.000.000,-", stock: "100", image: getImage(imageUrl: weapon.imageUrl))
                             .hLeading()
-                            .background(.gray.opacity(0.1))
-                            .cornerRadius(8)
-                            .padding(.horizontal)
-                            .padding(.top)
-                            
-                        }
+                            .swipeActions {
+                                Button {
+                                    print("Delete")
+                                } label: {
+                                    Label("Delete", systemImage: "trash.circle.fill")
+                                }
+                                
+                            }
+                        
                     }
                 }
+                .listSectionSeparator(.hidden)
+                .listStyle(.plain)
             }
             .searchable(text: self.$searchQuery)
             .toolbar {
@@ -67,7 +43,7 @@ struct WeaponView: View {
                     Text("Weapon")
                         .font(.system(.title).bold())
                 }
-
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
                     HStack(alignment: .center, spacing: 0) {
                         NavigationLink {
@@ -76,12 +52,12 @@ struct WeaponView: View {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle.fill")
                                 Text("Tambah")
-
+                                
                             }
                         }
-
+                        
                         Button {
-
+                            
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle.fill")
@@ -90,22 +66,18 @@ struct WeaponView: View {
                         }
                     }
                 }
-
-
             }
-            
         }
-        
     }
     
     func getImage(imageUrl: String) -> UIImage {
         let imagesDefaultURL = URL(fileURLWithPath: "/images/")
         let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
         let imageUrl = imagesFolderUrl.appendingPathComponent(imageUrl)
-
+        
         do {
             print(imageUrl.absoluteString)
-
+            
             let imageData = try Data(contentsOf: imageUrl)
             
             if let imageResult = UIImage(data: imageData){
@@ -116,7 +88,7 @@ struct WeaponView: View {
         }
         
         return UIImage(systemName: "exclamationmark.triangle.fill")!
-
+        
     }
 }
 
