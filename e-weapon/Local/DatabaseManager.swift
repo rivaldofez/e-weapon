@@ -18,10 +18,86 @@ enum DatabaseError: Error {
     case failedToAddAccessory
     case failedToSaveImage
     case imageDataNotValid
+    case dataNotFound
+    case cannotDeleteImage
+    case cannotDeleteWeapon
 }
 
 class DatabaseManager {
     static let shared = DatabaseManager()
+    
+    func getImage(imageUrl: String) -> UIImage {
+        let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+        let imageUrl = imagesFolderUrl.appendingPathComponent(imageUrl)
+        
+        do {
+            print(imageUrl.absoluteString)
+            
+            let imageData = try Data(contentsOf: imageUrl)
+            
+            if let imageResult = UIImage(data: imageData){
+                return imageResult
+            }
+        } catch {
+            print("Not able to load image")
+        }
+        
+        return UIImage(systemName: "exclamationmark.triangle.fill")!
+        
+    }
+    
+    
+    func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
+        do {
+            let realm = try Realm()
+
+            if let weapon = getWeaponById(id: id){
+                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+                let imageUrl = imagesFolderUrl.appendingPathComponent(weapon.imageUrl)
+                
+                if FileManager.default.fileExists(atPath: imageUrl.absoluteString) {
+                    do {
+                        try FileManager.default.removeItem(at: imageUrl)
+                        do {
+                            try realm.write {
+                                realm.delete(weapon)
+                            }
+                            completion(.success(()))
+                        } catch {
+                            completion(.failure(DatabaseError.cannotDeleteWeapon))
+                        }
+                        
+                    } catch {
+                        completion(.failure(DatabaseError.cannotDeleteImage))
+                    }
+                }
+                
+            } else {
+                completion(.failure(DatabaseError.dataNotFound))
+            }
+
+        } catch {
+            completion(.failure(DatabaseError.cannotCreateDatabase))
+        }
+    }
+    
+    private func getWeaponById(id: String) -> WeaponEntity? {
+        do {
+            let realm = try Realm()
+            let resultWeapon = realm.objects(WeaponEntity.self)
+                .where { $0.id == id }
+            return resultWeapon.map { $0 }.first
+            
+        } catch {
+            
+            print(error.localizedDescription)
+            return nil
+            
+        }
+    }
+    
     
     func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
         
@@ -111,4 +187,5 @@ class DatabaseManager {
         
         return dataWeapon.map { $0 }
     }
+    
 }
