@@ -13,18 +13,18 @@ struct MainView: View {
         TabView {
             WeaponView()
                 .tabItem {
-                    Label("Weapon", systemImage: "person")
+                    Label("Weapon", systemImage: "wrench.adjustable.fill")
                 }
             
             AccessoriesView()
                 .tabItem {
-                    Label("Accessories", systemImage: "person")
+                    Label("Accessories", systemImage: "puzzlepiece.extension.fill")
                 }
             
             
             SettingsView()
                 .tabItem {
-                    Label("Settings", systemImage: "person")
+                    Label("Settings", systemImage: "gearshape.fill")
                 }
         }
         
