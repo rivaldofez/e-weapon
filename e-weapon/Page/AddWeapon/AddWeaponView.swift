@@ -72,13 +72,8 @@ struct AddWeaponView: View {
                             .clipped()
                             .cornerRadius(8)
                     }
-                }
+                }.padding(.top, 16)
 
-                
-//
-//                RoundedRectangle(cornerRadius: 8)
-//                    .frame(maxWidth: .infinity, minHeight: 120)
-//                    .foregroundColor(.gray)
             }
             
             
