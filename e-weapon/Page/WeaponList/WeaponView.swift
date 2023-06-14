@@ -31,7 +31,6 @@ struct WeaponView: View {
                                 }
                                 
                             }
-                        
                     }
                 }
                 .listSectionSeparator(.hidden)

@@ -18,6 +18,7 @@ enum DatabaseError: Error {
     case failedToAddAccessory
     case failedToSaveImage
     case imageDataNotValid
+    case imageDataNotFound
     case dataNotFound
     case cannotDeleteImage
     case cannotDeleteWeapon
@@ -50,6 +51,7 @@ class DatabaseManager {
     
     func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         do {
+            
             let realm = try Realm()
 
             if let weapon = getWeaponById(id: id){
@@ -57,7 +59,7 @@ class DatabaseManager {
                 let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
                 let imageUrl = imagesFolderUrl.appendingPathComponent(weapon.imageUrl)
                 
-                if FileManager.default.fileExists(atPath: imageUrl.absoluteString) {
+                if FileManager.default.fileExists(atPath: imageUrl.relativePath) {
                     do {
                         try FileManager.default.removeItem(at: imageUrl)
                         do {
@@ -72,6 +74,8 @@ class DatabaseManager {
                     } catch {
                         completion(.failure(DatabaseError.cannotDeleteImage))
                     }
+                } else {
+                    completion(.failure(DatabaseError.imageDataNotFound))
                 }
                 
             } else {
