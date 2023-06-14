@@ -58,22 +58,21 @@ struct AddWeaponView: View {
                 TitleSubForm(title: "Image")
                     .hLeading()
                     .padding(.top, 16)
-                
-                
-                Button {
-                    
-                } label: {
-//                    AddImageSubForm()
-                    
-                    Image(systemName: "plus.app")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(maxWidth: .infinity, minHeight: 120)
-                        .clipped()
-                        .cornerRadius(8)
-                        
-                }
 
+                Button {
+                    self.showImageActionDialog = true
+                } label: {
+                    if currentImage == nil {
+                        AddImageSubForm()
+                    } else {
+                        Image(uiImage: self.currentImage!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(maxWidth: .infinity, minHeight: 120)
+                            .clipped()
+                            .cornerRadius(8)
+                    }
+                }
 
                 
 //
