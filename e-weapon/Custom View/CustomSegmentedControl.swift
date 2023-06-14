@@ -12,6 +12,9 @@ struct CustomSegmentedControl: View {
     @State var cornerRadius: CGFloat = 8
     var items: [String]
     
+    var paddingSize: CGFloat = 0
+    var heightSize: CGFloat = 45
+    
     var selectedBackgroundColor = Color.gray
     var selectedTextColor = Color.white
     
@@ -20,8 +23,7 @@ struct CustomSegmentedControl: View {
     
     var borderColor = Color.gray.opacity(0.5)
     
-    var paddingSize: CGFloat = 0
-    var heightSize: CGFloat = 45
+    
     
     var body: some View {
         HStack(spacing: 0) {

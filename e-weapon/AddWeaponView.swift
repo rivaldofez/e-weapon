@@ -31,18 +31,27 @@ struct AddWeaponView: View {
                 TitleSubForm(title: "Weapon Information")
                     .hLeading()
                 
-                CustomTextField(title: "Name", text: self.$name)
+                CustomTextField(title: "Name", text: self.$name, iconName: "person")
                 
-                CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad)
+                CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
                 
-                CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad)
+                CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
             }
+            
+            
+//            var selectedBackgroundColor = Color.gray
+//            var selectedTextColor = Color.white
+//
+//            var textColor = Color.black
+//            var backgroundColor = Color.clear
+//
+//            var borderColor = Color.gray.opacity(0.5)
             
             Group {
                 TitleSubForm(title: "Status")
                     .hLeading()
                     .padding(.top, 16)
-                CustomSegmentedControl(selectedItem: self.$status, items: statusOptions)
+                CustomSegmentedControl(selectedItem: self.$status, items: statusOptions, selectedBackgroundColor: .primaryAccent ,selectedTextColor: .primaryButtonLabel)
                 
             }
             
