@@ -240,6 +240,7 @@ struct TitleSubForm: View {
     var body: some View {
         Text(title)
             .font(.system(.body).bold())
+            .foregroundColor(.primaryAccent)
     }
 }
 
@@ -251,19 +252,19 @@ struct AddImageSubForm: View {
                 .resizable()
                 .frame(maxWidth: 90, maxHeight: 90)
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(.primary)
+                .foregroundColor(.primaryGray)
             
             Text("Tambah Foto")
                 .font(.system(.body).bold())
                 .padding(.top, 8)
-                .foregroundColor(.primary)
+                .foregroundColor(.primaryGray)
             Spacer()
         }
         .frame(maxWidth: .infinity, minHeight: 120)
         .padding(24)
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(.black, style: StrokeStyle(lineWidth: 2, dash: [10]))
+                .stroke(Color.primaryGray, style: StrokeStyle(lineWidth: 2, dash: [10]))
         }
     }
 }

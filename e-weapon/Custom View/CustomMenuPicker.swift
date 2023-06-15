@@ -13,6 +13,10 @@ struct CustomMenuPicker: View {
     var title: String
     var cornerRadius: CGFloat = 8
     
+    var strokeColor: Color = .primaryGray
+    var fontColor: Color = .primaryLabel
+    var hintColor: Color = .primaryGray
+    
     var body: some View {
         Menu {
             Picker(selection: self.$menuItemSelection) {
@@ -22,7 +26,7 @@ struct CustomMenuPicker: View {
             } label: {
                 Text(self.title)
                     .font(.body)
-                    .foregroundColor(menuItemSelection.isEmpty ? .gray : .black)
+                    .foregroundColor(menuItemSelection.isEmpty ? hintColor : fontColor)
             }
             
         } label: {
@@ -36,11 +40,11 @@ struct CustomMenuPicker: View {
                     .font(.system(.body))
             }
         }
-        .foregroundColor(menuItemSelection.isEmpty ? .gray : .black)
+        .foregroundColor(menuItemSelection.isEmpty ? hintColor : fontColor)
         .padding(.all, 16)
         .overlay {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(.black)
+                .stroke(strokeColor)
         }
     }
 }
