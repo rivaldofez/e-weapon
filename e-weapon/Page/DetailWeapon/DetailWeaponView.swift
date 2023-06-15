@@ -8,19 +8,19 @@
 import SwiftUI
 
 struct DetailWeaponView: View {
-    @State private var name: String = ""
-    @State private var price: String = ""
-    @State private var stock: String = ""
-    @State private var currentImage: UIImage? = nil
+    @State var name: String = ""
+    @State var price: String = ""
+    @State var stock: String = ""
+    @State var currentImage: UIImage? = nil
     
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePickerSheet: Bool = false
     
     var statusOptions = ["Save", "Used"]
-    @State private var statusSelected: String = "Save"
+    @State var statusSelected: String = "Save"
     
-    @State private var locationSelected: String = ""
+    @State var locationSelected: String = ""
     var locationOptions = ["Rumah", "Gudang", "Bengkel"]
     
     
@@ -169,7 +169,7 @@ struct DetailWeaponView: View {
                 } label: {
                     Text(isEdit ? "Save" : "Edit")
                 }
-//                .disabled(!isFormValid())
+                .disabled(!isFormValid())
             }
         }
         

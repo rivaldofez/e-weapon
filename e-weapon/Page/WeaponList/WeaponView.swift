@@ -17,7 +17,7 @@ struct WeaponView: View {
                 List {
                     ForEach(viewModel.weapon, id: \.id){ weapon in
                         NavigationLink {
-                            DetailWeaponView()
+                            DetailWeaponView(name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
                         } label: {
                             WeaponItemView(name: weapon.name, price: "Rp\(weapon.price)", stock: "\(weapon.stock)", status: weapon.status, image: getImage(imageUrl: weapon.imageUrl))
                                 .hLeading()
