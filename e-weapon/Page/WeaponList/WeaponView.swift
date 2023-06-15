@@ -21,8 +21,11 @@ struct WeaponView: View {
                 List {
                     ForEach(viewModel.weapon, id: \.id){ weapon in
                         //                        Image(uiImage: getImage(imageUrl: weapon.imageUrl))
-                        WeaponItemView(name: weapon.name, price: "Rp5.000.000,-", stock: "100", image: getImage(imageUrl: weapon.imageUrl))
+                        WeaponItemView(name: weapon.name, price: "Rp5.000.000,-", stock: "100", status: "Bengkel", image: getImage(imageUrl: weapon.imageUrl))
                             .hLeading()
+                            .alignmentGuide(.listRowSeparatorLeading){ _ in
+                                 0
+                            }
                             .swipeActions {
                                 Button {
                                     print("Delete")
@@ -33,7 +36,6 @@ struct WeaponView: View {
                             }
                     }
                 }
-                .listSectionSeparator(.hidden)
                 .listStyle(.plain)
             }
             .searchable(text: self.$searchQuery)
