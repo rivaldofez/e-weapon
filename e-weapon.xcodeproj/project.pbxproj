@@ -21,6 +21,7 @@
 		7E660F8B2A3854180035BC99 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F8A2A3854180035BC99 /* CustomSegmentedControl.swift */; };
 		7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
+		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
 		7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */; };
 		7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C602A27C87B00C5495D /* Assets.xcassets */; };
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
@@ -47,6 +48,7 @@
 		7E660F8A2A3854180035BC99 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuPicker.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
+		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
 		7EF07C592A27C87700C5495D /* e-weapon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "e-weapon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7EF07C5C2A27C87700C5495D /* e_weaponApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = e_weaponApp.swift; sourceTree = "<group>"; };
 		7EF07C602A27C87B00C5495D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 		7E3271DD2A398639005D3B39 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				7ECF77A62A3B601400334CC0 /* DetailWeapon */,
 				7E3271E22A39A07E005D3B39 /* WeaponList */,
 				7E3271DE2A398642005D3B39 /* AddWeapon */,
 			);
@@ -142,6 +145,14 @@
 				7ECF77A42A3B42B600334CC0 /* Weapon.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		7ECF77A62A3B601400334CC0 /* DetailWeapon */ = {
+			isa = PBXGroup;
+			children = (
+				7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */,
+			);
+			path = DetailWeapon;
 			sourceTree = "<group>";
 		};
 		7EF07C502A27C87600C5495D = {
@@ -266,6 +277,7 @@
 				7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */,
 				7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */,
 				7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */,
+				7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */,
 				7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */,
 				7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */,
 				7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */,
