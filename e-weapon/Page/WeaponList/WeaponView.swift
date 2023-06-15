@@ -51,8 +51,12 @@ struct WeaponView: View {
                             AddWeaponView()
                         } label: {
                             HStack(spacing: 0) {
-                                Image(systemName: "square.and.arrow.up.circle.fill")
+                                Image(systemName: "plus.circle")
+                                    .font(.system(.title3))
+                                    .foregroundColor(.primaryAccent)
                                 Text("Tambah")
+                                    .font(.system(.body))
+                                    .foregroundColor(.primaryAccent)
                                 
                             }
                         }
@@ -61,8 +65,13 @@ struct WeaponView: View {
                             
                         } label: {
                             HStack(spacing: 0) {
-                                Image(systemName: "square.and.arrow.up.circle.fill")
+                                Image(systemName: "square.and.arrow.up.circle")
+                                    .font(.system(.title3))
+                                    .foregroundColor(.secondaryAccent)
                                 Text("Export")
+                                    .font(.system(.body))
+                                    .foregroundColor(.secondaryAccent)
+                                
                             }
                         }
                     }

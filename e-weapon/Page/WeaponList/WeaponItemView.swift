@@ -13,8 +13,7 @@ struct WeaponItemView: View {
     @State var stock: String
     @State var status: String
     @State var image: UIImage
-   
-    
+
     var body: some View {
         HStack(alignment: .center) {
             Image(uiImage: image)
@@ -27,21 +26,31 @@ struct WeaponItemView: View {
             VStack(alignment: .leading, spacing: 8) {
                 Text(name)
                     .font(.system(.title3).bold())
+                    .foregroundColor(.primaryAccent)
                 
                 Text(price)
-                    .font(.system(.body))
+                    .font(.system(.body).bold())
+                    .foregroundColor(.secondaryAccent)
                 
                 HStack {
                     HStack {
                         Image(systemName: "shippingbox.fill")
+                            .font(.system(.callout))
+                            .foregroundColor(.primaryGray)
                         Text(stock)
+                            .font(.system(.callout))
+                            .foregroundColor(.primaryGray)
                         Spacer()
                     }
                     
                     HStack {
                         HStack {
                             Image(systemName: "info.square.fill")
+                                .font(.system(.callout))
+                                .foregroundColor(.primaryGray)
                             Text(status)
+                                .font(.system(.callout))
+                                .foregroundColor(.primaryGray)
                             Spacer()
                         }
                     }
