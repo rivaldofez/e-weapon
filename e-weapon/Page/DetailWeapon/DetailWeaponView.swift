@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct DetailWeaponView: View {
+    var id: String
+    var imageUrl: String
     @State var name: String = ""
     @State var price: String = ""
     @State var stock: String = ""
     @State var currentImage: UIImage? = nil
+    
     
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
@@ -26,7 +29,7 @@ struct DetailWeaponView: View {
     
     @State private var isEdit: Bool = false
     
-    @StateObject var viewModel: AddWeaponViewModel = AddWeaponViewModel()
+    @StateObject var viewModel: DetailWeaponViewModel = DetailWeaponViewModel()
     
     
     var body: some View {
@@ -166,7 +169,20 @@ struct DetailWeaponView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     if isEdit {
-                        print("Save")
+                        
+                        if let price = Double(self.price), let stock = Int(self.stock),  let image = self.currentImage {
+                            
+                            viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, image: image) { result in
+                                switch(result){
+                                case .success:
+                                    print("success update")
+                                case .failure(let error):
+                                    print("error")
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
+                        
                         isEdit.toggle()
                     } else {
                         print("Edit")
@@ -231,6 +247,6 @@ struct DetailWeaponView: View {
 
 struct DetailWeaponView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWeaponView()
+        DetailWeaponView(id: "", imageUrl: "")
     }
 }
