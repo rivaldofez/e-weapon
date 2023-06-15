@@ -22,6 +22,7 @@ enum DatabaseError: Error {
     case dataNotFound
     case cannotDeleteImage
     case cannotDeleteWeapon
+    case failedToUpdateWeapon
 }
 
 class DatabaseManager {
@@ -47,7 +48,6 @@ class DatabaseManager {
         return UIImage(systemName: "exclamationmark.triangle.fill")!
         
     }
-    
     
     func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         do {
@@ -99,6 +99,51 @@ class DatabaseManager {
             print(error.localizedDescription)
             return nil
             
+        }
+    }
+    
+    
+    func updateWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
+        
+        let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
+
+        let imageData = image.pngData()
+        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(id)
+
+        if let imageData = imageData {
+            if let weapon = getWeaponById(id: id){
+                do {
+                    try imageData.write(to: imageLocalUrl)
+                    do {
+                        let realm = try Realm()
+                        
+                        do {
+                            try realm.write {
+                                weapon.id = id
+                                weapon.name = name
+                                weapon.addedAt = addedAt
+                                weapon.price = price
+                                weapon.stock = stock
+                                weapon.imageUrl = id
+                                weapon.status = status
+                                weapon.location = location
+                            }
+                            completion(.success(()))
+                        } catch {
+                            completion(.failure(DatabaseError.failedToUpdateWeapon))
+                        }
+                    } catch {
+                        completion(.failure(DatabaseError.cannotCreateDatabase))
+                    }
+                } catch {
+                    completion(.failure(DatabaseError.failedToSaveImage))
+                }
+            } else {
+                completion(.failure(DatabaseError.dataNotFound))
+            }
+        } else {
+            completion(.failure(DatabaseError.imageDataNotValid))
         }
     }
     
