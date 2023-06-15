@@ -44,7 +44,7 @@ struct AddWeaponView: View {
                     TitleSubForm(title: "Status")
                         .hLeading()
                         .padding(.top, 16)
-                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions, selectedBackgroundColor: .primaryAccent ,selectedTextColor: .primaryButtonLabel)
+                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions)
                     
                 }
                 
@@ -171,12 +171,6 @@ struct AddWeaponView: View {
                         }
                         
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                 } label: {
                     Text("Save")
                 }
@@ -252,19 +246,19 @@ struct AddImageSubForm: View {
                 .resizable()
                 .frame(maxWidth: 90, maxHeight: 90)
                 .aspectRatio(contentMode: .fit)
-                .foregroundColor(.primaryGray)
+                .foregroundColor(.primaryAccent)
             
             Text("Tambah Foto")
                 .font(.system(.body).bold())
                 .padding(.top, 8)
-                .foregroundColor(.primaryGray)
+                .foregroundColor(.primaryAccent)
             Spacer()
         }
         .frame(maxWidth: .infinity, minHeight: 120)
         .padding(24)
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.primaryGray, style: StrokeStyle(lineWidth: 2, dash: [10]))
+                .stroke(Color.primaryGray, style: StrokeStyle(lineWidth: 1, dash: [8]))
         }
     }
 }

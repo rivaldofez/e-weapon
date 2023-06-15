@@ -15,13 +15,13 @@ struct CustomSegmentedControl: View {
     var paddingSize: CGFloat = 0
     var heightSize: CGFloat = 45
     
-    var selectedBackgroundColor = Color.gray
-    var selectedTextColor = Color.white
+    var selectedBackgroundColor: Color = .primaryAccent
+    var selectedTextColor: Color = .primaryButtonLabel
     
-    var textColor = Color.black
-    var backgroundColor = Color.clear
+    var textColor: Color = .primaryLabel
+    var backgroundColor: Color = .clear
     
-    var borderColor = Color.gray.opacity(0.5)
+    var borderColor: Color = .primaryGray
     
     
     
@@ -55,7 +55,7 @@ struct CustomSegmentedControl: View {
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(borderColor, lineWidth: 2)
+                .stroke(borderColor, lineWidth: 1)
         }
     }
 }

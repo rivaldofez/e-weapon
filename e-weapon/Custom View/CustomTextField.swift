@@ -13,10 +13,12 @@ struct CustomTextField: View {
     var keyboardType: UIKeyboardType = .default
     
     var iconName: String = "person"
-    var iconColor: Color = .primary
+    var iconColor: Color = .primaryGray
     
-    var strokeColor: Color = .gray
-    var textColor: Color = .primary
+    var strokeColor: Color = .primaryGray
+    var textColor: Color = .primaryLabel
+    
+    var hintColor: Color = .primaryGray
     
     
     
@@ -28,7 +30,10 @@ struct CustomTextField: View {
                 .foregroundColor(iconColor)
             
             
-            TextField(title, text: self.$text)
+            TextField(text: self.$text){
+                Text(title)
+                    .foregroundColor(hintColor)
+            }
                 .font(.system(.body))
                 .padding(.vertical, 16)
                 .padding(.trailing, 8)
