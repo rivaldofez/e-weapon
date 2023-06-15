@@ -37,10 +37,13 @@ struct DetailWeaponView: View {
                         .hLeading()
                     
                     CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                        .disabled(!isEdit)
                     
                     CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                        .disabled(!isEdit)
                     
                     CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
+                        .disabled(!isEdit)
                 }
                 
                 Group {
@@ -48,6 +51,7 @@ struct DetailWeaponView: View {
                         .hLeading()
                         .padding(.top, 16)
                     CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions)
+                        .disabled(!isEdit)
                     
                 }
                 
@@ -57,6 +61,7 @@ struct DetailWeaponView: View {
                         .padding(.top, 16)
                     
                     CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "")
+                        .disabled(!isEdit)
                 }
                 
                 Group {
@@ -83,6 +88,7 @@ struct DetailWeaponView: View {
                                 }
                         }
                     }
+                    .disabled(!isEdit)
                     
                 }
                 
