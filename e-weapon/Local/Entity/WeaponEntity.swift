@@ -17,5 +17,4 @@ class WeaponEntity: Object {
     @Persisted var imageUrl: String
     @Persisted var location: String
     @Persisted var status: String
-    
 }

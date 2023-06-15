@@ -11,28 +11,30 @@ struct WeaponView: View {
     @State private var searchQuery: String = ""
     @StateObject private var viewModel: WeaponViewModel = WeaponViewModel()
     
-    func deleteItems(at offsets: IndexSet){
-    }
-    
-    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
                 List {
                     ForEach(viewModel.weapon, id: \.id){ weapon in
-                        //                        Image(uiImage: getImage(imageUrl: weapon.imageUrl))
-                        WeaponItemView(name: weapon.name, price: "Rp5.000.000,-", stock: "100", status: "Bengkel", image: getImage(imageUrl: weapon.imageUrl))
+                        WeaponItemView(name: weapon.name, price: "Rp\(weapon.price)", stock: "\(weapon.stock)", status: weapon.status, image: getImage(imageUrl: weapon.imageUrl))
                             .hLeading()
                             .alignmentGuide(.listRowSeparatorLeading){ _ in
                                  0
                             }
                             .swipeActions {
-                                Button {
-                                    print("Delete")
+                                Button(role: .destructive) {
+                                    viewModel.deleteWeapon(id: weapon.id) { result in
+                                        switch(result){
+                                        case .success :
+                                            viewModel.fetchWeapon()
+                                        case .failure(let error):
+                                            print("error")
+                                            print(error.localizedDescription)
+                                        }
+                                    }
                                 } label: {
                                     Label("Delete", systemImage: "trash.circle.fill")
                                 }
-                                
                             }
                     }
                 }
@@ -86,8 +88,6 @@ struct WeaponView: View {
         let imageUrl = imagesFolderUrl.appendingPathComponent(imageUrl)
         
         do {
-            print(imageUrl.absoluteString)
-            
             let imageData = try Data(contentsOf: imageUrl)
             
             if let imageResult = UIImage(data: imageData){

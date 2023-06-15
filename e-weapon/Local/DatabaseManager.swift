@@ -51,7 +51,6 @@ class DatabaseManager {
     
     func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         do {
-            
             let realm = try Realm()
 
             if let weapon = getWeaponById(id: id){
@@ -70,18 +69,15 @@ class DatabaseManager {
                         } catch {
                             completion(.failure(DatabaseError.cannotDeleteWeapon))
                         }
-                        
                     } catch {
                         completion(.failure(DatabaseError.cannotDeleteImage))
                     }
                 } else {
                     completion(.failure(DatabaseError.imageDataNotFound))
                 }
-                
             } else {
                 completion(.failure(DatabaseError.dataNotFound))
             }
-
         } catch {
             completion(.failure(DatabaseError.cannotCreateDatabase))
         }
