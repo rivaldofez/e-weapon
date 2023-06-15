@@ -169,7 +169,7 @@ struct DetailWeaponView: View {
                 } label: {
                     Text(isEdit ? "Save" : "Edit")
                 }
-                .disabled(!isFormValid())
+//                .disabled(!isFormValid())
             }
         }
         
