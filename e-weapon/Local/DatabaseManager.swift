@@ -22,6 +22,7 @@ enum DatabaseError: Error {
     case dataNotFound
     case cannotDeleteImage
     case cannotDeleteWeapon
+    case failedToUpdateWeapon
 }
 
 class DatabaseManager {
@@ -130,7 +131,7 @@ class DatabaseManager {
                             }
                             completion(.success(()))
                         } catch {
-                            completion(.failure(DatabaseError.failedToAddWeapon))
+                            completion(.failure(DatabaseError.failedToUpdateWeapon))
                         }
                     } catch {
                         completion(.failure(DatabaseError.cannotCreateDatabase))
@@ -144,7 +145,6 @@ class DatabaseManager {
         } else {
             completion(.failure(DatabaseError.imageDataNotValid))
         }
-        
     }
     
     
