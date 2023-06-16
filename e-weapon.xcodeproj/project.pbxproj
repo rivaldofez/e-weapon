@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		7E03E48F2A3CD0A000AF1735 /* CSVDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03E48E2A3CD0A000AF1735 /* CSVDocument.swift */; };
 		7E03E4922A3CDCF300AF1735 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03E4912A3CDCF300AF1735 /* Constants.swift */; };
+		7E03E4952A3CE97200AF1735 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7E03E4942A3CE97200AF1735 /* Lottie */; };
+		7E03E4972A3CE99800AF1735 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03E4962A3CE99800AF1735 /* LottieView.swift */; };
+		7E03E49A2A3CEB1A00AF1735 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E03E4992A3CEB1A00AF1735 /* Empty.json */; };
 		7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */; };
 		7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271DB2A397943005D3B39 /* Color+Extension.swift */; };
 		7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */; };
@@ -39,6 +42,8 @@
 /* Begin PBXFileReference section */
 		7E03E48E2A3CD0A000AF1735 /* CSVDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDocument.swift; sourceTree = "<group>"; };
 		7E03E4912A3CDCF300AF1735 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		7E03E4962A3CE99800AF1735 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		7E03E4992A3CEB1A00AF1735 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
 		7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponItemView.swift; sourceTree = "<group>"; };
 		7E3271DB2A397943005D3B39 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -72,6 +77,7 @@
 			files = (
 				7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */,
 				7EF07C742A36FE7400C5495D /* Realm in Frameworks */,
+				7E03E4952A3CE97200AF1735 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +90,14 @@
 				7E03E4912A3CDCF300AF1735 /* Constants.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		7E03E4982A3CEAEA00AF1735 /* Lottie Asset */ = {
+			isa = PBXGroup;
+			children = (
+				7E03E4992A3CEB1A00AF1735 /* Empty.json */,
+			);
+			path = "Lottie Asset";
 			sourceTree = "<group>";
 		};
 		7E3271DD2A398639005D3B39 /* Page */ = {
@@ -122,6 +136,7 @@
 				7E660F882A3851890035BC99 /* CustomTextField.swift */,
 				7E660F8A2A3854180035BC99 /* CustomSegmentedControl.swift */,
 				7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */,
+				7E03E4962A3CE99800AF1735 /* LottieView.swift */,
 			);
 			path = "Custom View";
 			sourceTree = "<group>";
@@ -190,6 +205,7 @@
 		7EF07C5B2A27C87700C5495D /* e-weapon */ = {
 			isa = PBXGroup;
 			children = (
+				7E03E4982A3CEAEA00AF1735 /* Lottie Asset */,
 				7E03E4902A3CDCE500AF1735 /* Utils */,
 				7ECF77A32A3B429D00334CC0 /* Model */,
 				7E3271DD2A398639005D3B39 /* Page */,
@@ -233,6 +249,7 @@
 			packageProductDependencies = (
 				7EF07C732A36FE7400C5495D /* Realm */,
 				7EF07C752A36FE7400C5495D /* RealmSwift */,
+				7E03E4942A3CE97200AF1735 /* Lottie */,
 			);
 			productName = "e-weapon";
 			productReference = 7EF07C592A27C87700C5495D /* e-weapon.app */;
@@ -264,6 +281,7 @@
 			mainGroup = 7EF07C502A27C87600C5495D;
 			packageReferences = (
 				7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				7E03E4932A3CE97200AF1735 /* XCRemoteSwiftPackageReference "lottie-spm" */,
 			);
 			productRefGroup = 7EF07C5A2A27C87700C5495D /* Products */;
 			projectDirPath = "";
@@ -281,6 +299,7 @@
 			files = (
 				7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */,
 				7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */,
+				7E03E49A2A3CEB1A00AF1735 /* Empty.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,6 +333,7 @@
 				7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
 				7E46A56F2A37748D008BBE48 /* DatabaseManager.swift in Sources */,
+				7E03E4972A3CE99800AF1735 /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +536,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		7E03E4932A3CE97200AF1735 /* XCRemoteSwiftPackageReference "lottie-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-spm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/realm/realm-cocoa";
@@ -527,6 +555,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		7E03E4942A3CE97200AF1735 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7E03E4932A3CE97200AF1735 /* XCRemoteSwiftPackageReference "lottie-spm" */;
+			productName = Lottie;
+		};
 		7EF07C732A36FE7400C5495D /* Realm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7EF07C722A36FE7400C5495D /* XCRemoteSwiftPackageReference "realm-cocoa" */;
