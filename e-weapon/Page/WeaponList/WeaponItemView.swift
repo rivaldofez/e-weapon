@@ -8,15 +8,35 @@
 import SwiftUI
 
 struct WeaponItemView: View {
-    @State var name: String
-    @State var price: String
-    @State var stock: String
-    @State var status: String
-    @State var image: UIImage
+    @Binding var weapon: Weapon
+//    @State var name: String
+//    @State var price: String
+//    @State var stock: String
+//    @State var status: String
+//    @State var image: UIImage
 
+    func getImage(imageUrl: String) -> UIImage {
+        let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+        let imageUrl = imagesFolderUrl.appendingPathComponent(imageUrl)
+        
+        do {
+            let imageData = try Data(contentsOf: imageUrl)
+            
+            if let imageResult = UIImage(data: imageData){
+                return imageResult
+            }
+        } catch {
+            print("Not able to load image")
+        }
+        
+        return UIImage(systemName: "exclamationmark.triangle.fill")!
+        
+    }
+    
     var body: some View {
         HStack(alignment: .center) {
-            Image(uiImage: image)
+            Image(uiImage: getImage(imageUrl: weapon.imageUrl))
                 .resizable()
                 .frame(width: 80, height: 80)
                 .cornerRadius(16)
@@ -24,11 +44,11 @@ struct WeaponItemView: View {
                 
             
             VStack(alignment: .leading, spacing: 8) {
-                Text(name)
+                Text(weapon.name)
                     .font(.system(.title3).bold())
                     .foregroundColor(.primaryAccent)
                 
-                Text(price)
+                Text("\(weapon.price)")
                     .font(.system(.body).bold())
                     .foregroundColor(.secondaryAccent)
                 
@@ -37,7 +57,7 @@ struct WeaponItemView: View {
                         Image(systemName: "shippingbox.fill")
                             .font(.system(.callout))
                             .foregroundColor(.primaryGray)
-                        Text(stock)
+                        Text("\(weapon.stock)")
                             .font(.system(.callout))
                             .foregroundColor(.primaryGray)
                         Spacer()
@@ -48,7 +68,7 @@ struct WeaponItemView: View {
                             Image(systemName: "info.square.fill")
                                 .font(.system(.callout))
                                 .foregroundColor(.primaryGray)
-                            Text(status)
+                            Text(weapon.status)
                                 .font(.system(.callout))
                                 .foregroundColor(.primaryGray)
                             Spacer()
@@ -62,6 +82,6 @@ struct WeaponItemView: View {
 
 struct WeaponItemView_Previews: PreviewProvider {
     static var previews: some View {
-        WeaponItemView(name: "Palu Gada", price: "Rp5.000.000", stock: "1000", status: "Bengkel", image: UIImage(systemName: "person")!)
+        WeaponItemView(weapon: .constant(Weapon(id: "", name: "Palu Gada", addedAt: Date(), price: 5000, stock: 100, imageUrl: "", location: "Gudang", status: "Save")))
     }
 }

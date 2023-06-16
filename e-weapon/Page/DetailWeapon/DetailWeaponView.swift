@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailWeaponView: View {
     var id: String
     var imageUrl: String
+    var addedAt: Date
     @State var name: String = ""
     @State var price: String = ""
     @State var stock: String = ""
@@ -130,7 +131,7 @@ struct DetailWeaponView: View {
                 Button("Load Image"){
                     let imagesDefaultURL = URL(fileURLWithPath: "/images/")
                     let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
+                    let imageUrl = imagesFolderUrl.appendingPathComponent("E928848E-B72A-4A3F-BB06-7CC77F1A6E501686850079.118034")
                     
                     do {
                         print(imageUrl.absoluteString)
@@ -162,6 +163,9 @@ struct DetailWeaponView: View {
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
         }
+        .onAppear {
+            print(imageUrl)
+        }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Add Weapon")
         
@@ -172,7 +176,7 @@ struct DetailWeaponView: View {
                         
                         if let price = Double(self.price), let stock = Int(self.stock),  let image = self.currentImage {
                             
-                            viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, image: image) { result in
+                            viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, imageUrl: imageUrl, image: image) { result in
                                 switch(result){
                                 case .success:
                                     print("success update")
@@ -247,6 +251,6 @@ struct DetailWeaponView: View {
 
 struct DetailWeaponView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWeaponView(id: "", imageUrl: "")
+        DetailWeaponView(id: "", imageUrl: "", addedAt: Date())
     }
 }

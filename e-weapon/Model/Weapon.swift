@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Weapon: Identifiable {
+struct Weapon: Equatable, Identifiable {
     var id: String
     var name: String
     var addedAt: Date

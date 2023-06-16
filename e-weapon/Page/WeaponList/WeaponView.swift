@@ -15,11 +15,11 @@ struct WeaponView: View {
         NavigationView {
             VStack(spacing: 0) {
                 List {
-                    ForEach(viewModel.weapon, id: \.id){ weapon in
+                    ForEach($viewModel.weapon, id: \.id){ $weapon in
                         NavigationLink {
-                            DetailWeaponView(id: weapon.id, imageUrl: weapon.imageUrl ,name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
+                            DetailWeaponView(id: weapon.id, imageUrl: weapon.imageUrl , addedAt: weapon.addedAt ,name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
                         } label: {
-                            WeaponItemView(name: weapon.name, price: "Rp\(weapon.price)", stock: "\(weapon.stock)", status: weapon.status, image: getImage(imageUrl: weapon.imageUrl))
+                            WeaponItemView(weapon: $weapon)
                                 .hLeading()
                                 .alignmentGuide(.listRowSeparatorLeading){ _ in
                                      0
@@ -47,6 +47,7 @@ struct WeaponView: View {
             }
             .onAppear {
                 viewModel.fetchWeapon()
+                print("called")
             }
             .searchable(text: self.$searchQuery)
             .toolbar {

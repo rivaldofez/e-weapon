@@ -49,6 +49,23 @@ class DatabaseManager {
         
     }
     
+    func deleteImageAt(imageName: String) -> Bool {
+        let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+        let imageUrl = imagesFolderUrl.appendingPathComponent(imageName)
+        
+        if FileManager.default.fileExists(atPath: imageUrl.relativePath){
+            do {
+                try FileManager.default.removeItem(at: imageUrl)
+                return true
+            } catch {
+                return false
+            }
+        }
+        
+        return false
+    }
+    
     func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         do {
             let realm = try Realm()
@@ -98,48 +115,61 @@ class DatabaseManager {
         }
     }
     
+    private func generateImageName(id: String) -> String {
+        return "\(id)-\(UUID().uuidString)"
+    }
     
-    func updateWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
+    
+    func updateWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, imageUrl: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
         
-        let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
-        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
+        if deleteImageAt(imageName: imageUrl){
+            let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
+            let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
-        let imageData = image.pngData()
-        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(id)
+            let imageName = generateImageName(id: id)
+            let imageData = image.pngData()
+            let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
-        if let imageData = imageData {
-            if let weapon = getWeaponById(id: id){
-                do {
-                    try imageData.write(to: imageLocalUrl)
+            if let imageData = imageData {
+                if let weapon = getWeaponById(id: id){
                     do {
-                        let realm = try Realm()
-                        
+                        try imageData.write(to: imageLocalUrl)
                         do {
-                            try realm.write {
-                                weapon.id = id
-                                weapon.name = name
-                                weapon.addedAt = addedAt
-                                weapon.price = price
-                                weapon.stock = stock
-                                weapon.imageUrl = id
-                                weapon.status = status
-                                weapon.location = location
+                            let realm = try Realm()
+                            
+                            do {
+                                try realm.write {
+                                    weapon.id = id
+                                    weapon.name = name
+                                    weapon.addedAt = addedAt
+                                    weapon.price = price
+                                    weapon.stock = stock
+                                    weapon.imageUrl = imageName
+                                    weapon.status = status
+                                    weapon.location = location
+                                }
+                                completion(.success(()))
+                            } catch {
+                                completion(.failure(DatabaseError.failedToUpdateWeapon))
                             }
-                            completion(.success(()))
                         } catch {
-                            completion(.failure(DatabaseError.failedToUpdateWeapon))
+                            completion(.failure(DatabaseError.cannotCreateDatabase))
                         }
                     } catch {
-                        completion(.failure(DatabaseError.cannotCreateDatabase))
+                        completion(.failure(DatabaseError.failedToSaveImage))
+                        print("fail to save image")
                     }
-                } catch {
-                    completion(.failure(DatabaseError.failedToSaveImage))
+                } else {
+                    completion(.failure(DatabaseError.dataNotFound))
+                    print("data not found")
                 }
             } else {
-                completion(.failure(DatabaseError.dataNotFound))
+                completion(.failure(DatabaseError.imageDataNotValid))
+                print("not valid image")
             }
         } else {
-            completion(.failure(DatabaseError.imageDataNotValid))
+            completion(.failure(DatabaseError.cannotDeleteImage))
+            print("cannot delete image")
         }
     }
     
@@ -150,8 +180,12 @@ class DatabaseManager {
         let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
         let imageData = image.pngData()
-        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(id)
+        let imageName = generateImageName(id: id)
+        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
+        
+        
+        
         if let imageData = imageData {
             do {
                 try imageData.write(to: imageLocalUrl)
@@ -164,7 +198,7 @@ class DatabaseManager {
                     weapon.addedAt = addedAt
                     weapon.price = price
                     weapon.stock = stock
-                    weapon.imageUrl = id
+                    weapon.imageUrl = imageName
                     weapon.status = status
                     weapon.location = location
                     
