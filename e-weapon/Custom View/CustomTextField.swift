@@ -25,10 +25,10 @@ struct CustomTextField: View {
     var body: some View {
         HStack {
             Image(systemName: iconName)
-                .font(.system(.title3))
+                .font(.title3)
                 .padding(.leading, 8)
                 .foregroundColor(iconColor)
-            
+                .frame(maxWidth: 40)
             
             TextField(text: self.$text){
                 Text(title)
@@ -38,6 +38,8 @@ struct CustomTextField: View {
                 .padding(.vertical, 16)
                 .padding(.trailing, 8)
                 .keyboardType(keyboardType)
+            
+            Spacer()
                 
         }
         .foregroundColor(textColor)

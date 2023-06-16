@@ -20,16 +20,12 @@ struct AddWeaponView: View {
     @State private var price: String = ""
     @State private var stock: String = ""
     @State private var currentImage: UIImage? = nil
+    @State private var statusSelected: String = Constants.statusOptions[0]
+    @State private var locationSelected: String = ""
     
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePickerSheet: Bool = false
-    
-    var statusOptions = ["Save", "Used"]
-    @State private var statusSelected: String = "Save"
-    
-    @State private var locationSelected: String = ""
-    var locationOptions = ["Rumah", "Gudang", "Bengkel"]
     
     
     var body: some View {
@@ -50,7 +46,7 @@ struct AddWeaponView: View {
                     TitleSubForm(title: "Status")
                         .hLeading()
                         .padding(.top, 16)
-                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions)
+                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: Constants.statusOptions)
                     
                 }
                 
@@ -59,7 +55,7 @@ struct AddWeaponView: View {
                         .hLeading()
                         .padding(.top, 16)
                     
-                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "")
+                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: Constants.locationOptions, title: "")
                 }
                 
                 Group {
@@ -88,25 +84,6 @@ struct AddWeaponView: View {
                     }
                     
                 }
-                
-                
-                
-                //                Button {
-                //                    self.showImageActionDialog = true
-                //                } label: {
-                //                    if currentImage == nil {
-                //                        Image(systemName: "person")
-                //                    } else {
-                //                        if let currentImage = self.currentImage {
-                //                            Image(uiImage: currentImage)
-                //                                .resizable()
-                //                                .frame(width: 50, height: 50)
-                //                        } else {
-                //                            Image(systemName: "person")
-                //                                .resizable()
-                //                        }
-                //                    }
-                //                }
                 
                 Button("Delete Weapon"){
                     DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
@@ -178,6 +155,7 @@ struct AddWeaponView: View {
                 } label: {
                     Text("Save")
                 }
+                .tint(.primaryAccent)
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
                     Button("OK") {
                         if self.alertTitle == "Success"{
