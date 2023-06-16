@@ -9,6 +9,13 @@ import SwiftUI
 import UIKit
 
 struct AddWeaponView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @StateObject var viewModel: AddWeaponViewModel = AddWeaponViewModel()
+    
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var alertTitle: String = ""
+    
     @State private var name: String = ""
     @State private var price: String = ""
     @State private var stock: String = ""
@@ -24,7 +31,6 @@ struct AddWeaponView: View {
     @State private var locationSelected: String = ""
     var locationOptions = ["Rumah", "Gudang", "Bengkel"]
     
-    @StateObject var viewModel: AddWeaponViewModel = AddWeaponViewModel()
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
@@ -60,7 +66,7 @@ struct AddWeaponView: View {
                     TitleSubForm(title: "Image")
                         .hLeading()
                         .padding(.top, 16)
-
+                    
                     Button {
                         self.showImageActionDialog = true
                     } label: {
@@ -80,27 +86,27 @@ struct AddWeaponView: View {
                                 }
                         }
                     }
-
+                    
                 }
                 
                 
-    
-//                Button {
-//                    self.showImageActionDialog = true
-//                } label: {
-//                    if currentImage == nil {
-//                        Image(systemName: "person")
-//                    } else {
-//                        if let currentImage = self.currentImage {
-//                            Image(uiImage: currentImage)
-//                                .resizable()
-//                                .frame(width: 50, height: 50)
-//                        } else {
-//                            Image(systemName: "person")
-//                                .resizable()
-//                        }
-//                    }
-//                }
+                
+                //                Button {
+                //                    self.showImageActionDialog = true
+                //                } label: {
+                //                    if currentImage == nil {
+                //                        Image(systemName: "person")
+                //                    } else {
+                //                        if let currentImage = self.currentImage {
+                //                            Image(uiImage: currentImage)
+                //                                .resizable()
+                //                                .frame(width: 50, height: 50)
+                //                        } else {
+                //                            Image(systemName: "person")
+                //                                .resizable()
+                //                        }
+                //                    }
+                //                }
                 
                 Button("Delete Weapon"){
                     DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
@@ -119,18 +125,18 @@ struct AddWeaponView: View {
                     let imagesDefaultURL = URL(fileURLWithPath: "/images/")
                     let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
                     let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
-
+                    
                     do {
                         print(imageUrl.absoluteString)
-
+                        
                         let imageData = try Data(contentsOf: imageUrl)
                         self.currentImage = UIImage(data: imageData)
-
+                        
                     } catch {
                         print("Not able to load image")
                     }
-
-
+                    
+                    
                     //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
                     //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
                     //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
@@ -142,7 +148,7 @@ struct AddWeaponView: View {
                     //                            print("Not able to load image")
                     //                        }
                     //                    }
-
+                    
                 }
                 
                 Spacer()
@@ -163,16 +169,24 @@ struct AddWeaponView: View {
                             
                             switch(result) {
                             case .success:
-                                print("success save")
-                                print(DatabaseManager.shared.fetchWeapon())
-                            case .failure(let error):
-                                print(error.localizedDescription)
+                                showAlert(isActive: true, title: "Success", message: "Weapon has been added")
+                            case .failure(_):
+                                showAlert(isActive: true, title: "Failed", message: "An error occured when save the data")
                             }
                         }
                     }
                 } label: {
                     Text("Save")
                 }
+                .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
+                    Button("OK") {
+                        if self.alertTitle == "Success"{
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }, message: {
+                    Text(self.alertMessage)
+                })
                 .disabled(!isFormValid())
             }
         }
@@ -203,6 +217,12 @@ struct AddWeaponView: View {
         .sheet(isPresented: self.$showImagePickerSheet){
             ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)
         }
+    }
+    
+    private func showAlert(isActive: Bool, title: String ,message: String){
+        self.showAlert = isActive
+        self.alertMessage = message
+        self.alertTitle = title
     }
     
     func isFormValid() -> Bool {
