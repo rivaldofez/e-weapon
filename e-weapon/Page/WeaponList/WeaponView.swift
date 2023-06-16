@@ -12,6 +12,10 @@ struct WeaponView: View {
     
     @StateObject private var viewModel: WeaponViewModel = WeaponViewModel()
     
+    @State private var showFileExported: Bool = false
+    
+    @State private var csvDocument: CSVDocument = CSVDocument()
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
@@ -79,6 +83,17 @@ struct WeaponView: View {
                         
                         Button {
                             
+                            var number = 0
+                            var csvHead = "No,Name,Price,Stock,Status,Location\n"
+                            
+                            for weaponItem in viewModel.weapon {
+                                number += 1
+                                csvHead.append("\(number),\(weaponItem.name),\(weaponItem.price),\(weaponItem.stock),\(weaponItem.status),\(weaponItem.location)\n")
+                            }
+                            
+                            self.csvDocument = CSVDocument(initialText: csvHead)
+                            self.showFileExported = true
+                            
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle")
@@ -88,6 +103,14 @@ struct WeaponView: View {
                                     .font(.system(.body))
                                     .foregroundColor(.secondaryAccent)
                                 
+                            }
+                        }
+                        .fileExporter(isPresented: $showFileExported, document: csvDocument, contentType: .commaSeparatedText, defaultFilename: "Weapon-Data") { result in
+                            switch result {
+                            case .success(let url):
+                                print("Saved to \(url)")
+                            case .failure(let error):
+                                print(error.localizedDescription)
                             }
                         }
                     }

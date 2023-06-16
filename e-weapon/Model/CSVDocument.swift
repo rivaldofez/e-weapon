@@ -5,7 +5,7 @@
 //  Created by Rivaldo Fernandes on 17/06/23.
 //
 
-import Foundation
+import SwiftUI
 import UniformTypeIdentifiers
 
 struct CSVDocument: FileDocument {
