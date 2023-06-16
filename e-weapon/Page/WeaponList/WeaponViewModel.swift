@@ -22,6 +22,15 @@ class WeaponViewModel: ObservableObject {
             }
     }
     
+    func filterSearch(query: String){
+        if query.isEmpty {
+            fetchWeapon()
+        } else {
+            fetchWeapon()
+            self.weapon = self.weapon.filter { $0.name.lowercased().contains(query.lowercased()) }
+        }
+    }
+    
     func deleteWeapon(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         self.weapon.removeAll { $0.id == id}
         print(weapon)
