@@ -21,7 +21,7 @@ struct CustomSegmentedControl: View {
     var textColor: Color = .primaryLabel
     var backgroundColor: Color = .clear
     
-    var borderColor: Color = .primaryGray
+    var strokeColor: Color = .primaryGray
     
     
     
@@ -55,7 +55,7 @@ struct CustomSegmentedControl: View {
         .clipShape(RoundedRectangle(cornerRadius: cornerRadius))
         .overlay {
             RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(borderColor, lineWidth: 1)
+                .stroke(strokeColor, lineWidth: 1)
         }
     }
 }

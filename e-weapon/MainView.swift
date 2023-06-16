@@ -27,6 +27,8 @@ struct MainView: View {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
         }
+        .tint(.primaryAccent)
+        
         
     }
 }

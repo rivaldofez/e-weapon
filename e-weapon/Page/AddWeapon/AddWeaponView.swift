@@ -236,6 +236,8 @@ struct TitleSubForm: View {
 }
 
 struct AddImageSubForm: View {
+    var strokeColor: Color = .primaryGray
+    
     var body: some View {
         VStack(spacing: 0) {
             Spacer()
@@ -255,7 +257,7 @@ struct AddImageSubForm: View {
         .padding(24)
         .overlay {
             RoundedRectangle(cornerRadius: 8)
-                .stroke(Color.primaryGray, style: StrokeStyle(lineWidth: 1, dash: [8]))
+                .stroke(strokeColor, style: StrokeStyle(lineWidth: 1, dash: [8]))
         }
     }
 }

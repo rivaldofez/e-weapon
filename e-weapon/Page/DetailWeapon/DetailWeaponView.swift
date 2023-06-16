@@ -46,13 +46,13 @@ struct DetailWeaponView: View {
                     TitleSubForm(title: "Weapon Information")
                         .hLeading()
                     
-                    CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                    CustomTextField(title: "Name", text: self.$name, iconName: "person", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
-                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
-                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
+                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                 }
                 
@@ -60,7 +60,7 @@ struct DetailWeaponView: View {
                     TitleSubForm(title: "Status")
                         .hLeading()
                         .padding(.top, 16)
-                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions)
+                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions, strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
                 }
@@ -70,7 +70,7 @@ struct DetailWeaponView: View {
                         .hLeading()
                         .padding(.top, 16)
                     
-                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "")
+                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                 }
                 
@@ -83,7 +83,7 @@ struct DetailWeaponView: View {
                         self.showImageActionDialog = true
                     } label: {
                         if currentImage == nil {
-                            AddImageSubForm()
+                            AddImageSubForm(strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         } else {
                             Image(uiImage: self.currentImage!)
                                 .resizable()
@@ -94,7 +94,7 @@ struct DetailWeaponView: View {
                                 .padding(4)
                                 .overlay {
                                     RoundedRectangle(cornerRadius: 8)
-                                        .stroke(.black, style: StrokeStyle(lineWidth: 2, dash: [10]))
+                                        .stroke(isEdit ? Color.secondaryAccent : Color.primaryGray, style: StrokeStyle(lineWidth: 2, dash: [10]))
                                 }
                         }
                     }
@@ -138,6 +138,7 @@ struct DetailWeaponView: View {
                 } label: {
                     Text(isEdit ? "Save" : "Edit")
                 }
+                .tint(isEdit ? .primaryAccent : .secondaryAccent)
                 .disabled(!isFormValid())
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
                     Button("OK") {
@@ -148,7 +149,6 @@ struct DetailWeaponView: View {
                 }, message: {
                     Text(self.alertMessage)
                 })
-                .disabled(!isFormValid())
             }
         }
         
@@ -185,6 +185,8 @@ struct DetailWeaponView: View {
         self.alertMessage = message
         self.alertTitle = title
     }
+    
+    
     
     func isFormValid() -> Bool {
         if name.isEmpty {

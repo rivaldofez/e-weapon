@@ -117,6 +117,7 @@ struct WeaponView: View {
                 }
             }
         }
+        .tint(.secondaryAccent)
     }
     
     func getImage(imageUrl: String) -> UIImage {
