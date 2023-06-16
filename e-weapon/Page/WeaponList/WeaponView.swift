@@ -19,36 +19,47 @@ struct WeaponView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                List {
-                    ForEach($viewModel.weapon, id: \.id){ $weapon in
-                        NavigationLink {
-                            DetailWeaponView(id: weapon.id, imageUrl: weapon.imageUrl , addedAt: weapon.addedAt ,name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
-                        } label: {
-                            WeaponItemView(weapon: $weapon)
-                                .hLeading()
-                                .alignmentGuide(.listRowSeparatorLeading){ _ in
-                                    0
-                                }
-                                .swipeActions {
-                                    Button(role: .destructive) {
-                                        viewModel.deleteWeapon(id: weapon.id) { result in
-                                            switch(result){
-                                            case .success :
-                                                viewModel.fetchWeapon()
-                                            case .failure(let error):
-                                                print("error")
-                                                print(error.localizedDescription)
-                                            }
-                                        }
-                                    } label: {
-                                        Label("Delete", systemImage: "trash.circle.fill")
-                                    }
-                                }
-                        }
+                if viewModel.weapon.isEmpty {
+                        LottieView(name: "Empty", loopMode: .loop)
+                            .frame(maxHeight: 240)
                         
+                        Text("Oops, data empty or not found")
+                        .font(.system(.title3).bold())
+                        .foregroundColor(.primaryLabel)
+                        .padding(.top, -16)
+                        .padding(.horizontal, 16)
+                } else {
+                    List {
+                        ForEach($viewModel.weapon, id: \.id){ $weapon in
+                            NavigationLink {
+                                DetailWeaponView(id: weapon.id, imageUrl: weapon.imageUrl , addedAt: weapon.addedAt ,name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
+                            } label: {
+                                WeaponItemView(weapon: $weapon)
+                                    .hLeading()
+                                    .alignmentGuide(.listRowSeparatorLeading){ _ in
+                                        0
+                                    }
+                                    .swipeActions {
+                                        Button(role: .destructive) {
+                                            viewModel.deleteWeapon(id: weapon.id) { result in
+                                                switch(result){
+                                                case .success :
+                                                    viewModel.fetchWeapon()
+                                                case .failure(let error):
+                                                    print("error")
+                                                    print(error.localizedDescription)
+                                                }
+                                            }
+                                        } label: {
+                                            Label("Delete", systemImage: "trash.circle.fill")
+                                        }
+                                    }
+                            }
+                            
+                        }
                     }
+                    .listStyle(.plain)
                 }
-                .listStyle(.plain)
             }
             .onAppear {
                 viewModel.fetchWeapon()
