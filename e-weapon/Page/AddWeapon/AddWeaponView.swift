@@ -169,7 +169,6 @@ struct AddWeaponView: View {
                                 print(error.localizedDescription)
                             }
                         }
-                        
                     }
                 } label: {
                     Text("Save")

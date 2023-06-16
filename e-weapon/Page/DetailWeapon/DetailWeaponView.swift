@@ -8,10 +8,14 @@
 import SwiftUI
 
 struct DetailWeaponView: View {
+    var id: String
+    var imageUrl: String
+    var addedAt: Date
     @State var name: String = ""
     @State var price: String = ""
     @State var stock: String = ""
     @State var currentImage: UIImage? = nil
+    
     
     @State private var showImageActionDialog: Bool = false
     @State private var sourceType: UIImagePickerController.SourceType = .camera
@@ -26,7 +30,7 @@ struct DetailWeaponView: View {
     
     @State private var isEdit: Bool = false
     
-    @StateObject var viewModel: AddWeaponViewModel = AddWeaponViewModel()
+    @StateObject var viewModel: DetailWeaponViewModel = DetailWeaponViewModel()
     
     
     var body: some View {
@@ -127,7 +131,7 @@ struct DetailWeaponView: View {
                 Button("Load Image"){
                     let imagesDefaultURL = URL(fileURLWithPath: "/images/")
                     let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
+                    let imageUrl = imagesFolderUrl.appendingPathComponent("E928848E-B72A-4A3F-BB06-7CC77F1A6E501686850079.118034")
                     
                     do {
                         print(imageUrl.absoluteString)
@@ -159,6 +163,9 @@ struct DetailWeaponView: View {
             .padding(.vertical, 8)
             .padding(.horizontal, 16)
         }
+        .onAppear {
+            print(imageUrl)
+        }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Add Weapon")
         
@@ -166,7 +173,20 @@ struct DetailWeaponView: View {
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
                     if isEdit {
-                        print("Save")
+                        
+                        if let price = Double(self.price), let stock = Int(self.stock),  let image = self.currentImage {
+                            
+                            viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, imageUrl: imageUrl, image: image) { result in
+                                switch(result){
+                                case .success:
+                                    print("success update")
+                                case .failure(let error):
+                                    print("error")
+                                    print(error.localizedDescription)
+                                }
+                            }
+                        }
+                        
                         isEdit.toggle()
                     } else {
                         print("Edit")
@@ -231,6 +251,6 @@ struct DetailWeaponView: View {
 
 struct DetailWeaponView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailWeaponView()
+        DetailWeaponView(id: "", imageUrl: "", addedAt: Date())
     }
 }
