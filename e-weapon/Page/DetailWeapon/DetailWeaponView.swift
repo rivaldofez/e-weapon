@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct DetailWeaponView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var alertTitle: String = ""
+    
+    
     var id: String
     var imageUrl: String
     var addedAt: Date
@@ -96,68 +102,6 @@ struct DetailWeaponView: View {
                     
                 }
                 
-                
-                
-                //                Button {
-                //                    self.showImageActionDialog = true
-                //                } label: {
-                //                    if currentImage == nil {
-                //                        Image(systemName: "person")
-                //                    } else {
-                //                        if let currentImage = self.currentImage {
-                //                            Image(uiImage: currentImage)
-                //                                .resizable()
-                //                                .frame(width: 50, height: 50)
-                //                        } else {
-                //                            Image(systemName: "person")
-                //                                .resizable()
-                //                        }
-                //                    }
-                //                }
-                
-                Button("Delete Weapon"){
-                    DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
-                        switch(result){
-                        case .success:
-                            print("success delete")
-                            print(DatabaseManager.shared.fetchWeapon())
-                        case .failure(let error):
-                            print("error")
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
-                
-                Button("Load Image"){
-                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-                    let imageUrl = imagesFolderUrl.appendingPathComponent("E928848E-B72A-4A3F-BB06-7CC77F1A6E501686850079.118034")
-                    
-                    do {
-                        print(imageUrl.absoluteString)
-                        
-                        let imageData = try Data(contentsOf: imageUrl)
-                        self.currentImage = UIImage(data: imageData)
-                        
-                    } catch {
-                        print("Not able to load image")
-                    }
-                    
-                    
-                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
-                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
-                    //                        do {
-                    //                            let imageData = try Data(contentsOf: fileURL)
-                    //                            self.currentImage = UIImage(data: imageData)
-                    //
-                    //                        } catch {
-                    //                            print("Not able to load image")
-                    //                        }
-                    //                    }
-                    
-                }
-                
                 Spacer()
             }
             .padding(.vertical, 8)
@@ -179,10 +123,9 @@ struct DetailWeaponView: View {
                             viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, imageUrl: imageUrl, image: image) { result in
                                 switch(result){
                                 case .success:
-                                    print("success update")
-                                case .failure(let error):
-                                    print("error")
-                                    print(error.localizedDescription)
+                                    showAlert(isActive: true, title: "Success", message: "Weapon has been updated")
+                                case .failure(_):
+                                    showAlert(isActive: true, title: "Failed", message: "An error occured when update the data")
                                 }
                             }
                         }
@@ -195,6 +138,16 @@ struct DetailWeaponView: View {
                 } label: {
                     Text(isEdit ? "Save" : "Edit")
                 }
+                .disabled(!isFormValid())
+                .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
+                    Button("OK") {
+                        if self.alertTitle == "Success"{
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }, message: {
+                    Text(self.alertMessage)
+                })
                 .disabled(!isFormValid())
             }
         }
@@ -225,6 +178,12 @@ struct DetailWeaponView: View {
         .sheet(isPresented: self.$showImagePickerSheet){
             ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)
         }
+    }
+    
+    private func showAlert(isActive: Bool, title: String ,message: String){
+        self.showAlert = isActive
+        self.alertMessage = message
+        self.alertTitle = title
     }
     
     func isFormValid() -> Bool {

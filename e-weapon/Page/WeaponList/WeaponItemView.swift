@@ -9,11 +9,6 @@ import SwiftUI
 
 struct WeaponItemView: View {
     @Binding var weapon: Weapon
-//    @State var name: String
-//    @State var price: String
-//    @State var stock: String
-//    @State var status: String
-//    @State var image: UIImage
 
     func getImage(imageUrl: String) -> UIImage {
         let imagesDefaultURL = URL(fileURLWithPath: "/images/")
