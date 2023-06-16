@@ -23,7 +23,7 @@ struct WeaponView: View {
                             WeaponItemView(weapon: $weapon)
                                 .hLeading()
                                 .alignmentGuide(.listRowSeparatorLeading){ _ in
-                                     0
+                                    0
                                 }
                                 .swipeActions {
                                     Button(role: .destructive) {
@@ -41,7 +41,7 @@ struct WeaponView: View {
                                     }
                                 }
                         }
-
+                        
                     }
                 }
                 .listStyle(.plain)
