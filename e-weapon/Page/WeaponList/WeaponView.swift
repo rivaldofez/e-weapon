@@ -116,7 +116,7 @@ struct WeaponView: View {
                                 
                             }
                         }
-                        .fileExporter(isPresented: $showFileExported, document: csvDocument, contentType: .commaSeparatedText, defaultFilename: "Weapon-Data") { result in
+                        .fileExporter(isPresented: $showFileExported, document: csvDocument, contentType: .commaSeparatedText, defaultFilename: generateFileExportName()) { result in
                             switch result {
                             case .success(let url):
                                 print("Saved to \(url)")
@@ -129,6 +129,12 @@ struct WeaponView: View {
             }
         }
         .tint(.secondaryAccent)
+    }
+    
+    func generateFileExportName() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-dd-MM"
+        return "Weapon \(formatter.string(from: Date.now))"
     }
     
     func getImage(imageUrl: String) -> UIImage {
