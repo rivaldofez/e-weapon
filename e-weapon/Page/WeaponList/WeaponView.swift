@@ -9,6 +9,7 @@ import SwiftUI
 
 struct WeaponView: View {
     @State private var searchQuery: String = ""
+    
     @StateObject private var viewModel: WeaponViewModel = WeaponViewModel()
     
     var body: some View {
@@ -22,7 +23,7 @@ struct WeaponView: View {
                             WeaponItemView(weapon: $weapon)
                                 .hLeading()
                                 .alignmentGuide(.listRowSeparatorLeading){ _ in
-                                     0
+                                    0
                                 }
                                 .swipeActions {
                                     Button(role: .destructive) {
@@ -40,13 +41,18 @@ struct WeaponView: View {
                                     }
                                 }
                         }
-
+                        
                     }
                 }
                 .listStyle(.plain)
             }
             .onAppear {
                 viewModel.fetchWeapon()
+            }
+            .onChange(of: self.searchQuery){ newQuery in
+                withAnimation {
+                    viewModel.filterSearch(query: newQuery)
+                }
             }
             .searchable(text: self.$searchQuery)
             .toolbar {
