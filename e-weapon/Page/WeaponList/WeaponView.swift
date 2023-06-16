@@ -47,7 +47,6 @@ struct WeaponView: View {
             }
             .onAppear {
                 viewModel.fetchWeapon()
-                print("called")
             }
             .searchable(text: self.$searchQuery)
             .toolbar {
