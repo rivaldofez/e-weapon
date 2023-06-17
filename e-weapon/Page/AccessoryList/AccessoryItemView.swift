@@ -43,7 +43,7 @@ struct AccessoryItemView: View {
                     .font(.system(.title3).bold())
                     .foregroundColor(.primaryAccent)
                 
-                Text("\(accessory.price)")
+                Text(Helper.formattedAmount(amount: accessory.price))
                     .font(.system(.body).bold())
                     .foregroundColor(.secondaryAccent)
                 

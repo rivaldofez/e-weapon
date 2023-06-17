@@ -43,7 +43,7 @@ struct WeaponItemView: View {
                     .font(.system(.title3).bold())
                     .foregroundColor(.primaryAccent)
                 
-                Text("\(weapon.price)")
+                Text(Helper.formattedAmount(amount: weapon.price))
                     .font(.system(.body).bold())
                     .foregroundColor(.secondaryAccent)
                 
