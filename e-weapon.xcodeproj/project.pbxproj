@@ -31,6 +31,8 @@
 		7EBC82022A3D952A0058908F /* AccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82012A3D952A0058908F /* AccessoryViewModel.swift */; };
 		7EBC82042A3D95440058908F /* AccessoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82032A3D95440058908F /* AccessoryItemView.swift */; };
 		7EBC82062A3D95E30058908F /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82052A3D95E30058908F /* Accessory.swift */; };
+		7EBC82092A3DA1D80058908F /* DetailAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */; };
+		7EBC820B2A3DA1EA0058908F /* DetailAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
 		7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */; };
@@ -68,6 +70,8 @@
 		7EBC82012A3D952A0058908F /* AccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViewModel.swift; sourceTree = "<group>"; };
 		7EBC82032A3D95440058908F /* AccessoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryItemView.swift; sourceTree = "<group>"; };
 		7EBC82052A3D95E30058908F /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
+		7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryView.swift; sourceTree = "<group>"; };
+		7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryViewModel.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
 		7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -113,6 +117,7 @@
 		7E3271DD2A398639005D3B39 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				7EBC82072A3DA1520058908F /* DetailAccessory */,
 				7EBC81FE2A3D95000058908F /* AccessoryList */,
 				7EBC81F92A3D92EA0058908F /* AddAccessory */,
 				7ECF77A62A3B601400334CC0 /* DetailWeapon */,
@@ -197,6 +202,15 @@
 				7EBC82032A3D95440058908F /* AccessoryItemView.swift */,
 			);
 			path = AccessoryList;
+			sourceTree = "<group>";
+		};
+		7EBC82072A3DA1520058908F /* DetailAccessory */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */,
+				7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */,
+			);
+			path = DetailAccessory;
 			sourceTree = "<group>";
 		};
 		7ECF77A32A3B429D00334CC0 /* Model */ = {
@@ -345,6 +359,7 @@
 				7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */,
 				7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */,
 				7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */,
+				7EBC820B2A3DA1EA0058908F /* DetailAccessoryViewModel.swift in Sources */,
 				7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */,
 				7E03E48F2A3CD0A000AF1735 /* CSVDocument.swift in Sources */,
 				7E03E4922A3CDCF300AF1735 /* Constants.swift in Sources */,
@@ -365,6 +380,7 @@
 				7E660F842A3834360035BC99 /* AccessoryEntity.swift in Sources */,
 				7EBC82042A3D95440058908F /* AccessoryItemView.swift in Sources */,
 				7E3271E42A39A1C4005D3B39 /* WeaponViewModel.swift in Sources */,
+				7EBC82092A3DA1D80058908F /* DetailAccessoryView.swift in Sources */,
 				7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
 				7E46A56F2A37748D008BBE48 /* DatabaseManager.swift in Sources */,
