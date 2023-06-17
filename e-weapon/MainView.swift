@@ -16,7 +16,7 @@ struct MainView: View {
                     Label("Weapon", systemImage: "wrench.adjustable.fill")
                 }
             
-            AccessoriesView()
+            AccessoryView()
                 .tabItem {
                     Label("Accessories", systemImage: "puzzlepiece.extension.fill")
                 }

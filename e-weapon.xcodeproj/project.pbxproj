@@ -27,6 +27,10 @@
 		7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */; };
 		7EBC81FB2A3D93090058908F /* AddAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC81FA2A3D93090058908F /* AddAccessoryView.swift */; };
 		7EBC81FD2A3D93290058908F /* AddAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC81FC2A3D93290058908F /* AddAccessoryViewModel.swift */; };
+		7EBC82002A3D95160058908F /* AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC81FF2A3D95160058908F /* AccessoryView.swift */; };
+		7EBC82022A3D952A0058908F /* AccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82012A3D952A0058908F /* AccessoryViewModel.swift */; };
+		7EBC82042A3D95440058908F /* AccessoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82032A3D95440058908F /* AccessoryItemView.swift */; };
+		7EBC82062A3D95E30058908F /* Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82052A3D95E30058908F /* Accessory.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
 		7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */; };
@@ -35,7 +39,6 @@
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
 		7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6A2A36FC7500C5495D /* MainView.swift */; };
 		7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6C2A36FD5100C5495D /* WeaponView.swift */; };
-		7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */; };
 		7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C702A36FDE600C5495D /* SettingsView.swift */; };
 		7EF07C742A36FE7400C5495D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C732A36FE7400C5495D /* Realm */; };
 		7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C752A36FE7400C5495D /* RealmSwift */; };
@@ -61,6 +64,10 @@
 		7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuPicker.swift; sourceTree = "<group>"; };
 		7EBC81FA2A3D93090058908F /* AddAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessoryView.swift; sourceTree = "<group>"; };
 		7EBC81FC2A3D93290058908F /* AddAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessoryViewModel.swift; sourceTree = "<group>"; };
+		7EBC81FF2A3D95160058908F /* AccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryView.swift; sourceTree = "<group>"; };
+		7EBC82012A3D952A0058908F /* AccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryViewModel.swift; sourceTree = "<group>"; };
+		7EBC82032A3D95440058908F /* AccessoryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryItemView.swift; sourceTree = "<group>"; };
+		7EBC82052A3D95E30058908F /* Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accessory.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
 		7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -70,7 +77,6 @@
 		7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7EF07C6A2A36FC7500C5495D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7EF07C6C2A36FD5100C5495D /* WeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponView.swift; sourceTree = "<group>"; };
-		7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesView.swift; sourceTree = "<group>"; };
 		7EF07C702A36FDE600C5495D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +113,7 @@
 		7E3271DD2A398639005D3B39 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				7EBC81FE2A3D95000058908F /* AccessoryList */,
 				7EBC81F92A3D92EA0058908F /* AddAccessory */,
 				7ECF77A62A3B601400334CC0 /* DetailWeapon */,
 				7E3271E22A39A07E005D3B39 /* WeaponList */,
@@ -182,11 +189,22 @@
 			path = AddAccessory;
 			sourceTree = "<group>";
 		};
+		7EBC81FE2A3D95000058908F /* AccessoryList */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC81FF2A3D95160058908F /* AccessoryView.swift */,
+				7EBC82012A3D952A0058908F /* AccessoryViewModel.swift */,
+				7EBC82032A3D95440058908F /* AccessoryItemView.swift */,
+			);
+			path = AccessoryList;
+			sourceTree = "<group>";
+		};
 		7ECF77A32A3B429D00334CC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				7ECF77A42A3B42B600334CC0 /* Weapon.swift */,
 				7E03E48E2A3CD0A000AF1735 /* CSVDocument.swift */,
+				7EBC82052A3D95E30058908F /* Accessory.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -230,7 +248,6 @@
 				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
 				7EF07C602A27C87B00C5495D /* Assets.xcassets */,
 				7EF07C622A27C87B00C5495D /* Preview Content */,
-				7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */,
 				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
 			);
 			path = "e-weapon";
@@ -336,14 +353,17 @@
 				7E46A5672A373D18008BBE48 /* ImagePicker.swift in Sources */,
 				7E46A56D2A377405008BBE48 /* WeaponEntity.swift in Sources */,
 				7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */,
-				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
+				7EBC82062A3D95E30058908F /* Accessory.swift in Sources */,
+				7EBC82002A3D95160058908F /* AccessoryView.swift in Sources */,
 				7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */,
 				7E660F872A384F3F0035BC99 /* View+Extension.swift in Sources */,
 				7EBC81FD2A3D93290058908F /* AddAccessoryViewModel.swift in Sources */,
 				7E660F8B2A3854180035BC99 /* CustomSegmentedControl.swift in Sources */,
 				7E660F892A3851890035BC99 /* CustomTextField.swift in Sources */,
+				7EBC82022A3D952A0058908F /* AccessoryViewModel.swift in Sources */,
 				7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */,
 				7E660F842A3834360035BC99 /* AccessoryEntity.swift in Sources */,
+				7EBC82042A3D95440058908F /* AccessoryItemView.swift in Sources */,
 				7E3271E42A39A1C4005D3B39 /* WeaponViewModel.swift in Sources */,
 				7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
