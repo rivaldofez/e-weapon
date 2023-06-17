@@ -183,9 +183,6 @@ class DatabaseManager {
         let imageName = generateImageName(id: id)
         let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
-        
-        
-        
         if let imageData = imageData {
             do {
                 try imageData.write(to: imageLocalUrl)
@@ -221,31 +218,47 @@ class DatabaseManager {
         }
     }
     
-    func addAccessories(id: String, name: String, addedAt: Date, price: Double, stock: Int, imageUrl: String, location: String, status: String, completion: @escaping (Result<Void, Error>) -> Void){
+    func addAccessory(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
         
-        do {
-            let realm = try Realm()
-            
-            let accessory = AccessoryEntity()
-            accessory.id = id
-            accessory.name = name
-            accessory.addedAt = addedAt
-            accessory.price = price
-            accessory.stock = stock
-            accessory.imageUrl = imageUrl
-            accessory.status = status
-            accessory.location = location
-            
+        let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
+        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
+
+        let imageData = image.pngData()
+        let imageName = generateImageName(id: id)
+        let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
+
+        if let imageData = imageData {
             do {
-                try realm.write {
-                    realm.add(accessory)
+                try imageData.write(to: imageLocalUrl)
+                do {
+                    let realm = try Realm()
+                    
+                    let accessory = AccessoryEntity()
+                    accessory.id = id
+                    accessory.name = name
+                    accessory.addedAt = addedAt
+                    accessory.price = price
+                    accessory.stock = stock
+                    accessory.imageUrl = imageName
+                    accessory.status = status
+                    accessory.location = location
+                    
+                    do {
+                        try realm.write {
+                            realm.add(accessory)
+                        }
+                        completion(.success(()))
+                    } catch {
+                        completion(.failure(DatabaseError.failedToAddAccessory))
+                    }
+                } catch {
+                    completion(.failure(DatabaseError.cannotCreateDatabase))
                 }
-                completion(.success(()))
             } catch {
-                completion(.failure(DatabaseError.failedToAddAccessory))
+                completion(.failure(DatabaseError.failedToSaveImage))
             }
-        } catch {
-            completion(.failure(DatabaseError.cannotCreateDatabase))
+        } else {
+            completion(.failure(DatabaseError.imageDataNotValid))
         }
     }
     
