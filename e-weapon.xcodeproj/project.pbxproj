@@ -39,7 +39,6 @@
 		7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */; };
 		7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6A2A36FC7500C5495D /* MainView.swift */; };
 		7EF07C6D2A36FD5100C5495D /* WeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6C2A36FD5100C5495D /* WeaponView.swift */; };
-		7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */; };
 		7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C702A36FDE600C5495D /* SettingsView.swift */; };
 		7EF07C742A36FE7400C5495D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C732A36FE7400C5495D /* Realm */; };
 		7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C752A36FE7400C5495D /* RealmSwift */; };
@@ -78,7 +77,6 @@
 		7EF07C632A27C87B00C5495D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7EF07C6A2A36FC7500C5495D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7EF07C6C2A36FD5100C5495D /* WeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponView.swift; sourceTree = "<group>"; };
-		7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoriesView.swift; sourceTree = "<group>"; };
 		7EF07C702A36FDE600C5495D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,7 +248,6 @@
 				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
 				7EF07C602A27C87B00C5495D /* Assets.xcassets */,
 				7EF07C622A27C87B00C5495D /* Preview Content */,
-				7EF07C6E2A36FD7000C5495D /* AccessoriesView.swift */,
 				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
 			);
 			path = "e-weapon";
@@ -357,7 +354,6 @@
 				7E46A56D2A377405008BBE48 /* WeaponEntity.swift in Sources */,
 				7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */,
 				7EBC82062A3D95E30058908F /* Accessory.swift in Sources */,
-				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
 				7EBC82002A3D95160058908F /* AccessoryView.swift in Sources */,
 				7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */,
 				7E660F872A384F3F0035BC99 /* View+Extension.swift in Sources */,
