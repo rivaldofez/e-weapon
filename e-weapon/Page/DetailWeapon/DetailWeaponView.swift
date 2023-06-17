@@ -27,11 +27,9 @@ struct DetailWeaponView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State private var showImagePickerSheet: Bool = false
     
-    var statusOptions = ["Save", "Used"]
-    @State var statusSelected: String = "Save"
+    @State var statusSelected: String = Constants.statusOptions[0]
     
     @State var locationSelected: String = ""
-    var locationOptions = ["Rumah", "Gudang", "Bengkel"]
     
     
     @State private var isEdit: Bool = false
@@ -60,7 +58,7 @@ struct DetailWeaponView: View {
                     TitleSubForm(title: "Status")
                         .hLeading()
                         .padding(.top, 16)
-                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: statusOptions, strokeColor: isEdit ? .secondaryAccent : .primaryGray)
+                    CustomSegmentedControl(selectedItem: self.$statusSelected, items: Constants.statusOptions, strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
                 }
@@ -70,7 +68,7 @@ struct DetailWeaponView: View {
                         .hLeading()
                         .padding(.top, 16)
                     
-                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: locationOptions, title: "", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
+                    CustomMenuPicker(menuItemSelection: self.$locationSelected, menus: Constants.locationOptions, title: "", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                 }
                 

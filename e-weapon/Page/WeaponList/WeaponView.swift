@@ -41,18 +41,21 @@ struct WeaponView: View {
                                     }
                                     .swipeActions {
                                         Button(role: .destructive) {
-                                            viewModel.deleteWeapon(id: weapon.id) { result in
-                                                switch(result){
-                                                case .success :
-                                                    viewModel.fetchWeapon()
-                                                case .failure(let error):
-                                                    print("error")
-                                                    print(error.localizedDescription)
+                                            withAnimation {
+                                                viewModel.deleteWeapon(id: weapon.id) { result in
+                                                    switch(result){
+                                                    case .success :
+                                                        viewModel.fetchWeapon()
+                                                    case .failure(let error):
+                                                        print("error")
+                                                        print(error.localizedDescription)
+                                                    }
                                                 }
                                             }
                                         } label: {
                                             Label("Delete", systemImage: "trash.circle.fill")
                                         }
+                                        .tint(.red)
                                     }
                             }
                             
