@@ -25,6 +25,8 @@
 		7E660F892A3851890035BC99 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F882A3851890035BC99 /* CustomTextField.swift */; };
 		7E660F8B2A3854180035BC99 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F8A2A3854180035BC99 /* CustomSegmentedControl.swift */; };
 		7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */; };
+		7EBC81FB2A3D93090058908F /* AddAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC81FA2A3D93090058908F /* AddAccessoryView.swift */; };
+		7EBC81FD2A3D93290058908F /* AddAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC81FC2A3D93290058908F /* AddAccessoryViewModel.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
 		7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */; };
@@ -57,6 +59,8 @@
 		7E660F882A3851890035BC99 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		7E660F8A2A3854180035BC99 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		7E660F8C2A3858170035BC99 /* CustomMenuPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuPicker.swift; sourceTree = "<group>"; };
+		7EBC81FA2A3D93090058908F /* AddAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessoryView.swift; sourceTree = "<group>"; };
+		7EBC81FC2A3D93290058908F /* AddAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccessoryViewModel.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
 		7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		7E3271DD2A398639005D3B39 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				7EBC81F92A3D92EA0058908F /* AddAccessory */,
 				7ECF77A62A3B601400334CC0 /* DetailWeapon */,
 				7E3271E22A39A07E005D3B39 /* WeaponList */,
 				7E3271DE2A398642005D3B39 /* AddWeapon */,
@@ -166,6 +171,15 @@
 				7E3271DB2A397943005D3B39 /* Color+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		7EBC81F92A3D92EA0058908F /* AddAccessory */ = {
+			isa = PBXGroup;
+			children = (
+				7EBC81FA2A3D93090058908F /* AddAccessoryView.swift */,
+				7EBC81FC2A3D93290058908F /* AddAccessoryViewModel.swift */,
+			);
+			path = AddAccessory;
 			sourceTree = "<group>";
 		};
 		7ECF77A32A3B429D00334CC0 /* Model */ = {
@@ -325,6 +339,7 @@
 				7EF07C6F2A36FD7000C5495D /* AccessoriesView.swift in Sources */,
 				7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */,
 				7E660F872A384F3F0035BC99 /* View+Extension.swift in Sources */,
+				7EBC81FD2A3D93290058908F /* AddAccessoryViewModel.swift in Sources */,
 				7E660F8B2A3854180035BC99 /* CustomSegmentedControl.swift in Sources */,
 				7E660F892A3851890035BC99 /* CustomTextField.swift in Sources */,
 				7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */,
@@ -333,6 +348,7 @@
 				7E660F8D2A3858170035BC99 /* CustomMenuPicker.swift in Sources */,
 				7EF07C5D2A27C87700C5495D /* e_weaponApp.swift in Sources */,
 				7E46A56F2A37748D008BBE48 /* DatabaseManager.swift in Sources */,
+				7EBC81FB2A3D93090058908F /* AddAccessoryView.swift in Sources */,
 				7E03E4972A3CE99800AF1735 /* LottieView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
