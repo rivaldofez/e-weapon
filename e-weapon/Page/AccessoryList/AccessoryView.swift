@@ -32,7 +32,7 @@ struct AccessoryView: View {
                     List {
                         ForEach($viewModel.accessories, id: \.id){ $accessory in
                             NavigationLink {
-                                
+                                DetailAccessoryView(id: accessory.id, imageUrl: accessory.imageUrl , addedAt: accessory.addedAt ,name: accessory.name, price: "\(accessory.price)", stock: "\(accessory.stock)", currentImage: getImage(imageUrl: accessory.imageUrl), statusSelected: accessory.status, locationSelected: accessory.location)
                             } label: {
                                 AccessoryItemView(accessory: $accessory)
                                     .hLeading()
