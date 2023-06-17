@@ -21,4 +21,8 @@ class AccessoryViewModel: ObservableObject {
             }
     }
     
+    func deleteAccessory(id: String, completion: @escaping (Result<Void, Error>) -> Void){
+        self.accessories.removeAll { $0.id == id}
+        databaseManager.deleteAccessory(id: id, completion: completion)
+    }
 }
