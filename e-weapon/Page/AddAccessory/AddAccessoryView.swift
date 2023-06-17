@@ -102,7 +102,7 @@ struct AddAccessoryView: View {
                             
                             switch(result) {
                             case .success:
-                                showAlert(isActive: true, title: "Success", message: "Weapon has been added")
+                                showAlert(isActive: true, title: "Success", message: "Accessory has been added")
                             case .failure(_):
                                 showAlert(isActive: true, title: "Failed", message: "An error occured when save the data")
                             }

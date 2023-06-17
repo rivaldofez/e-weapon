@@ -41,7 +41,17 @@ struct AccessoryView: View {
                                     }
                                     .swipeActions {
                                         Button(role: .destructive) {
-                                            
+                                            withAnimation {
+                                                viewModel.deleteAccessory(id: accessory.id) { result in
+                                                    switch(result){
+                                                    case .success :
+                                                        viewModel.fetchAccessory()
+                                                    case .failure(let error):
+                                                        print("error")
+                                                        print(error.localizedDescription)
+                                                    }
+                                                }
+                                            }
                                         } label: {
                                             Label("Delete", systemImage: "trash.circle.fill")
                                         }

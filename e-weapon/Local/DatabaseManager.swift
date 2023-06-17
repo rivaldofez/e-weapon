@@ -22,6 +22,7 @@ enum DatabaseError: Error {
     case dataNotFound
     case cannotDeleteImage
     case cannotDeleteWeapon
+    case cannotDeleteAccessory
     case failedToUpdateWeapon
     case failedToUpdateAccessory
 }
@@ -86,6 +87,40 @@ class DatabaseManager {
                             completion(.success(()))
                         } catch {
                             completion(.failure(DatabaseError.cannotDeleteWeapon))
+                        }
+                    } catch {
+                        completion(.failure(DatabaseError.cannotDeleteImage))
+                    }
+                } else {
+                    completion(.failure(DatabaseError.imageDataNotFound))
+                }
+            } else {
+                completion(.failure(DatabaseError.dataNotFound))
+            }
+        } catch {
+            completion(.failure(DatabaseError.cannotCreateDatabase))
+        }
+    }
+    
+    func deleteAccessory(id: String, completion: @escaping (Result<Void, Error>) -> Void){
+        do {
+            let realm = try Realm()
+
+            if let accessory = getAccessoryById(id: id){
+                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+                let imageUrl = imagesFolderUrl.appendingPathComponent(accessory.imageUrl)
+                
+                if FileManager.default.fileExists(atPath: imageUrl.relativePath) {
+                    do {
+                        try FileManager.default.removeItem(at: imageUrl)
+                        do {
+                            try realm.write {
+                                realm.delete(accessory)
+                            }
+                            completion(.success(()))
+                        } catch {
+                            completion(.failure(DatabaseError.cannotDeleteAccessory))
                         }
                     } catch {
                         completion(.failure(DatabaseError.cannotDeleteImage))
