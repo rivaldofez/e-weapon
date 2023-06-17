@@ -115,6 +115,19 @@ class DatabaseManager {
         }
     }
     
+    private func getAccessoryById(id: String) -> AccessoryEntity? {
+        do {
+            let realm = try Realm()
+            let resultAccessory = realm.objects(AccessoryEntity.self)
+                .where { $0.id == id }
+            return resultAccessory.map { $0 }.first
+            
+        } catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
     private func generateImageName(id: String) -> String {
         return "\(id)-\(UUID().uuidString)"
     }
@@ -172,6 +185,7 @@ class DatabaseManager {
             print("cannot delete image")
         }
     }
+    
     
     
     func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
