@@ -67,6 +67,11 @@ struct AccessoryView: View {
             .onAppear {
                 viewModel.fetchAccessory()
             }
+            .onChange(of: self.searchQuery){ newQuery in
+                withAnimation {
+                    viewModel.filterSearch(query: newQuery)
+                }
+            }
             .searchable(text: self.$searchQuery)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
