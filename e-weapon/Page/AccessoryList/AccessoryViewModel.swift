@@ -21,6 +21,15 @@ class AccessoryViewModel: ObservableObject {
             }
     }
     
+    func filterSearch(query: String){
+        if query.isEmpty {
+            fetchAccessory()
+        } else {
+            fetchAccessory()
+            self.accessories = self.accessories.filter { $0.name.lowercased().contains(query.lowercased()) }
+        }
+    }
+    
     func deleteAccessory(id: String, completion: @escaping (Result<Void, Error>) -> Void){
         self.accessories.removeAll { $0.id == id}
         databaseManager.deleteAccessory(id: id, completion: completion)
