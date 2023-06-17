@@ -23,6 +23,7 @@ enum DatabaseError: Error {
     case cannotDeleteImage
     case cannotDeleteWeapon
     case failedToUpdateWeapon
+    case failedToUpdateAccessory
 }
 
 class DatabaseManager {
@@ -186,6 +187,58 @@ class DatabaseManager {
         }
     }
     
+    func updateAccessory(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, imageUrl: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
+        
+        if deleteImageAt(imageName: imageUrl){
+            let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
+            let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
+
+            let imageName = generateImageName(id: id)
+            let imageData = image.pngData()
+            let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
+
+            if let imageData = imageData {
+                if let accessory = getAccessoryById(id: id){
+                    do {
+                        try imageData.write(to: imageLocalUrl)
+                        do {
+                            let realm = try Realm()
+                            
+                            do {
+                                try realm.write {
+                                    accessory.id = id
+                                    accessory.name = name
+                                    accessory.addedAt = addedAt
+                                    accessory.price = price
+                                    accessory.stock = stock
+                                    accessory.imageUrl = imageName
+                                    accessory.status = status
+                                    accessory.location = location
+                                }
+                                completion(.success(()))
+                            } catch {
+                                completion(.failure(DatabaseError.failedToUpdateAccessory))
+                            }
+                        } catch {
+                            completion(.failure(DatabaseError.cannotCreateDatabase))
+                        }
+                    } catch {
+                        completion(.failure(DatabaseError.failedToSaveImage))
+                        print("fail to save image")
+                    }
+                } else {
+                    completion(.failure(DatabaseError.dataNotFound))
+                    print("data not found")
+                }
+            } else {
+                completion(.failure(DatabaseError.imageDataNotValid))
+                print("not valid image")
+            }
+        } else {
+            completion(.failure(DatabaseError.cannotDeleteImage))
+            print("cannot delete image")
+        }
+    }
     
     
     func addWeapon(id: String, name: String, addedAt: Date, price: Double, stock: Int, location: String, status: String, image: UIImage , completion: @escaping (Result<Void, Error>) -> Void){
