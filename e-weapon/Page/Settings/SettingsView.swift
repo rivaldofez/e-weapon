@@ -25,7 +25,9 @@ struct SettingsView: View {
                 Divider()
                 
                 Button {
-                    
+                    withAnimation {
+                        viewModel.setThemeStyle(isDark: false)
+                    }
                 } label: {
                     HStack {
                         Image(systemName: "sun.max")
@@ -55,7 +57,9 @@ struct SettingsView: View {
                 Divider()
                 
                 Button {
-                    
+                    withAnimation {
+                        viewModel.setThemeStyle(isDark: true)
+                    }
                 } label: {
                     HStack {
                         Image(systemName: "moon")
