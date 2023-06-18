@@ -11,6 +11,7 @@ import SwiftUI
 struct SettingsView: View {
     var body: some View {
         VStack {
+            
             VStack(alignment: .leading, spacing: 0) {
                 Text("Theme Preference")
                     .font(.system(.body).bold())
@@ -79,6 +80,9 @@ struct SettingsView: View {
                     .stroke(Color.primaryGray.opacity(0.3), lineWidth: 1)
             )
             .padding(.horizontal)
+            .padding(.top, 16)
+            
+            Spacer()
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
