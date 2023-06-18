@@ -12,6 +12,7 @@
 		7E03E4952A3CE97200AF1735 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 7E03E4942A3CE97200AF1735 /* Lottie */; };
 		7E03E4972A3CE99800AF1735 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E03E4962A3CE99800AF1735 /* LottieView.swift */; };
 		7E03E49A2A3CEB1A00AF1735 /* Empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 7E03E4992A3CEB1A00AF1735 /* Empty.json */; };
+		7E2BA6972A3F6E3400410175 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BA6962A3F6E3400410175 /* SettingsViewModel.swift */; };
 		7E2CC6A32A3A3B0300299844 /* WeaponItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */; };
 		7E3271DC2A397943005D3B39 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271DB2A397943005D3B39 /* Color+Extension.swift */; };
 		7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */; };
@@ -52,6 +53,7 @@
 		7E03E4912A3CDCF300AF1735 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7E03E4962A3CE99800AF1735 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		7E03E4992A3CEB1A00AF1735 /* Empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Empty.json; sourceTree = "<group>"; };
+		7E2BA6962A3F6E3400410175 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponItemView.swift; sourceTree = "<group>"; };
 		7E3271DB2A397943005D3B39 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		7E3271E02A39865C005D3B39 /* AddWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -117,9 +119,19 @@
 			path = "Lottie Asset";
 			sourceTree = "<group>";
 		};
+		7E2BA6952A3F6E1F00410175 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
+				7E2BA6962A3F6E3400410175 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		7E3271DD2A398639005D3B39 /* Page */ = {
 			isa = PBXGroup;
 			children = (
+				7E2BA6952A3F6E1F00410175 /* Settings */,
 				7EBC82072A3DA1520058908F /* DetailAccessory */,
 				7EBC81FE2A3D95000058908F /* AccessoryList */,
 				7EBC81F92A3D92EA0058908F /* AddAccessory */,
@@ -265,7 +277,6 @@
 				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
 				7EF07C602A27C87B00C5495D /* Assets.xcassets */,
 				7EF07C622A27C87B00C5495D /* Preview Content */,
-				7EF07C702A36FDE600C5495D /* SettingsView.swift */,
 			);
 			path = "e-weapon";
 			sourceTree = "<group>";
@@ -366,6 +377,7 @@
 				7E3271E12A39865C005D3B39 /* AddWeaponViewModel.swift in Sources */,
 				7E03E48F2A3CD0A000AF1735 /* CSVDocument.swift in Sources */,
 				7EBC820D2A3DAD410058908F /* Helper.swift in Sources */,
+				7E2BA6972A3F6E3400410175 /* SettingsViewModel.swift in Sources */,
 				7E03E4922A3CDCF300AF1735 /* Constants.swift in Sources */,
 				7E46A5642A372D4C008BBE48 /* AddWeaponView.swift in Sources */,
 				7EF07C6B2A36FC7500C5495D /* MainView.swift in Sources */,
