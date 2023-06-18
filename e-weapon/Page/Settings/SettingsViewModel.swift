@@ -17,4 +17,9 @@ class SettingsViewModel: ObservableObject {
         currentThemeStyle = isDark
         
     }
+    
+    func getThemeStyle() {
+        currentThemeStyle = UserDefaults.standard.bool(forKey: "theme")
+        (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = currentThemeStyle ? .dark : .light
+    }
 }
