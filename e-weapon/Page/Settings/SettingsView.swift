@@ -9,7 +9,9 @@ import SwiftUI
 
 
 struct SettingsView: View {
+    @Environment(\.colorScheme) private var colorScheme: ColorScheme
     
+    @StateObject private var viewModel: SettingsViewModel = SettingsViewModel()
     
     var body: some View {
         VStack {
@@ -39,10 +41,12 @@ struct SettingsView: View {
                         Spacer()
                         
                         
-                        Image(systemName: "checkmark")
-                            .font(.system(.body).weight(.bold))
-                            .foregroundColor(.primaryAccent)
-                            .padding(.horizontal)
+                        if(!viewModel.currentThemeStyle){
+                            Image(systemName: "checkmark")
+                                .font(.system(.title3).weight(.bold))
+                                .foregroundColor(.primaryAccent)
+                                .padding(.horizontal)
+                        }
                         
                         
                     }.padding()
@@ -67,10 +71,12 @@ struct SettingsView: View {
                         Spacer()
                         
                         
-                        Image(systemName: "checkmark")
-                            .font(.system(.body).weight(.bold))
-                            .foregroundColor(.primaryAccent)
-                            .padding(.horizontal)
+                        if(viewModel.currentThemeStyle){
+                            Image(systemName: "checkmark")
+                                .font(.system(.title3).weight(.bold))
+                                .foregroundColor(.primaryAccent)
+                                .padding(.horizontal)
+                        }
                         
                     }
                     .padding()
