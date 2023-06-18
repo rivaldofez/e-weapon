@@ -96,6 +96,9 @@ struct SettingsView: View {
             
             Spacer()
         }
+        .onAppear{
+            viewModel.getThemeStyle()
+        }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
                 Text("Settings")

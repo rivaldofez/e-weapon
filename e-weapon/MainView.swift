@@ -30,6 +30,12 @@ struct MainView: View {
                 }
         }
         .tint(.primaryAccent)
+        .onAppear {
+            withAnimation {
+                let currentThemeStyle = UserDefaults.standard.bool(forKey: "theme")
+                (UIApplication.shared.connectedScenes.first as? UIWindowScene)?.windows.first!.overrideUserInterfaceStyle = currentThemeStyle ? .dark : .light
+            }
+        }
         
         
     }
