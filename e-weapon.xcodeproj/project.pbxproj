@@ -35,6 +35,7 @@
 		7EBC82092A3DA1D80058908F /* DetailAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */; };
 		7EBC820B2A3DA1EA0058908F /* DetailAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */; };
 		7EBC820D2A3DAD410058908F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820C2A3DAD410058908F /* Helper.swift */; };
+		7ECDF4442A43722700DBFACF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECDF4432A43722700DBFACF /* Test.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
 		7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */; };
@@ -46,9 +47,12 @@
 		7EF07C712A36FDE600C5495D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EF07C702A36FDE600C5495D /* SettingsView.swift */; };
 		7EF07C742A36FE7400C5495D /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C732A36FE7400C5495D /* Realm */; };
 		7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7EF07C752A36FE7400C5495D /* RealmSwift */; };
+		A123EE51C889AB2C7D7EFC82 /* Pods_e_weapon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4232EF0527DF6CF41F5D85A9 /* Pods_e_weapon.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4232EF0527DF6CF41F5D85A9 /* Pods_e_weapon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_e_weapon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D7CE9C8AC84B0149CF613C6 /* Pods-e-weapon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e-weapon.debug.xcconfig"; path = "Target Support Files/Pods-e-weapon/Pods-e-weapon.debug.xcconfig"; sourceTree = "<group>"; };
 		7E03E48E2A3CD0A000AF1735 /* CSVDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSVDocument.swift; sourceTree = "<group>"; };
 		7E03E4912A3CDCF300AF1735 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7E03E4962A3CE99800AF1735 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 		7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryView.swift; sourceTree = "<group>"; };
 		7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryViewModel.swift; sourceTree = "<group>"; };
 		7EBC820C2A3DAD410058908F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7ECDF4432A43722700DBFACF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
 		7ECF77A92A3B687300334CC0 /* DetailWeaponViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponViewModel.swift; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 		7EF07C6A2A36FC7500C5495D /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7EF07C6C2A36FD5100C5495D /* WeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponView.swift; sourceTree = "<group>"; };
 		7EF07C702A36FDE600C5495D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		C2FA997F9962DEAA7E92B3B5 /* Pods-e-weapon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-e-weapon.release.xcconfig"; path = "Target Support Files/Pods-e-weapon/Pods-e-weapon.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,12 +102,21 @@
 				7EF07C762A36FE7400C5495D /* RealmSwift in Frameworks */,
 				7EF07C742A36FE7400C5495D /* Realm in Frameworks */,
 				7E03E4952A3CE97200AF1735 /* Lottie in Frameworks */,
+				A123EE51C889AB2C7D7EFC82 /* Pods_e_weapon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25ACE3BC07800B5F78273FE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4232EF0527DF6CF41F5D85A9 /* Pods_e_weapon.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		7E03E4902A3CDCE500AF1735 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,6 +172,7 @@
 				7EF07C6C2A36FD5100C5495D /* WeaponView.swift */,
 				7E3271E32A39A1C4005D3B39 /* WeaponViewModel.swift */,
 				7E2CC6A22A3A3B0300299844 /* WeaponItemView.swift */,
+				7ECDF4432A43722700DBFACF /* Test.swift */,
 			);
 			path = WeaponList;
 			sourceTree = "<group>";
@@ -252,6 +268,8 @@
 			children = (
 				7EF07C5B2A27C87700C5495D /* e-weapon */,
 				7EF07C5A2A27C87700C5495D /* Products */,
+				E186F6E59082A13681E95DCF /* Pods */,
+				25ACE3BC07800B5F78273FE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +307,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		E186F6E59082A13681E95DCF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5D7CE9C8AC84B0149CF613C6 /* Pods-e-weapon.debug.xcconfig */,
+				C2FA997F9962DEAA7E92B3B5 /* Pods-e-weapon.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -296,9 +323,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7EF07C672A27C87B00C5495D /* Build configuration list for PBXNativeTarget "e-weapon" */;
 			buildPhases = (
+				39D86CC78AB10923F55264AC /* [CP] Check Pods Manifest.lock */,
 				7EF07C552A27C87700C5495D /* Sources */,
 				7EF07C562A27C87700C5495D /* Frameworks */,
 				7EF07C572A27C87700C5495D /* Resources */,
+				6150C43F39C12C0D2F9F4B58 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -364,6 +393,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		39D86CC78AB10923F55264AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-e-weapon-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6150C43F39C12C0D2F9F4B58 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-e-weapon/Pods-e-weapon-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-e-weapon/Pods-e-weapon-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-e-weapon/Pods-e-weapon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7EF07C552A27C87700C5495D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -390,6 +461,7 @@
 				7E660F872A384F3F0035BC99 /* View+Extension.swift in Sources */,
 				7EBC81FD2A3D93290058908F /* AddAccessoryViewModel.swift in Sources */,
 				7E660F8B2A3854180035BC99 /* CustomSegmentedControl.swift in Sources */,
+				7ECDF4442A43722700DBFACF /* Test.swift in Sources */,
 				7E660F892A3851890035BC99 /* CustomTextField.swift in Sources */,
 				7EBC82022A3D952A0058908F /* AccessoryViewModel.swift in Sources */,
 				7ECF77AA2A3B687300334CC0 /* DetailWeaponViewModel.swift in Sources */,
@@ -524,6 +596,7 @@
 		};
 		7EF07C682A27C87B00C5495D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D7CE9C8AC84B0149CF613C6 /* Pods-e-weapon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -553,6 +626,7 @@
 		};
 		7EF07C692A27C87B00C5495D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C2FA997F9962DEAA7E92B3B5 /* Pods-e-weapon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
