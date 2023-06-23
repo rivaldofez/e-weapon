@@ -14,35 +14,13 @@ struct WeaponView: View {
     
     @StateObject private var viewModel: WeaponViewModel = WeaponViewModel()
     
-    @State private var showFileExported: Bool = false
+    @State private var showShareSheet: Bool = false
     
-    @State private var csvDocument: CSVDocument = CSVDocument()
-    
-    @State private var pathBook: String = ""
-    
-    @State private var shareSheet: Bool = false
-    
-    @State private var items: [Any] = []
+    @State private var showFormatExportDialog: Bool = false
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                Button("Test XLSX"){
-                    //                    ExportXlsxService().export()
-//                    generateExcelFile(weapons: viewModel.weapon)
-                    
-//                    viewModel.generateExcelFile()
-                    viewModel.generateCSVFile()
-                    if(!viewModel.documentItemsExport.isEmpty){
-                        shareSheet = true
-                    }
-                    
-                }
-                .popover(isPresented: $shareSheet) {
-                    ShareSheetView(items: $viewModel.documentItemsExport)
-                }
-                
-                
                 if viewModel.weapons.isEmpty {
                     LottieView(name: "Empty", loopMode: .loop)
                         .frame(maxHeight: 240)
@@ -120,18 +98,7 @@ struct WeaponView: View {
                         }
                         
                         Button {
-                            
-                            var number = 0
-                            var csvHead = "No,Name,Price,Stock,Status,Location\n"
-                            
-                            for weaponItem in viewModel.weapons {
-                                number += 1
-                                csvHead.append("\(number),\(weaponItem.name),\(weaponItem.price),\(weaponItem.stock),\(weaponItem.status),\(weaponItem.location)\n")
-                            }
-                            
-                            
-                            self.csvDocument = CSVDocument(initialText: csvHead)
-                            self.showFileExported = true
+                            self.showFormatExportDialog = true
                             
                         } label: {
                             HStack(spacing: 0) {
@@ -144,119 +111,41 @@ struct WeaponView: View {
                                 
                             }
                         }
-                        //                        .fileExporter(isPresented: $showFileExported, document: csvDocument, contentType: .commaSeparatedText, defaultFilename: generateFileExportName()) { result in
-                        //                            switch result {
-                        //                            case .success(let url):
-                        //                                print("Saved to \(url)")
-                        //                            case .failure(let error):
-                        //                                print(error.localizedDescription)
-                        //                            }
-                        //                        }
+                        .confirmationDialog("Choose Document Type", isPresented: self.$showFormatExportDialog){
+                            
+                            Button("Microsot Excel (xlsx)"){
+                                viewModel.generateExcelFile()
+                                if(viewModel.documentItemsExport.isEmpty){
+                                    
+                                } else {
+                                    self.showShareSheet.toggle()
+                                }
+                            }
+                            
+                            Button("Comma Separated Value (csv)") {
+                                viewModel.generateCSVFile()
+                                if(viewModel.documentItemsExport.isEmpty){
+                                    
+                                } else {
+                                    self.showShareSheet.toggle()
+                                }
+                            }
+                            
+                            Button("Batal", role: .cancel){
+                                
+                            }
+                            
+                        } message: {
+                            Text("Format export of document")
+                        }
+                        .sheet(isPresented: self.$showShareSheet) {
+                            ShareSheetView(items: $viewModel.documentItemsExport)
+                        }
                     }
                 }
             }
         }
         .tint(.secondaryAccent)
-    }
-    
-    func generateFileExportName() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-dd-MM"
-        return "Weapon \(formatter.string(from: Date.now))"
-    }
-    
-    private func docDirectoryPath() -> String{
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory,
-                                                           .userDomainMask,
-                                                           true)
-        return dirPaths[0]
-    }
-    
-    
-    private func generateExcelFile(weapons: [Weapon]){
-        let filename = "export_database.xlsx"
-        
-        //cell size
-        let cell_width: Double = 50
-        let cell_height: Double = 50
-        
-        var workbook: UnsafeMutablePointer<lxw_workbook>?
-        var worksheet: UnsafeMutablePointer<lxw_worksheet>?
-        var format_header: UnsafeMutablePointer<lxw_format>?
-        var format_1: UnsafeMutablePointer<lxw_format>?
-        
-        var writingLine: UInt32 = 0
-        
-        var destination_path = docDirectoryPath()
-        destination_path.append(filename)
-        pathBook = destination_path
-        
-        workbook = workbook_new(destination_path)
-        worksheet = workbook_add_worksheet(workbook, nil)
-        
-        // Add style
-        format_header = workbook_add_format(workbook)
-        format_set_bold(format_header)
-        format_1 = workbook_add_format(workbook)
-        format_set_bg_color(format_1, 0xDDDDDD)
-        
-        //build header
-        writingLine = 0
-        let format = format_header
-        format_set_bold(format)
-        worksheet_write_string(worksheet, writingLine, 0, "No", format)
-        worksheet_write_string(worksheet, writingLine, 1, "Image", format)
-        worksheet_write_string(worksheet, writingLine, 2, "Name", format)
-        worksheet_write_string(worksheet, writingLine, 3, "Price", format)
-        worksheet_write_string(worksheet, writingLine, 4, "Stock", format)
-        worksheet_write_string(worksheet, writingLine, 5, "Status", format)
-        worksheet_write_string(worksheet, writingLine, 6, "Location", format)
-        
-        var numberItem = 0
-        for weapon in weapons {
-            numberItem+=1
-            writingLine += 1
-            
-            worksheet_write_string(worksheet, writingLine, 0, "\(numberItem)", nil)
-            worksheet_write_string(worksheet, writingLine, 2, weapon.name, nil)
-            worksheet_write_number(worksheet, writingLine, 3, weapon.price, nil)
-            worksheet_write_number(worksheet, writingLine, 4, Double(weapon.stock), nil)
-            worksheet_write_string(worksheet, writingLine, 5, weapon.status, nil)
-            worksheet_write_string(worksheet, writingLine, 6, weapon.location, nil)
-            
-        }
-        
-        for (index, weapon) in weapons.enumerated() {
-            let row = UInt32(index + 1)
-            worksheet_set_row(worksheet, row, Double(cell_height), nil)
-            let image = Helper.getImage(imageUrl: weapon.imageUrl)
-            var options = lxw_image_options()
-            // Pixel size is Point size x image scale
-            let imageScale = image.scale
-            let uiimageSizeInPixel = (Double(image.size.width * imageScale), Double(image.size.height * imageScale))
-            let scale = Helper.minRatio(left: (cell_width, cell_height),
-                                        right: uiimageSizeInPixel )
-            options.x_offset = 10
-            options.y_offset = 1
-            options.x_scale = scale
-            options.y_scale = scale
-            options.object_position = 1
-            
-            if let nsdata = image.jpegData(compressionQuality: 0.9) as NSData? {
-                let buffer = Helper.getArrayOfBytesFromImage(imageData: nsdata)
-                worksheet_insert_image_buffer_opt(worksheet, row, 1, buffer, buffer.count, &options)
-            }
-            
-        }
-        
-        workbook_close(workbook)
-        
-        let path = URL(fileURLWithPath: pathBook)
-        
-        items = [path as Any]
-        
-        shareSheet = true
-        print(pathBook)
     }
 }
 

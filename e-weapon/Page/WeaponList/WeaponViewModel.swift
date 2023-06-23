@@ -14,6 +14,7 @@ class WeaponViewModel: ObservableObject {
     private let databaseManager = DatabaseManager.shared
     
     @Published var weapons: [Weapon] = []
+    
     @Published var documentItemsExport: [Any] = []
     
     func fetchWeapon(){
