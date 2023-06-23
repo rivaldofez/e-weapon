@@ -13,8 +13,11 @@ struct AccessoryView: View {
     @StateObject private var viewModel: AccessoryViewModel = AccessoryViewModel()
     
     @State private var showShareSheet: Bool = false
-    
     @State private var showFormatExportDialog: Bool = false
+    
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var alertTitle: String = ""
     
     var body: some View {
         NavigationView {
@@ -96,7 +99,11 @@ struct AccessoryView: View {
                         }
                         
                         Button {
-                            self.showFormatExportDialog = true
+                            if (viewModel.accessories.isEmpty){
+                                showAlert(isActive: true, title: "Data Not Valid or Empty", message: "To Export data, you must have non empty list data")
+                            } else {
+                                self.showFormatExportDialog = true
+                            }
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle")
@@ -113,7 +120,7 @@ struct AccessoryView: View {
                             Button("Microsot Excel (xlsx)"){
                                 viewModel.generateExcelFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    
+                                    showAlert(isActive: true, title: "Cannot Create Excel Document", message: "Please check again your data and try again later")
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
@@ -122,7 +129,7 @@ struct AccessoryView: View {
                             Button("Comma Separated Value (csv)") {
                                 viewModel.generateCSVFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    
+                                    showAlert(isActive: true, title: "Cannot Create CSV Document", message: "Please check again your data and try again later")
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
@@ -144,6 +151,12 @@ struct AccessoryView: View {
             }
         }
         .tint(.secondaryAccent)
+    }
+    
+    private func showAlert(isActive: Bool, title: String ,message: String){
+        self.showAlert = isActive
+        self.alertMessage = message
+        self.alertTitle = title
     }
 }
 
