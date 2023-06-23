@@ -12,9 +12,9 @@ struct AccessoryView: View {
     
     @StateObject private var viewModel: AccessoryViewModel = AccessoryViewModel()
     
-    @State private var showFileExported: Bool = false
+    @State private var showShareSheet: Bool = false
     
-    @State private var csvDocument: CSVDocument = CSVDocument()
+    @State private var showFormatExportDialog: Bool = false
     
     var body: some View {
         NavigationView {
@@ -32,7 +32,7 @@ struct AccessoryView: View {
                     List {
                         ForEach($viewModel.accessories, id: \.id){ $accessory in
                             NavigationLink {
-                                DetailAccessoryView(id: accessory.id, imageUrl: accessory.imageUrl , addedAt: accessory.addedAt ,name: accessory.name, price: "\(accessory.price)", stock: "\(accessory.stock)", currentImage: getImage(imageUrl: accessory.imageUrl), statusSelected: accessory.status, locationSelected: accessory.location)
+                                DetailAccessoryView(id: accessory.id, imageUrl: accessory.imageUrl , addedAt: accessory.addedAt ,name: accessory.name, price: "\(accessory.price)", stock: "\(accessory.stock)", currentImage: Helper.getImage(imageUrl: accessory.imageUrl), statusSelected: accessory.status, locationSelected: accessory.location)
                             } label: {
                                 AccessoryItemView(accessory: $accessory)
                                     .hLeading()
@@ -96,7 +96,7 @@ struct AccessoryView: View {
                         }
                         
                         Button {
-                            
+                            self.showFormatExportDialog = true
                         } label: {
                             HStack(spacing: 0) {
                                 Image(systemName: "square.and.arrow.up.circle")
@@ -108,31 +108,42 @@ struct AccessoryView: View {
                                 
                             }
                         }
+                        .confirmationDialog("Choose Document Type", isPresented: self.$showFormatExportDialog){
+                            
+                            Button("Microsot Excel (xlsx)"){
+                                viewModel.generateExcelFile()
+                                if(viewModel.documentItemsExport.isEmpty){
+                                    
+                                } else {
+                                    self.showShareSheet.toggle()
+                                }
+                            }
+                            
+                            Button("Comma Separated Value (csv)") {
+                                viewModel.generateCSVFile()
+                                if(viewModel.documentItemsExport.isEmpty){
+                                    
+                                } else {
+                                    self.showShareSheet.toggle()
+                                }
+                            }
+                            
+                            Button("Batal", role: .cancel){
+                                
+                            }
+                            
+                        } message: {
+                            Text("Format export of document")
+                        }
+                        .sheet(isPresented: self.$showShareSheet) {
+                            ShareSheetView(items: $viewModel.documentItemsExport)
+                        }
                         
                     }
                 }
             }
         }
         .tint(.secondaryAccent)
-    }
-    
-    func getImage(imageUrl: String) -> UIImage {
-        let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-        let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-        let imageUrl = imagesFolderUrl.appendingPathComponent(imageUrl)
-        
-        do {
-            let imageData = try Data(contentsOf: imageUrl)
-            
-            if let imageResult = UIImage(data: imageData){
-                return imageResult
-            }
-        } catch {
-            print("Not able to load image")
-        }
-        
-        return UIImage(systemName: "exclamationmark.triangle.fill")!
-        
     }
 }
 
