@@ -31,7 +31,8 @@ struct WeaponView: View {
                     //                    ExportXlsxService().export()
 //                    generateExcelFile(weapons: viewModel.weapon)
                     
-                    viewModel.generateExcelFile()
+//                    viewModel.generateExcelFile()
+                    viewModel.generateCSVFile()
                     if(!viewModel.documentItemsExport.isEmpty){
                         shareSheet = true
                     }

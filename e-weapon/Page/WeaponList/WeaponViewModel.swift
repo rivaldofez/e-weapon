@@ -54,15 +54,38 @@ class WeaponViewModel: ObservableObject {
         return dirPaths[0].appending("/")
     }
     
+    
+    func generateCSVFile(){
+        let filename = generateFileExportName().appending(".csv")
+        
+        let destination_url = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(filename)
+        
+        var csvHead = "No, Name, Price, Stock, Status, Location\n"
+        var number = 0
+        
+        for weapon in weapons {
+            number += 1
+            csvHead.append("\(number), \(weapon.name), \(weapon.price), \(weapon.stock), \(weapon.status), \(weapon.location)\n")
+        }
+        
+        do {
+            try csvHead.write(to: destination_url!, atomically: true, encoding: .utf8)
+        } catch {
+            print("error")
+        }
+        
+        self.documentItemsExport = [destination_url as Any]
+        
+    }
+    
+    
     func generateExcelFile(){
-        let filename = generateFileExportName() + ".xlsx"
+        let filename = generateFileExportName().appending(".xlsx")
                 
         var workbook: UnsafeMutablePointer<lxw_workbook>?
         var worksheet: UnsafeMutablePointer<lxw_worksheet>?
         var format_header: UnsafeMutablePointer<lxw_format>?
         var format_1: UnsafeMutablePointer<lxw_format>?
-        
-        
         
         var destination_path = generateDocDirectory()
         destination_path.append(filename)
@@ -96,7 +119,7 @@ class WeaponViewModel: ObservableObject {
         for weapon in weapons {
             writingLine += 1
             
-            worksheet_write_string(worksheet, writingLine, 0, "\(writingLine - 1)", nil)
+            worksheet_write_string(worksheet, writingLine, 0, "\(writingLine)", nil)
             worksheet_write_string(worksheet, writingLine, 2, weapon.name, nil)
             worksheet_write_number(worksheet, writingLine, 3, weapon.price, nil)
             worksheet_write_number(worksheet, writingLine, 4, Double(weapon.stock), nil)
