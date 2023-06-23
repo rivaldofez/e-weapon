@@ -29,7 +29,7 @@ struct WeaponView: View {
             VStack(spacing: 0) {
                 Button("Test XLSX"){
 //                    ExportXlsxService().export()
-                    generateExcelFile()
+                    generateExcelFile(weapons: viewModel.weapon)
     
                 }
                 .popover(isPresented: $shareSheet) {
@@ -202,9 +202,11 @@ struct WeaponView: View {
     }
         
     
-    private func generateExcelFile(){
+    private func generateExcelFile(weapons: [Weapon]){
         let filename = "export_database.xlsx"
-        let cell_width: Double = 64
+        
+        //cell size
+        let cell_width: Double = 50
         let cell_height: Double = 50
 
         var workbook: UnsafeMutablePointer<lxw_workbook>?
@@ -233,32 +235,41 @@ struct WeaponView: View {
         writingLine = 0
         let format = format_header
         format_set_bold(format)
-        worksheet_write_string(worksheet, writingLine, 0, "image", format)
-        worksheet_write_string(worksheet, writingLine, 1, "name", format)
-        worksheet_write_string(worksheet, writingLine, 2, "quantity", format)
+        worksheet_write_string(worksheet, writingLine, 0, "No", format)
+        worksheet_write_string(worksheet, writingLine, 1, "Image", format)
+        worksheet_write_string(worksheet, writingLine, 2, "Name", format)
+        worksheet_write_string(worksheet, writingLine, 3, "Price", format)
+        worksheet_write_string(worksheet, writingLine, 4, "Stock", format)
+        worksheet_write_string(worksheet, writingLine, 5, "Status", format)
+        worksheet_write_string(worksheet, writingLine, 6, "Location", format)
         
-        
-        //line product
-        let list = Database().productList
-        
-        for product in list {
+        var numberItem = 0
+        for weapon in weapons {
+            numberItem+=1
             writingLine += 1
-            let lineFormat = (writingLine % 2 == 1) ? format_1 : nil
-            worksheet_write_string(worksheet, writingLine, 1, product.name, lineFormat)
-            worksheet_write_number(worksheet, writingLine, 2, Double(product.quantity), lineFormat)
+            let lineFormat = (writingLine % 2 == 1) ? format_1 : nil //set format
+            
+            
+            worksheet_write_string(worksheet, writingLine, 0, "\(numberItem)", nil)
+            worksheet_write_string(worksheet, writingLine, 2, weapon.name, nil)
+            worksheet_write_number(worksheet, writingLine, 3, weapon.price, nil)
+            worksheet_write_number(worksheet, writingLine, 4, Double(weapon.stock), nil)
+            worksheet_write_string(worksheet, writingLine, 5, weapon.status, nil)
+            worksheet_write_string(worksheet, writingLine, 6, weapon.location, nil)
+            
         }
         
-        for (index, product) in list.enumerated() {
+        for (index, weapon) in weapons.enumerated() {
             let row = UInt32(index + 1)
             worksheet_set_row(worksheet, row, Double(cell_height), nil)
-            if let image = UIImage(systemName: product.image) {
+            let image = getImage(imageUrl: weapon.imageUrl)
                 var options = lxw_image_options()
                 // Pixel size is Point size x image scale
                 let imageScale = image.scale
                 let uiimageSizeInPixel = (Double(image.size.width * imageScale), Double(image.size.height * imageScale))
                 let scale = minRatio(left: (cell_width, cell_height),
                                      right: uiimageSizeInPixel )
-                options.x_offset = 1
+                options.x_offset = 10
                 options.y_offset = 1
                 options.x_scale = scale
                 options.y_scale = scale
@@ -266,9 +277,9 @@ struct WeaponView: View {
                 
                 if let nsdata = image.jpegData(compressionQuality: 0.9) as NSData? {
                     let buffer = getArrayOfBytesFromImage(imageData: nsdata)
-                    worksheet_insert_image_buffer_opt(worksheet, row, 0, buffer, buffer.count, &options)
+                    worksheet_insert_image_buffer_opt(worksheet, row, 1, buffer, buffer.count, &options)
                 }
-            }
+            
         }
         
         workbook_close(workbook)

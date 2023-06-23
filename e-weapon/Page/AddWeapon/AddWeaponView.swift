@@ -85,48 +85,48 @@ struct AddWeaponView: View {
                     
                 }
                 
-                Button("Delete Weapon"){
-                    DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
-                        switch(result){
-                        case .success:
-                            print("success delete")
-                            print(DatabaseManager.shared.fetchWeapon())
-                        case .failure(let error):
-                            print("error")
-                            print(error.localizedDescription)
-                        }
-                    }
-                }
+//                Button("Delete Weapon"){
+//                    DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
+//                        switch(result){
+//                        case .success:
+//                            print("success delete")
+//                            print(DatabaseManager.shared.fetchWeapon())
+//                        case .failure(let error):
+//                            print("error")
+//                            print(error.localizedDescription)
+//                        }
+//                    }
+//                }
                 
-                Button("Load Image"){
-                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
-                    
-                    do {
-                        print(imageUrl.absoluteString)
-                        
-                        let imageData = try Data(contentsOf: imageUrl)
-                        self.currentImage = UIImage(data: imageData)
-                        
-                    } catch {
-                        print("Not able to load image")
-                    }
-                    
-                    
-                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
-                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
-                    //                        do {
-                    //                            let imageData = try Data(contentsOf: fileURL)
-                    //                            self.currentImage = UIImage(data: imageData)
-                    //
-                    //                        } catch {
-                    //                            print("Not able to load image")
-                    //                        }
-                    //                    }
-                    
-                }
+//                Button("Load Image"){
+//                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+//                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+//                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
+//
+//                    do {
+//                        print(imageUrl.absoluteString)
+//
+//                        let imageData = try Data(contentsOf: imageUrl)
+//                        self.currentImage = UIImage(data: imageData)
+//
+//                    } catch {
+//                        print("Not able to load image")
+//                    }
+//
+//
+//                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+//                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+//                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
+//                    //                        do {
+//                    //                            let imageData = try Data(contentsOf: fileURL)
+//                    //                            self.currentImage = UIImage(data: imageData)
+//                    //
+//                    //                        } catch {
+//                    //                            print("Not able to load image")
+//                    //                        }
+//                    //                    }
+//
+//                }
                 
                 Spacer()
             }
