@@ -15,8 +15,11 @@ struct WeaponView: View {
     @StateObject private var viewModel: WeaponViewModel = WeaponViewModel()
     
     @State private var showShareSheet: Bool = false
-    
     @State private var showFormatExportDialog: Bool = false
+    
+    @State private var showAlert: Bool = false
+    @State private var alertMessage: String = ""
+    @State private var alertTitle: String = ""
     
     var body: some View {
         NavigationView {
@@ -98,7 +101,11 @@ struct WeaponView: View {
                         }
                         
                         Button {
-                            self.showFormatExportDialog = true
+                            if (viewModel.weapons.isEmpty){
+                                showAlert(isActive: true, title: "Data Not Valid or Empty", message: "To Export data, you must have non empty list data")
+                            } else {
+                                self.showFormatExportDialog = true
+                            }
                             
                         } label: {
                             HStack(spacing: 0) {
@@ -116,7 +123,7 @@ struct WeaponView: View {
                             Button("Microsot Excel (xlsx)"){
                                 viewModel.generateExcelFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    
+                                    showAlert(isActive: true, title: "Cannot Create Excel Document", message: "Please check again your data and try again later")
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
@@ -125,7 +132,7 @@ struct WeaponView: View {
                             Button("Comma Separated Value (csv)") {
                                 viewModel.generateCSVFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    
+                                    showAlert(isActive: true, title: "Cannot Create CSV Document", message: "Please check again your data and try again later")
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
@@ -141,11 +148,23 @@ struct WeaponView: View {
                         .sheet(isPresented: self.$showShareSheet) {
                             ShareSheetView(items: $viewModel.documentItemsExport)
                         }
+                        .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
+                            Button("OK") {
+                            }
+                        }, message: {
+                            Text(self.alertMessage)
+                        })
                     }
                 }
             }
         }
         .tint(.secondaryAccent)
+    }
+    
+    private func showAlert(isActive: Bool, title: String ,message: String){
+        self.showAlert = isActive
+        self.alertMessage = message
+        self.alertTitle = title
     }
 }
 

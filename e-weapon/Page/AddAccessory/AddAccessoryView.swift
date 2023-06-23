@@ -121,7 +121,6 @@ struct AddAccessoryView: View {
                 }, message: {
                     Text(self.alertMessage)
                 })
-                .disabled(!isFormValid())
             }
         }
         

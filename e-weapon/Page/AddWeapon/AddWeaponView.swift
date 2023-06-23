@@ -165,7 +165,6 @@ struct AddWeaponView: View {
                 }, message: {
                     Text(self.alertMessage)
                 })
-                .disabled(!isFormValid())
             }
         }
         
