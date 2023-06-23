@@ -9,18 +9,17 @@ import UIKit
 import SwiftUI
 
 struct ShareSheetView: UIViewControllerRepresentable {
-    var items: [Any]
-    
-    
-    func makeUIViewController(context: Context) -> UIActivityViewController {
-        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        
-        return controller
-    }
-    
-    func updateUIViewController(_ uiViewController: UIActivityViewController, context: Context) {
-        
-    }
+    typealias UIViewControllerType = UIActivityViewController
+
+    @Binding var items: [Any]
+
+        func makeUIViewController(context: UIViewControllerRepresentableContext<ShareSheetView>) -> UIActivityViewController {
+            UIActivityViewController(activityItems: items, applicationActivities: nil)
+        }
+
+        func updateUIViewController(_ uiViewController: UIActivityViewController, context: UIViewControllerRepresentableContext<ShareSheetView>) {
+
+        }
         
     
 }
