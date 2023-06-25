@@ -20,6 +20,8 @@
 "txt_ok" = "OK";
 
 "txt_weapon_information" = "Weapon Information";
+"txt_accessory_information" = "Accessory Information";
+
 "txt_name" = "Name";
 "txt_price" = "Price";
 "txt_stock" = "Stock";
@@ -28,6 +30,7 @@
 "txt_image" = "Image";
 
 "txt_add_weapon" = "Add Weapon";
+"txt_add_accessory" = "Add Accesory";
 
 "txt_accessories" = "Accessories";
 "txt_save" = "Save";
@@ -56,6 +59,7 @@
 "msg_cannot_create_csv_doc" = "Cannot Create CSV Document";
 
 "msg_weapon_added" = "Weapon has been added";
+"msg_acessory_added" = "Accessory has been added";
 
 "msg_failed_save_data" = "An error occured when save the data";
 
