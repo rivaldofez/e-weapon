@@ -39,7 +39,11 @@
 
 "txt_choose_action_do" = "Choose Action To Do";
 "txt_add_photo" = "Add Photo";
+"txt_theme_preference" = "Theme Preference";
  
+"txt_settings" = "Settings";
+"txt_dark_mode" = "Dark Mode";
+"txt_light_mode" = "Light Mode";
 
 
 "ttl_data_not_valid" = "Data Not Valid or Empty";
@@ -50,7 +54,6 @@
 "ttl_failed" = "Failed";
 
 "ttl_fix_form" = "Incorrect Data in Forms";
-
 
 "msg_data_empty" = "Oops, data empty or not found";
 "msg_export_data_empty" = "To Export data, you must have non empty list data";

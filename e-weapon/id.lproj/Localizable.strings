@@ -39,6 +39,11 @@
 
 "txt_choose_action_do" = "Pilih Aksi";
 "txt_add_photo" = "Tambah Gambar";
+"txt_theme_preference" = "Preferensi Tema";
+ 
+"txt_settings" = "Pengaturan";
+"txt_dark_mode" = "Mode Gelap";
+"txt_light_mode" = "Mode Terang";
  
 
 
