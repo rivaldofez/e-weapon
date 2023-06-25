@@ -5,6 +5,8 @@
   Created by Rivaldo Fernandes on 25/06/23.
   
 */
+//ttl stands for title
+
+"txtdataempty" = "Oops, data empty or not found"
 
 
-"text1" = "Type your name"

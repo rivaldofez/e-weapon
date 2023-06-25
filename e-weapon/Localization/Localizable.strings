@@ -1,0 +1,34 @@
+/* 
+  Localizable.strings
+  e-weapon
+
+  Created by Rivaldo Fernandes on 25/06/23.
+  
+*/
+
+
+"txt_empty" = "Empty";
+"txt_delete" = "Delete";
+"txt_weapon" = "Weapon";
+"txt_add_new" = "Add";
+"txt_export" = "Export";
+"txt_choose_document" = "Choose Document";
+"txt_excel_format" = "Microsot Excel (xlsx)";
+"txt_csv_format" = "Comma Separated Value (csv)";
+"txt_cancel" = "Cancel";
+"txt_format_export_doc" = "Format export of document";
+"txt_ok" = "OK";
+ 
+
+
+"ttl_data_not_valid" = "Data Not Valid or Empty";
+"ttl_cannot_create_excel_doc" = "Cannot Create Excel Document";
+"ttl_cannot_create_csv_doc" = "Cannot Create CSV Document";
+
+
+
+"msg_data_empty" = "Oops, data empty or not found";
+"msg_export_data_empty" = "To Export data, you must have non empty list data";
+"msg_please_check_data" = "Please check again your data and try again later";
+"msg_cannot_create_csv_doc" = "Cannot Create CSV Document";
+

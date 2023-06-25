@@ -37,7 +37,7 @@
 		7EBC82092A3DA1D80058908F /* DetailAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */; };
 		7EBC820B2A3DA1EA0058908F /* DetailAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */; };
 		7EBC820D2A3DAD410058908F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820C2A3DAD410058908F /* Helper.swift */; };
-		7EC7D82D2A47C9B60088C2A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EC7D82F2A47C9B60088C2A8 /* Localizable.strings */; };
+		7EC7D8332A47CC3C0088C2A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EC7D8322A47CC3C0088C2A8 /* Localizable.strings */; };
 		7ECDF4442A43722700DBFACF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECDF4432A43722700DBFACF /* Test.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
@@ -85,8 +85,7 @@
 		7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryView.swift; sourceTree = "<group>"; };
 		7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryViewModel.swift; sourceTree = "<group>"; };
 		7EBC820C2A3DAD410058908F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
-		7EC7D82E2A47C9B60088C2A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7EC7D8302A47C9CF0088C2A8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EC7D8322A47CC3C0088C2A8 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		7ECDF4432A43722700DBFACF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
@@ -255,7 +254,7 @@
 		7EC7D82A2A47C9390088C2A8 /* Localization */ = {
 			isa = PBXGroup;
 			children = (
-				7EC7D82F2A47C9B60088C2A8 /* Localizable.strings */,
+				7EC7D8322A47CC3C0088C2A8 /* Localizable.strings */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -405,7 +404,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */,
-				7EC7D82D2A47C9B60088C2A8 /* Localizable.strings in Resources */,
+				7EC7D8332A47CC3C0088C2A8 /* Localizable.strings in Resources */,
 				7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */,
 				7E03E49A2A3CEB1A00AF1735 /* Empty.json in Resources */,
 			);
@@ -500,18 +499,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		7EC7D82F2A47C9B60088C2A8 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7EC7D82E2A47C9B60088C2A8 /* en */,
-				7EC7D8302A47C9CF0088C2A8 /* id */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7EF07C652A27C87B00C5495D /* Debug */ = {
