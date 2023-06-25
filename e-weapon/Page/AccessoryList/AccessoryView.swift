@@ -145,6 +145,12 @@ struct AccessoryView: View {
                         .sheet(isPresented: self.$showShareSheet) {
                             ShareSheetView(items: $viewModel.documentItemsExport)
                         }
+                        .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
+                            Button("txt_ok") {
+                            }
+                        }, message: {
+                            Text(self.alertMessage)
+                        })
                         
                     }
                 }

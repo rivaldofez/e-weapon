@@ -32,18 +32,18 @@ struct AddWeaponView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 10) {
                 Group {
-                    TitleSubForm(title: "Weapon Information")
+                    TitleSubForm(title: String(localized: "txt_weapon_information"))
                         .hLeading()
                     
-                    CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                    CustomTextField(title: String(localized: "txt_name"), text: self.$name, iconName: "person")
                     
-                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                    CustomTextField(title: String(localized: "txt_price"), text: self.$price,keyboardType: .numberPad, iconName: "tag")
                     
-                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
+                    CustomTextField(title: String(localized: "txt_stock"), text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
                 }
                 
                 Group {
-                    TitleSubForm(title: "Status")
+                    TitleSubForm(title: String(localized: "txt_status"))
                         .hLeading()
                         .padding(.top, 16)
                     CustomSegmentedControl(selectedItem: self.$statusSelected, items: Constants.statusOptions)
@@ -51,7 +51,7 @@ struct AddWeaponView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Location")
+                    TitleSubForm(title: String(localized: "txt_location"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -59,7 +59,7 @@ struct AddWeaponView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Image")
+                    TitleSubForm(title: String(localized: "txt_image"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -85,48 +85,48 @@ struct AddWeaponView: View {
                     
                 }
                 
-//                Button("Delete Weapon"){
-//                    DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
-//                        switch(result){
-//                        case .success:
-//                            print("success delete")
-//                            print(DatabaseManager.shared.fetchWeapon())
-//                        case .failure(let error):
-//                            print("error")
-//                            print(error.localizedDescription)
-//                        }
-//                    }
-//                }
+                //                Button("Delete Weapon"){
+                //                    DatabaseManager.shared.deleteWeapon(id: "B0404AF9-72E1-4037-805A-DC8EB5066DB2") { result in
+                //                        switch(result){
+                //                        case .success:
+                //                            print("success delete")
+                //                            print(DatabaseManager.shared.fetchWeapon())
+                //                        case .failure(let error):
+                //                            print("error")
+                //                            print(error.localizedDescription)
+                //                        }
+                //                    }
+                //                }
                 
-//                Button("Load Image"){
-//                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-//                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
-//                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
-//
-//                    do {
-//                        print(imageUrl.absoluteString)
-//
-//                        let imageData = try Data(contentsOf: imageUrl)
-//                        self.currentImage = UIImage(data: imageData)
-//
-//                    } catch {
-//                        print("Not able to load image")
-//                    }
-//
-//
-//                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
-//                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
-//                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
-//                    //                        do {
-//                    //                            let imageData = try Data(contentsOf: fileURL)
-//                    //                            self.currentImage = UIImage(data: imageData)
-//                    //
-//                    //                        } catch {
-//                    //                            print("Not able to load image")
-//                    //                        }
-//                    //                    }
-//
-//                }
+                //                Button("Load Image"){
+                //                    let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                //                    let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultURL, create: true)
+                //                    let imageUrl = imagesFolderUrl.appendingPathComponent("B0404AF9-72E1-4037-805A-DC8EB5066DB2")
+                //
+                //                    do {
+                //                        print(imageUrl.absoluteString)
+                //
+                //                        let imageData = try Data(contentsOf: imageUrl)
+                //                        self.currentImage = UIImage(data: imageData)
+                //
+                //                    } catch {
+                //                        print("Not able to load image")
+                //                    }
+                //
+                //
+                //                    //                let imagesDefaultURL = URL(fileURLWithPath: "/images/")
+                //                    //                if let documentsUrl = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask).first {
+                //                    //                        let fileURL = documentsUrl.appendingPathComponent("132A90A1-8420-4AB0-862C-2244B5A87FA7")
+                //                    //                        do {
+                //                    //                            let imageData = try Data(contentsOf: fileURL)
+                //                    //                            self.currentImage = UIImage(data: imageData)
+                //                    //
+                //                    //                        } catch {
+                //                    //                            print("Not able to load image")
+                //                    //                        }
+                //                    //                    }
+                //
+                //                }
                 
                 Spacer()
             }
@@ -134,7 +134,7 @@ struct AddWeaponView: View {
             .padding(.horizontal, 16)
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Add Weapon")
+        .navigationTitle("txt_add_weapon")
         
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -146,19 +146,23 @@ struct AddWeaponView: View {
                             
                             switch(result) {
                             case .success:
-                                showAlert(isActive: true, title: "Success", message: "Weapon has been added")
+                                showAlert(isActive: true, title: String(localized: "ttl_success"), message: String(localized: "msg_weapon_added"))
+                                print(self.alertTitle)
                             case .failure(_):
-                                showAlert(isActive: true, title: "Failed", message: "An error occured when save the data")
+                                showAlert(isActive: true, title: String(localized: "ttl_failed"), message: String(localized: "msg_failed_save_data"))
                             }
                         }
+                    } else {
+                        showAlert(isActive: true, title: String(localized: "ttl_fix_form"), message: String(localized: "msg_incorrect_form"))
                     }
                 } label: {
-                    Text("Save")
+                    Text("txt_save")
                 }
+                .disabled(!isFormValid())
                 .tint(.primaryAccent)
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
-                    Button("OK") {
-                        if self.alertTitle == "Success"{
+                    Button("txt_ok") {
+                        if self.alertTitle == String(localized: "ttl_success"){
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -168,28 +172,28 @@ struct AddWeaponView: View {
             }
         }
         
-        .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
+        .confirmationDialog("txt_choose_action_do", isPresented: self.$showImageActionDialog){
             
-            Button("Galeri"){
+            Button("txt_gallery"){
                 self.showImagePickerSheet = true
                 self.sourceType = .photoLibrary
             }
             
-            Button("Kamera") {
+            Button("txt_camera") {
                 self.showImagePickerSheet = true
                 self.sourceType = .camera
             }
             
-            Button("Hapus Foto", role: .destructive) {
+            Button("txt_delete_photo", role: .destructive) {
                 self.currentImage = nil
             }
             
-            Button("Batal", role: .cancel){
+            Button("txt_cancel", role: .cancel){
                 
             }
             
         } message: {
-            Text("Choose Action To Do")
+            Text("txt_choose_action_do")
         }
         .sheet(isPresented: self.$showImagePickerSheet){
             ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)
@@ -246,7 +250,7 @@ struct AddImageSubForm: View {
                 .aspectRatio(contentMode: .fit)
                 .foregroundColor(.primaryAccent)
             
-            Text("Tambah Foto")
+            Text("txt_add_photo")
                 .font(.system(.body).bold())
                 .padding(.top, 8)
                 .foregroundColor(.primaryAccent)
