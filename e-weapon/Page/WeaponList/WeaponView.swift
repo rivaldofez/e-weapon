@@ -118,7 +118,7 @@ struct WeaponView: View {
                                 
                             }
                         }
-                        .confirmationDialog("txt_choose_document", isPresented: self.$showFormatExportDialog){
+                        .confirmationDialog("txt_choose_document_type", isPresented: self.$showFormatExportDialog){
                             
                             Button("txt_excel_format"){
                                 viewModel.generateExcelFile()

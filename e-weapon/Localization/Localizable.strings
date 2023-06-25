@@ -12,12 +12,14 @@
 "txt_weapon" = "Weapon";
 "txt_add_new" = "Add";
 "txt_export" = "Export";
-"txt_choose_document" = "Choose Document";
+"txt_choose_document_type" = "Choose Document Type";
 "txt_excel_format" = "Microsot Excel (xlsx)";
 "txt_csv_format" = "Comma Separated Value (csv)";
 "txt_cancel" = "Cancel";
 "txt_format_export_doc" = "Format export of document";
 "txt_ok" = "OK";
+
+"txt_accessories" = "Accessories";
  
 
 
