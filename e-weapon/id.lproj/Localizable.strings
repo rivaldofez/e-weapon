@@ -1,0 +1,71 @@
+/* 
+  Localizable.strings
+  e-weapon
+
+  Created by Rivaldo Fernandes on 25/06/23.
+  
+*/
+
+"txt_empty" = "Kosong";
+"txt_delete" = "Hapus";
+"txt_weapon" = "Senjata";
+"txt_add_new" = "Tambah";
+"txt_export" = "Ekspor";
+"txt_choose_document_type" = "Pilih Format Dokumen";
+"txt_excel_format" = "Microsot Excel (xlsx)";
+"txt_csv_format" = "Comma Separated Value (csv)";
+"txt_cancel" = "Batal";
+"txt_format_export_doc" = "Format Dokumen";
+"txt_ok" = "OK";
+
+"txt_weapon_information" = "Informasi Senjata";
+"txt_accessory_information" = "Informasi Aksesoris";
+
+"txt_name" = "Nama";
+"txt_price" = "Harga";
+"txt_stock" = "Stok";
+"txt_status" = "Status";
+"txt_location" = "Lokasi";
+"txt_image" = "Gambar";
+
+"txt_add_weapon" = "Tambah Senjata";
+"txt_add_accessory" = "Tambah Aksesoris";
+
+"txt_accessories" = "Aksesoris";
+"txt_save" = "Simpan";
+"txt_gallery" = "Galeri";
+"txt_camera" = "Kamera";
+"txt_delete_photo" = "Hapus Gambar";
+
+"txt_choose_action_do" = "Pilih Aksi";
+"txt_add_photo" = "Tambah Gambar";
+"txt_theme_preference" = "Preferensi Tema";
+ 
+"txt_settings" = "Pengaturan";
+"txt_dark_mode" = "Mode Gelap";
+"txt_light_mode" = "Mode Terang";
+ 
+
+
+"ttl_data_not_valid" = "Data tidak valid atau kosong";
+"ttl_cannot_create_excel_doc" = "Tidak Dapat Membuat Dokumen Excel";
+"ttl_cannot_create_csv_doc" = "Tidak Dapat Membuat Dokumen CSV";
+
+"ttl_success" = "Sukses";
+"ttl_failed" = "Gagal";
+
+"ttl_fix_form" = "Data pada kolom isian tidak valid";
+
+
+"msg_data_empty" = "Oops, data kosong atau tidak ditemukan";
+"msg_export_data_empty" = "Untuk Ekspor, data tidak boleh kosong";
+"msg_please_check_data" = "Periksa kembali data dan coba lagi";
+"msg_cannot_create_csv_doc" = "Tidak Dapat Membuat Dokumen CSV";
+
+"msg_weapon_added" = "Senjata telah ditambahkan";
+"msg_acessory_added" = "Aksesoris telah ditambahkan";
+
+"msg_failed_save_data" = "Terjadi kesalahan saat menyimpan data";
+
+"msg_incorrect_form" = "Periksa kembali setiap kolom isian";
+

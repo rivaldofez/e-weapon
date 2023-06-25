@@ -31,18 +31,18 @@ struct AddAccessoryView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 10) {
                 Group {
-                    TitleSubForm(title: "Accessory Information")
+                    TitleSubForm(title: String(localized: "txt_accessory_information"))
                         .hLeading()
                     
-                    CustomTextField(title: "Name", text: self.$name, iconName: "person")
+                    CustomTextField(title: String(localized: "txt_name"), text: self.$name, iconName: "person")
                     
-                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag")
+                    CustomTextField(title: String(localized: "txt_price"), text: self.$price,keyboardType: .numberPad, iconName: "tag")
                     
-                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
+                    CustomTextField(title: String(localized: "txt_stock"), text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox")
                 }
                 
                 Group {
-                    TitleSubForm(title: "Status")
+                    TitleSubForm(title: String(localized: "txt_status"))
                         .hLeading()
                         .padding(.top, 16)
                     CustomSegmentedControl(selectedItem: self.$statusSelected, items: Constants.statusOptions)
@@ -50,7 +50,7 @@ struct AddAccessoryView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Location")
+                    TitleSubForm(title: String(localized: "txt_location"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -58,7 +58,7 @@ struct AddAccessoryView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Image")
+                    TitleSubForm(title: String(localized: "txt_image"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -90,7 +90,7 @@ struct AddAccessoryView: View {
             .padding(.horizontal, 16)
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Add Accessory")
+        .navigationTitle("txt_add_accessory")
         
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -102,19 +102,22 @@ struct AddAccessoryView: View {
                             
                             switch(result) {
                             case .success:
-                                showAlert(isActive: true, title: "Success", message: "Accessory has been added")
+                                showAlert(isActive: true, title: String(localized: "ttl_success"), message: String(localized: "msg_acessory_added"))
                             case .failure(_):
-                                showAlert(isActive: true, title: "Failed", message: "An error occured when save the data")
+                                showAlert(isActive: true, title: String(localized: "ttl_failed"), message: String(localized: "msg_failed_save_data"))
                             }
                         }
+                    } else {
+                        showAlert(isActive: true, title: String(localized: "ttl_fix_form"), message: String(localized: "msg_incorrect_form"))
                     }
+                    
                 } label: {
-                    Text("Save")
+                    Text("txt_save")
                 }
                 .tint(.primaryAccent)
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
                     Button("OK") {
-                        if self.alertTitle == "Success"{
+                        if self.alertTitle == String(localized: "ttl_success") {
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -124,23 +127,23 @@ struct AddAccessoryView: View {
             }
         }
         
-        .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
+        .confirmationDialog("txt_choose_action_do", isPresented: self.$showImageActionDialog){
             
-            Button("Galeri"){
+            Button("txt_gallery"){
                 self.showImagePickerSheet = true
                 self.sourceType = .photoLibrary
             }
             
-            Button("Kamera") {
+            Button("txt_camera") {
                 self.showImagePickerSheet = true
                 self.sourceType = .camera
             }
             
-            Button("Hapus Foto", role: .destructive) {
+            Button("txt_delete_photo", role: .destructive) {
                 self.currentImage = nil
             }
             
-            Button("Batal", role: .cancel){
+            Button("txt_cancel", role: .cancel){
                 
             }
             
@@ -177,8 +180,6 @@ struct AddAccessoryView: View {
             return false
         }
     }
-    
-    
 }
 
 struct AddAccessory_Previews: PreviewProvider {

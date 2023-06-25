@@ -17,7 +17,7 @@ struct SettingsView: View {
         VStack {
             
             VStack(alignment: .leading, spacing: 0) {
-                Text("Theme Preference")
+                Text("txt_theme_preference")
                     .font(.system(.body).bold())
                     .padding()
                     .foregroundColor(.primaryAccent)
@@ -35,7 +35,7 @@ struct SettingsView: View {
                             .frame(width:
                                     30, height: 30)
                             .foregroundColor(.primaryLabel)
-                        Text("Light Mode")
+                        Text("txt_light_mode")
                             .font(.system(.body).weight(.medium))
                             .padding(.leading, 16)
                             .foregroundColor(.primaryLabel)
@@ -67,7 +67,7 @@ struct SettingsView: View {
                             .frame(width:
                                     30, height: 30)
                             .foregroundColor(.primaryLabel)
-                        Text("Dark Mode")
+                        Text("txt_dark_mode")
                             .font(.system(.body).weight(.medium))
                             .padding(.leading, 16)
                             .foregroundColor(.primaryLabel)
@@ -101,7 +101,7 @@ struct SettingsView: View {
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Text("Settings")
+                Text("txt_settings")
                     .font(.system(.title).bold())
             }
         }

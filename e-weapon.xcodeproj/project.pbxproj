@@ -37,6 +37,7 @@
 		7EBC82092A3DA1D80058908F /* DetailAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */; };
 		7EBC820B2A3DA1EA0058908F /* DetailAccessoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */; };
 		7EBC820D2A3DAD410058908F /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EBC820C2A3DAD410058908F /* Helper.swift */; };
+		7EC7D8362A47F5330088C2A8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7EC7D8382A47F5330088C2A8 /* Localizable.strings */; };
 		7ECDF4442A43722700DBFACF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECDF4432A43722700DBFACF /* Test.swift */; };
 		7ECF77A52A3B42B600334CC0 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A42A3B42B600334CC0 /* Weapon.swift */; };
 		7ECF77A82A3B602000334CC0 /* DetailWeaponView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */; };
@@ -68,7 +69,6 @@
 		7E46A5662A373D18008BBE48 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		7E46A56C2A377405008BBE48 /* WeaponEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeaponEntity.swift; sourceTree = "<group>"; };
 		7E46A56E2A37748D008BBE48 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		7E4E0D032A458132001D6802 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E4E0D042A4581BF001D6802 /* ExcelDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExcelDocument.swift; sourceTree = "<group>"; };
 		7E660F832A3834360035BC99 /* AccessoryEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryEntity.swift; sourceTree = "<group>"; };
 		7E660F862A384F3E0035BC99 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
@@ -85,6 +85,8 @@
 		7EBC82082A3DA1D80058908F /* DetailAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryView.swift; sourceTree = "<group>"; };
 		7EBC820A2A3DA1EA0058908F /* DetailAccessoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryViewModel.swift; sourceTree = "<group>"; };
 		7EBC820C2A3DAD410058908F /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		7EC7D8372A47F5330088C2A8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		7EC7D8392A47F5360088C2A8 /* id */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = id; path = id.lproj/Localizable.strings; sourceTree = "<group>"; };
 		7ECDF4432A43722700DBFACF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		7ECF77A42A3B42B600334CC0 /* Weapon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weapon.swift; sourceTree = "<group>"; };
 		7ECF77A72A3B602000334CC0 /* DetailWeaponView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeaponView.swift; sourceTree = "<group>"; };
@@ -291,7 +293,6 @@
 		7EF07C5B2A27C87700C5495D /* e-weapon */ = {
 			isa = PBXGroup;
 			children = (
-				7E4E0D032A458132001D6802 /* Info.plist */,
 				7E03E4982A3CEAEA00AF1735 /* Lottie Asset */,
 				7E03E4902A3CDCE500AF1735 /* Utils */,
 				7ECF77A32A3B429D00334CC0 /* Model */,
@@ -303,6 +304,7 @@
 				7EF07C6A2A36FC7500C5495D /* MainView.swift */,
 				7EF07C602A27C87B00C5495D /* Assets.xcassets */,
 				7EF07C622A27C87B00C5495D /* Preview Content */,
+				7EC7D8382A47F5330088C2A8 /* Localizable.strings */,
 			);
 			path = "e-weapon";
 			sourceTree = "<group>";
@@ -368,11 +370,12 @@
 			};
 			buildConfigurationList = 7EF07C542A27C87600C5495D /* Build configuration list for PBXProject "e-weapon" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = id;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = 7EF07C502A27C87600C5495D;
 			packageReferences = (
@@ -394,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7EF07C642A27C87B00C5495D /* Preview Assets.xcassets in Resources */,
+				7EC7D8362A47F5330088C2A8 /* Localizable.strings in Resources */,
 				7EF07C612A27C87B00C5495D /* Assets.xcassets in Resources */,
 				7E03E49A2A3CEB1A00AF1735 /* Empty.json in Resources */,
 			);
@@ -488,6 +492,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7EC7D8382A47F5330088C2A8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7EC7D8372A47F5330088C2A8 /* en */,
+				7EC7D8392A47F5360088C2A8 /* id */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7EF07C652A27C87B00C5495D /* Debug */ = {

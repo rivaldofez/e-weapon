@@ -28,7 +28,7 @@ struct WeaponView: View {
                     LottieView(name: "Empty", loopMode: .loop)
                         .frame(maxHeight: 240)
                     
-                    Text("Oops, data empty or not found")
+                    Text("msg_data_empty")
                         .font(.system(.title3).bold())
                         .foregroundColor(.primaryLabel)
                         .padding(.top, -16)
@@ -58,7 +58,7 @@ struct WeaponView: View {
                                                 }
                                             }
                                         } label: {
-                                            Label("Delete", systemImage: "trash.circle.fill")
+                                            Label("txt_delete", systemImage: "trash.circle.fill")
                                         }
                                         .tint(.red)
                                     }
@@ -80,7 +80,7 @@ struct WeaponView: View {
             .searchable(text: self.$searchQuery)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Text("Weapon")
+                    Text("txt_weapon")
                         .font(.system(.title).bold())
                 }
                 
@@ -93,7 +93,7 @@ struct WeaponView: View {
                                 Image(systemName: "plus.circle")
                                     .font(.system(.title3))
                                     .foregroundColor(.primaryAccent)
-                                Text("Tambah")
+                                Text("txt_add_new")
                                     .font(.system(.body))
                                     .foregroundColor(.primaryAccent)
                                 
@@ -102,7 +102,7 @@ struct WeaponView: View {
                         
                         Button {
                             if (viewModel.weapons.isEmpty){
-                                showAlert(isActive: true, title: "Data Not Valid or Empty", message: "To Export data, you must have non empty list data")
+                                showAlert(isActive: true, title: String(localized: "ttl_data_not_valid"), message: String(localized: "msg_export_data_empty"))
                             } else {
                                 self.showFormatExportDialog = true
                             }
@@ -112,44 +112,44 @@ struct WeaponView: View {
                                 Image(systemName: "square.and.arrow.up.circle")
                                     .font(.system(.title3))
                                     .foregroundColor(.secondaryAccent)
-                                Text("Export")
+                                Text("txt_export")
                                     .font(.system(.body))
                                     .foregroundColor(.secondaryAccent)
                                 
                             }
                         }
-                        .confirmationDialog("Choose Document Type", isPresented: self.$showFormatExportDialog){
+                        .confirmationDialog("txt_choose_document_type", isPresented: self.$showFormatExportDialog){
                             
-                            Button("Microsot Excel (xlsx)"){
+                            Button("txt_excel_format"){
                                 viewModel.generateExcelFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    showAlert(isActive: true, title: "Cannot Create Excel Document", message: "Please check again your data and try again later")
+                                    showAlert(isActive: true, title: String(localized: "ttl_cannot_create_excel_doc"), message: String(localized: "msg_please_check_data"))
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
                             }
                             
-                            Button("Comma Separated Value (csv)") {
+                            Button("txt_csv_format") {
                                 viewModel.generateCSVFile()
                                 if(viewModel.documentItemsExport.isEmpty){
-                                    showAlert(isActive: true, title: "Cannot Create CSV Document", message: "Please check again your data and try again later")
+                                    showAlert(isActive: true, title: String(localized: "ttl_cannot_create_csv_doc"), message: String(localized: "msg_please_check_data"))
                                 } else {
                                     self.showShareSheet.toggle()
                                 }
                             }
                             
-                            Button("Batal", role: .cancel){
+                            Button("txt_cancel", role: .cancel){
                                 
                             }
                             
                         } message: {
-                            Text("Format export of document")
+                            Text("txt_format_export_doc")
                         }
                         .sheet(isPresented: self.$showShareSheet) {
                             ShareSheetView(items: $viewModel.documentItemsExport)
                         }
                         .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
-                            Button("OK") {
+                            Button("txt_ok") {
                             }
                         }, message: {
                             Text(self.alertMessage)

@@ -1,0 +1,69 @@
+/* 
+  Localizable.strings
+  e-weapon
+
+  Created by Rivaldo Fernandes on 25/06/23.
+  
+*/
+
+"txt_empty" = "Empty";
+"txt_delete" = "Delete";
+"txt_weapon" = "Weapon";
+"txt_add_new" = "Add";
+"txt_export" = "Export";
+"txt_choose_document_type" = "Choose Document Type";
+"txt_excel_format" = "Microsot Excel (xlsx)";
+"txt_csv_format" = "Comma Separated Value (csv)";
+"txt_cancel" = "Cancel";
+"txt_format_export_doc" = "Format export of document";
+"txt_ok" = "OK";
+
+"txt_weapon_information" = "Weapon Information";
+"txt_accessory_information" = "Accessory Information";
+
+"txt_name" = "Name";
+"txt_price" = "Price";
+"txt_stock" = "Stock";
+"txt_status" = "Status";
+"txt_location" = "Location";
+"txt_image" = "Image";
+
+"txt_add_weapon" = "Add Weapon";
+"txt_add_accessory" = "Add Accesory";
+
+"txt_accessories" = "Accessories";
+"txt_save" = "Save";
+"txt_gallery" = "Gallery";
+"txt_camera" = "Camera";
+"txt_delete_photo" = "Delete Photo";
+
+"txt_choose_action_do" = "Choose Action To Do";
+"txt_add_photo" = "Add Photo";
+"txt_theme_preference" = "Theme Preference";
+ 
+"txt_settings" = "Settings";
+"txt_dark_mode" = "Dark Mode";
+"txt_light_mode" = "Light Mode";
+
+
+"ttl_data_not_valid" = "Data Not Valid or Empty";
+"ttl_cannot_create_excel_doc" = "Cannot Create Excel Document";
+"ttl_cannot_create_csv_doc" = "Cannot Create CSV Document";
+
+"ttl_success" = "Success";
+"ttl_failed" = "Failed";
+
+"ttl_fix_form" = "Incorrect Data in Forms";
+
+"msg_data_empty" = "Oops, data empty or not found";
+"msg_export_data_empty" = "To Export data, you must have non empty list data";
+"msg_please_check_data" = "Please check again your data and try again later";
+"msg_cannot_create_csv_doc" = "Cannot Create CSV Document";
+
+"msg_weapon_added" = "Weapon has been added";
+"msg_acessory_added" = "Accessory has been added";
+
+"msg_failed_save_data" = "An error occured when save the data";
+
+"msg_incorrect_form" = "Please check again all data in forms";
+
