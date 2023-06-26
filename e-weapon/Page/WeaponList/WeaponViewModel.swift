@@ -13,7 +13,12 @@ class WeaponViewModel: ObservableObject {
     
     private let databaseManager = DatabaseManager.shared
     
-    @Published var weapons: [Weapon] = []
+    @Published var weapons: [Weapon] = [] {
+        didSet {
+            self.filteredWeapons = weapons
+        }
+    }
+    @Published var filteredWeapons: [Weapon] = []
     
     @Published var documentItemsExport: [Any] = []
     
@@ -29,7 +34,7 @@ class WeaponViewModel: ObservableObject {
         if query.isEmpty {
             fetchWeapon()
         } else {
-            self.weapons = self.weapons.filter { $0.name.lowercased().contains(query.lowercased()) }
+            self.filteredWeapons = self.weapons.filter { $0.name.lowercased().contains(query.lowercased()) }
         }
     }
     

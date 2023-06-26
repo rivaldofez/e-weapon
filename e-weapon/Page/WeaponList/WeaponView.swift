@@ -24,7 +24,7 @@ struct WeaponView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if viewModel.weapons.isEmpty {
+                if viewModel.filteredWeapons.isEmpty {
                     LottieView(name: "Empty", loopMode: .loop)
                         .frame(maxHeight: 240)
                     
@@ -36,7 +36,7 @@ struct WeaponView: View {
                         .multilineTextAlignment(.center)
                 } else {
                     List {
-                        ForEach($viewModel.weapons, id: \.id){ $weapon in
+                        ForEach($viewModel.filteredWeapons, id: \.id){ $weapon in
                             NavigationLink {
                                 DetailWeaponView(id: weapon.id, imageUrl: weapon.imageUrl , addedAt: weapon.addedAt ,name: weapon.name, price: "\(weapon.price)", stock: "\(weapon.stock)", currentImage: Helper.getImage(imageUrl: weapon.imageUrl), statusSelected: weapon.status, locationSelected: weapon.location)
                             } label: {
@@ -102,7 +102,7 @@ struct WeaponView: View {
                         }
                         
                         Button {
-                            if (viewModel.weapons.isEmpty){
+                            if (viewModel.filteredWeapons.isEmpty){
                                 showAlert(isActive: true, title: String(localized: "ttl_data_not_valid"), message: String(localized: "msg_export_data_empty"))
                             } else {
                                 self.showFormatExportDialog = true

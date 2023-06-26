@@ -12,7 +12,12 @@ class AccessoryViewModel: ObservableObject {
     
     private let databaseManager = DatabaseManager.shared
     
-    @Published var accessories: [Accessory] = []
+    @Published var accessories: [Accessory] = [] {
+        didSet {
+            filteredAccessories = accessories
+        }
+    }
+    @Published var filteredAccessories: [Accessory] = []
     
     @Published var documentItemsExport: [Any] = []
     
@@ -28,7 +33,7 @@ class AccessoryViewModel: ObservableObject {
         if query.isEmpty {
             fetchAccessory()
         } else {
-            self.accessories = self.accessories.filter { $0.name.lowercased().contains(query.lowercased()) }
+            self.filteredAccessories = self.accessories.filter { $0.name.lowercased().contains(query.lowercased()) }
         }
     }
     

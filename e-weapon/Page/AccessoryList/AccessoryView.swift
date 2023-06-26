@@ -22,11 +22,11 @@ struct AccessoryView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                if viewModel.accessories.isEmpty {
-                        LottieView(name: "Empty", loopMode: .loop)
-                            .frame(maxHeight: 240)
-                        
-                        Text("msg_data_empty")
+                if viewModel.filteredAccessories.isEmpty {
+                    LottieView(name: "Empty", loopMode: .loop)
+                        .frame(maxHeight: 240)
+                    
+                    Text("msg_data_empty")
                         .font(.system(.title3).bold())
                         .foregroundColor(.primaryLabel)
                         .padding(.top, -16)
@@ -34,7 +34,7 @@ struct AccessoryView: View {
                         .multilineTextAlignment(.center)
                 } else {
                     List {
-                        ForEach($viewModel.accessories, id: \.id){ $accessory in
+                        ForEach($viewModel.filteredAccessories, id: \.id){ $accessory in
                             NavigationLink {
                                 DetailAccessoryView(id: accessory.id, imageUrl: accessory.imageUrl , addedAt: accessory.addedAt ,name: accessory.name, price: "\(accessory.price)", stock: "\(accessory.stock)", currentImage: Helper.getImage(imageUrl: accessory.imageUrl), statusSelected: accessory.status, locationSelected: accessory.location)
                             } label: {
@@ -100,7 +100,7 @@ struct AccessoryView: View {
                         }
                         
                         Button {
-                            if (viewModel.accessories.isEmpty){
+                            if (viewModel.filteredAccessories.isEmpty){
                                 showAlert(isActive: true, title: String(localized: "ttl_data_not_valid"), message: String(localized: "msg_export_data_empty"))
                             } else {
                                 self.showFormatExportDialog = true
@@ -110,7 +110,7 @@ struct AccessoryView: View {
                                 Image(systemName: "square.and.arrow.up.circle")
                                     .font(.system(.title3))
                                     .foregroundColor(.secondaryAccent)
-                                Text("Export")
+                                Text("txt_export")
                                     .font(.system(.body))
                                     .foregroundColor(.secondaryAccent)
                                 
