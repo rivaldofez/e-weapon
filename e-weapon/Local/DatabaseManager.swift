@@ -176,7 +176,7 @@ class DatabaseManager {
             let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
             let imageName = generateImageName(id: id)
-            let imageData = image.pngData()
+            let imageData = image.jpegData(compressionQuality: 0.5)
             let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
             if let imageData = imageData {
@@ -229,7 +229,7 @@ class DatabaseManager {
             let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
             let imageName = generateImageName(id: id)
-            let imageData = image.pngData()
+            let imageData = image.jpegData(compressionQuality: 0.5)
             let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
             if let imageData = imageData {
@@ -281,7 +281,7 @@ class DatabaseManager {
         let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
         let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
-        let imageData = image.pngData()
+        let imageData = image.jpegData(compressionQuality: 0.5)
         let imageName = generateImageName(id: id)
         let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
@@ -325,7 +325,7 @@ class DatabaseManager {
         let imagesDefaultUrl = URL(fileURLWithPath: "/images/")
         let imagesFolderUrl = try! FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: imagesDefaultUrl, create: true)
 
-        let imageData = image.pngData()
+        let imageData = image.jpegData(compressionQuality: 0.5)
         let imageName = generateImageName(id: id)
         let imageLocalUrl = imagesFolderUrl.appendingPathComponent(imageName)
 
