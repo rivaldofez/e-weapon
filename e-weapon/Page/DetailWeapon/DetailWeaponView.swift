@@ -41,21 +41,21 @@ struct DetailWeaponView: View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 10) {
                 Group {
-                    TitleSubForm(title: "Weapon Information")
+                    TitleSubForm(title: String(localized: "txt_weapon_information"))
                         .hLeading()
                     
-                    CustomTextField(title: "Name", text: self.$name, iconName: "person", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
+                    CustomTextField(title: String(localized: "txt_name"), text: self.$name, iconName: "person", strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
-                    CustomTextField(title: "Price", text: self.$price,keyboardType: .numberPad, iconName: "tag",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
+                    CustomTextField(title: String(localized: "txt_price"), text: self.$price,keyboardType: .numberPad, iconName: "tag",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                     
-                    CustomTextField(title: "Stock", text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
+                    CustomTextField(title: String(localized: "txt_stock"), text: self.$stock,keyboardType: .numberPad, iconName: "shippingbox",strokeColor: isEdit ? .secondaryAccent : .primaryGray)
                         .disabled(!isEdit)
                 }
                 
                 Group {
-                    TitleSubForm(title: "Status")
+                    TitleSubForm(title: String(localized: "txt_status"))
                         .hLeading()
                         .padding(.top, 16)
                     CustomSegmentedControl(selectedItem: self.$statusSelected, items: Constants.statusOptions, strokeColor: isEdit ? .secondaryAccent : .primaryGray)
@@ -64,7 +64,7 @@ struct DetailWeaponView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Location")
+                    TitleSubForm(title: String(localized: "txt_location"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -73,7 +73,7 @@ struct DetailWeaponView: View {
                 }
                 
                 Group {
-                    TitleSubForm(title: "Image")
+                    TitleSubForm(title: String(localized: "txt_image"))
                         .hLeading()
                         .padding(.top, 16)
                     
@@ -109,7 +109,7 @@ struct DetailWeaponView: View {
             print(imageUrl)
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Add Weapon")
+        .navigationTitle("txt_detail_weapon")
         
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
@@ -121,26 +121,25 @@ struct DetailWeaponView: View {
                             viewModel.updateWeapon(id: self.id, name: self.name, addedAt: Date(), price: price, stock: stock, location: self.locationSelected, status: self.statusSelected, imageUrl: imageUrl, image: image) { result in
                                 switch(result){
                                 case .success:
-                                    showAlert(isActive: true, title: "Success", message: "Weapon has been updated")
+                                    showAlert(isActive: true, title: String(localized: "ttl_success"), message: String(localized: "msg_weapon_updated"))
                                 case .failure(_):
-                                    showAlert(isActive: true, title: "Failed", message: "An error occured when update the data")
+                                    showAlert(isActive: true, title: String(localized: "ttl_failed"), message: String(localized: "msg_failed_save_data"))
                                 }
                             }
                         }
                         
                         isEdit.toggle()
                     } else {
-                        print("Edit")
                         isEdit.toggle()
                     }
                 } label: {
-                    Text(isEdit ? "Save" : "Edit")
+                    Text(isEdit ? String(localized: "txt_save") : String(localized: "txt_edit"))
                 }
                 .tint(isEdit ? .primaryAccent : .secondaryAccent)
                 .disabled(!isFormValid())
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
-                    Button("OK") {
-                        if self.alertTitle == "Success"{
+                    Button("txt_ok") {
+                        if self.alertTitle == String(localized: "ttl_success"){
                             self.presentationMode.wrappedValue.dismiss()
                         }
                     }
@@ -150,28 +149,28 @@ struct DetailWeaponView: View {
             }
         }
         
-        .confirmationDialog("Choose Action To Do", isPresented: self.$showImageActionDialog){
+        .confirmationDialog("txt_choose_action_do", isPresented: self.$showImageActionDialog){
             
-            Button("Galeri"){
+            Button("txt_gallery"){
                 self.showImagePickerSheet = true
                 self.sourceType = .photoLibrary
             }
             
-            Button("Kamera") {
+            Button("txt_camera") {
                 self.showImagePickerSheet = true
                 self.sourceType = .camera
             }
             
-            Button("Hapus Foto", role: .destructive) {
+            Button("txt_delete_photo", role: .destructive) {
                 self.currentImage = nil
             }
             
-            Button("Batal", role: .cancel){
+            Button("txt_cancel", role: .cancel){
                 
             }
             
         } message: {
-            Text("Choose Action To Do")
+            Text("txt_choose_action_do")
         }
         .sheet(isPresented: self.$showImagePickerSheet){
             ImagePicker(image: self.$currentImage, isShown: self.$showImagePickerSheet, sourceType: self.sourceType)

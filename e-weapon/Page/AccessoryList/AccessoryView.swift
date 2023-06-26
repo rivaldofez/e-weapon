@@ -31,6 +31,7 @@ struct AccessoryView: View {
                         .foregroundColor(.primaryLabel)
                         .padding(.top, -16)
                         .padding(.horizontal, 16)
+                        .multilineTextAlignment(.center)
                 } else {
                     List {
                         ForEach($viewModel.accessories, id: \.id){ $accessory in

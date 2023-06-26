@@ -17,6 +17,7 @@
 "txt_cancel" = "Batal";
 "txt_format_export_doc" = "Format Dokumen";
 "txt_ok" = "OK";
+"txt_edit" = "Ubah";
 
 "txt_weapon_information" = "Informasi Senjata";
 "txt_accessory_information" = "Informasi Aksesoris";
@@ -46,6 +47,7 @@
 "txt_light_mode" = "Mode Terang";
 "txt_select_location" = "Pilih Lokasi";
  
+"txt_detail_weapon" = "Detail Weapon";
 
 
 "ttl_data_not_valid" = "Data tidak valid atau kosong";
@@ -69,4 +71,6 @@
 "msg_failed_save_data" = "Terjadi kesalahan saat menyimpan data";
 
 "msg_incorrect_form" = "Periksa kembali setiap kolom isian";
+
+"msg_weapon_updated" = "Senjata berhasil diperbarui";
 

@@ -33,6 +33,7 @@ struct WeaponView: View {
                         .foregroundColor(.primaryLabel)
                         .padding(.top, -16)
                         .padding(.horizontal, 16)
+                        .multilineTextAlignment(.center)
                 } else {
                     List {
                         ForEach($viewModel.weapons, id: \.id){ $weapon in
