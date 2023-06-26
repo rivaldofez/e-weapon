@@ -123,7 +123,7 @@ struct DetailWeaponView: View {
                                 case .success:
                                     showAlert(isActive: true, title: String(localized: "ttl_success"), message: String(localized: "msg_weapon_updated"))
                                 case .failure(_):
-                                    showAlert(isActive: true, title: String(localized: "ttl_failed"), message: String(localized: "msg_failed_save_data"))
+                                    showAlert(isActive: true, title: String(localized: "ttl_failed"), message: String(localized: "msg_failed_update_data"))
                                 }
                             }
                         }

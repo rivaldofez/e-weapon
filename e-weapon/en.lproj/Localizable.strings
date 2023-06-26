@@ -48,6 +48,7 @@
 "txt_select_location" = "Select Location";
 
 "txt_detail_weapon" = "Detail Weapon";
+"txt_detail_accessory" = "Detail Accessory";
 
 
 "ttl_data_not_valid" = "Data Not Valid or Empty";
@@ -69,8 +70,10 @@
 "msg_acessory_added" = "Accessory has been added";
 
 "msg_failed_save_data" = "An error occured when save the data";
+"msg_failed_update_data" = "An error occured when update the data";
 
 "msg_incorrect_form" = "Please check again all data in forms";
 
 "msg_weapon_updated" = "Weapon has been updated";
+"msg_accessory_updated" = "Accessory has been updated";
 

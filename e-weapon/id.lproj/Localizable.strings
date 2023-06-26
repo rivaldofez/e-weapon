@@ -47,7 +47,8 @@
 "txt_light_mode" = "Mode Terang";
 "txt_select_location" = "Pilih Lokasi";
  
-"txt_detail_weapon" = "Detail Weapon";
+"txt_detail_weapon" = "Detail Senjata";
+"txt_detail_accessory" = "Detail Aksesoris";
 
 
 "ttl_data_not_valid" = "Data tidak valid atau kosong";
@@ -69,8 +70,9 @@
 "msg_acessory_added" = "Aksesoris telah ditambahkan";
 
 "msg_failed_save_data" = "Terjadi kesalahan saat menyimpan data";
+"msg_failed_update_data" = "Terjadi kesalahan saat mengubah data";
 
 "msg_incorrect_form" = "Periksa kembali setiap kolom isian";
 
 "msg_weapon_updated" = "Senjata berhasil diperbarui";
-
+"msg_accessory_updated" = "Aksesoris berhasil diperbarui";
