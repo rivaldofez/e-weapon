@@ -115,6 +115,7 @@ struct AddAccessoryView: View {
                     Text("txt_save")
                 }
                 .tint(.primaryAccent)
+                .disabled(!isFormValid())
                 .alert(self.alertTitle, isPresented: self.$showAlert, actions: {
                     Button("OK") {
                         if self.alertTitle == String(localized: "ttl_success") {

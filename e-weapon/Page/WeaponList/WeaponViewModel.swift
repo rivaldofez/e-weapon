@@ -29,7 +29,6 @@ class WeaponViewModel: ObservableObject {
         if query.isEmpty {
             fetchWeapon()
         } else {
-            fetchWeapon()
             self.weapons = self.weapons.filter { $0.name.lowercased().contains(query.lowercased()) }
         }
     }

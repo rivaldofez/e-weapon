@@ -28,7 +28,6 @@ class AccessoryViewModel: ObservableObject {
         if query.isEmpty {
             fetchAccessory()
         } else {
-            fetchAccessory()
             self.accessories = self.accessories.filter { $0.name.lowercased().contains(query.lowercased()) }
         }
     }
