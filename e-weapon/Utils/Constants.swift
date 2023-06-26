@@ -12,16 +12,16 @@ import Foundation
 
 class Constants {
     static let locationOptions: [String] = [
-        "Center",
-        "District",
-        "Field",
-        "Warehouse",
-        "Workshop"
+        "Pusat",
+        "Daerah",
+        "Lapangan",
+        "Gudang",
+        "Bengkel"
     ]
     
     static let statusOptions: [String] = [
-        "Stored",
-        "In Use"
+        "Dipakai",
+        "Disimpan"
     ]
 }
 

@@ -44,6 +44,7 @@
 "txt_settings" = "Settings";
 "txt_dark_mode" = "Dark Mode";
 "txt_light_mode" = "Light Mode";
+"txt_select_location" = "Select Location";
 
 
 "ttl_data_not_valid" = "Data Not Valid or Empty";

@@ -31,7 +31,7 @@ struct CustomMenuPicker: View {
             
         } label: {
             HStack {
-                Text(menuItemSelection.isEmpty ? "Select Category" : menuItemSelection)
+                Text(menuItemSelection.isEmpty ? String(localized: "txt_select_location") : menuItemSelection)
                     .font(.body)
                 
                 Spacer()
