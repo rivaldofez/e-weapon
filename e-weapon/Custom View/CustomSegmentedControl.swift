@@ -18,7 +18,7 @@ struct CustomSegmentedControl: View {
     var selectedBackgroundColor: Color = .primaryAccent
     var selectedTextColor: Color = .primaryButtonLabel
     
-    var textColor: Color = .primaryLabel
+    var textColor: Color = .black
     var backgroundColor: Color = .clear
     
     var strokeColor: Color = .primaryGray
