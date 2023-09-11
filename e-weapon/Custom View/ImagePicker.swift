@@ -24,13 +24,11 @@ class ImagePickerCoordinator: NSObject, UINavigationControllerDelegate, UIImageP
             image = uiImage
             isShown = false
         }
-        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         isShown = false
     }
-    
 }
 
 
