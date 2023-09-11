@@ -85,7 +85,7 @@ class WeaponViewModel: ObservableObject {
     
     
     func generateExcelFile(){
-        let filename = generateFileExportName().appending(".xlsx")
+        let filename = generateFileExportName().appending(".xlsx")//
                 
         var workbook: UnsafeMutablePointer<lxw_workbook>?
         var worksheet: UnsafeMutablePointer<lxw_worksheet>?
