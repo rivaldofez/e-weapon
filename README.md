@@ -10,7 +10,11 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h3 align="center">E-Weapon</h3>
+  <a href="https://github.com/rivaldofez/Tok-project">
+    <img src="Images/Logo.png" alt="Logo"height="80">
+  </a>
+
+  <h3 align="center">An App to manage tools inventory</h3>
   </br>
 </div>
 
